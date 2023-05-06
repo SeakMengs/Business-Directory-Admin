@@ -1,0 +1,90 @@
+/* CSS variable */
+:root {
+    --text-color: #fffff5;
+    --text-dark-color: #161616;
+    --bg-color: #0D0D0D;
+    --glass-color: #ffffff05;
+}
+
+body {
+    color: var(--text-color);
+}
+
+.bg {
+    /* background: url(https://w.wallhaven.cc/full/9m/wallhaven-9mllvd.png); */
+    /* background: url(https://www.wallpaperup.com/uploads/wallpapers/2013/12/16/196758/f8aed12e29250611055fcd618f8a5141.jpg); */
+    background-color: var(--bg-color);
+    background-size: cover;
+}
+
+.m-1 {
+    margin: 1rem;
+}
+
+.glass {
+    background-color: var(--glass-color);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 3%;
+    -webkit-border-radius: 3%;
+    -moz-border-radius: 3%;
+    -ms-border-radius: 3%;
+    -o-border-radius: 3%;
+    box-shadow: 0 0 8px rgba(8,7,16,0.6);
+}
+
+form * {
+    outline: none;
+    width: 20rem;
+}
+
+.input {
+    height: 3rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 0.5rem;
+    font-weight: 300;
+}
+
+.submit {
+    height: 3rem;
+    font-weight: bold;
+    color: var(--text-dark-color);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 0.5rem;
+}
+
+.submit:hover {
+    background-color: rgba(255,255,255,0.70);
+    cursor: pointer;
+}
+
+.admin-login-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* CSS That will apply when screen size <= 767  px  */
+@media screen and (max-width: 767px) {
+    form * {
+        width: 15rem;
+    }
+
+    .p-5 {
+        padding: 2rem;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    form * {
+        width: 10rem;
+    }
+
+    .p-5 {
+        padding: 1rem;
+    }
+}
