@@ -17,10 +17,6 @@ body {
     background-size: cover;
 }
 
-.m-1 {
-    margin: 1rem;
-}
-
 .glass {
     background-color: var(--glass-color);
     backdrop-filter: blur(10px);
@@ -66,6 +62,11 @@ form * {
 .admin-login-text {
     font-size: 1.5rem;
     font-weight: bold;
+}
+
+.wrong-input {
+    font-size: 12px;
+    color: rgb(240, 100, 100);
 }
 
 /* CSS That will apply when screen size <= 767  px  */

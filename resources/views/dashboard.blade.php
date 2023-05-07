@@ -7,18 +7,16 @@
     {{-- add csrf token to allow access to vue component --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Business Directory Admin</title>
+    <title>Business Directory Admin Dashboard</title>
     <script src="{{ mix('js/app.js') }}" defer></script>
     <link rel="stylesheet" href="{{ asset('css/global.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 </head>
 
 <body>
-    {{-- use it temporary to navigate --}}
-    <a href="/dashboard">Dashboard</a>
     <div id="app">
-        {{-- login component can be found in \resources\js\components\Login.vue --}}
-        <login></login>
+        {{-- dashboard component can be found in \resources\js\components\Login.vue --}}
+        <dashboard></dashboard>
     </div>
 </body>
 
