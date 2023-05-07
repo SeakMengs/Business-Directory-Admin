@@ -1,0 +1,222 @@
+:root {
+    --text-color: #495057;
+    --bg-color-1: #FAFBFC;
+    --bg-color-2: #F7F9FA;
+    --bg-color-3: #F1F4F6;
+    --glass-color: #ffffff05;
+    --border-color: #dee2e6;
+    --search-bg-color: #EDEEEF;
+}
+
+body {
+    color: var(--text-color);
+}
+
+.dashboard-bg {
+    background-color: var(--bg-color-2);
+    background-size: cover;
+}
+
+.header-style {
+    background-color: var(--bg-color-1);
+    height: 60px;
+    max-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, .03), 0 0.9375rem 1.40625rem rgba(4, 9, 20, .03), 0 0.25rem 0.53125rem rgba(4, 9, 20, .05), 0 0.125rem 0.1875rem rgba(4, 9, 20, .03);
+}
+
+.header-child {
+    margin: 2rem;
+}
+
+.profile-name {
+    font-weight: bold;
+}
+
+/* the css will apply to all img tag inside .link-profile class */
+.link-profile>img {
+    height: 3rem;
+    max-height: 3rem;
+    width: 3rem;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+}
+
+.link-profile {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.logout-btn {
+    background-color: red;
+    color: whitesmoke;
+    border: none;
+    border-radius: 0.4rem;
+    padding: 0.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    -webkit-border-radius: 0.4rem;
+    -moz-border-radius: 0.4rem;
+    -ms-border-radius: 0.4rem;
+    -o-border-radius: 0.4rem;
+}
+
+.left-border-line {
+    border-left: 0.1rem solid var(--border-color);
+    color: var(--bg-color-1);
+    height: 2rem;
+    margin: 1rem;
+}
+
+.search-wrapper {
+    max-height: 40px;
+    position: relative;
+    animation: fadeInLeftToRight 0.5s ease-in-out;
+    -webkit-animation: fadeInLeftToRight 0.5s ease-in;
+}
+
+.search {
+    width: 20rem;
+    outline: none;
+    border: none;
+    border-radius: 4rem;
+    padding: 0.7rem;
+    -webkit-border-radius: 4rem;
+    -moz-border-radius: 4rem;
+    -ms-border-radius: 4rem;
+    -o-border-radius: 4rem;
+    background-color: var(--search-bg-color);
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-icon {
+    fill: var(--text-color);
+    width: 25px;
+    height: 25px;
+}
+
+.search-bg {
+    position: absolute;
+    height: 37.73px;
+    width: 37.73px;
+    right: 0;
+    background-color: #cbcdce;
+    border-radius: 4rem;
+    -webkit-border-radius: 4rem;
+    -moz-border-radius: 4rem;
+    -ms-border-radius: 4rem;
+    -o-border-radius: 4rem;
+}
+
+.search-bg:hover {
+    cursor: pointer;
+}
+
+.header-child:nth-child(4) {
+    display: none;
+}
+
+.hamburger-line {
+    display: block;
+    border-top: 1px solid red;
+    height: 2px;
+    width: 1rem;
+    margin: 4px;
+}
+
+#hamburger {
+    display: none;
+}
+
+.mobile-header-menu {
+    background-color: rgb(81, 255, 81);
+    max-height: 0;
+    overflow: hidden;
+    /*display: none;
+    */
+    transition: max-height 0.5s ease-in-out;
+    -webkit-transition: max-height 0.5s ease-in-out;
+    -moz-transition: max-height 0.5s ease-in-out;
+    -ms-transition: max-height 0.5s ease-in-out;
+    -o-transition: max-height 0.5s ease-in-out;
+}
+
+/* when user click on the hamburger it will trigger the menu */
+#hamburger:checked+.mobile-header-menu {
+    max-height: 60px;
+    display: block;
+}
+
+#hamburger:checked+.hamburger-line {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+}
+
+@media screen and (max-width: 768px) {
+    .search-wrapper {
+        width: 15rem;
+    }
+
+    .link-profile>img {
+        height: 2rem;
+        max-height: 2rem;
+        width: 2rem;
+    }
+
+    .header-style {
+        font-size: small;
+    }
+
+    .access-lv {
+        font-size: smaller;
+    }
+}
+
+/* from here we consider it as a mobile size */
+
+@media screen and (max-width: 604px) {
+
+    .link-profile>img {
+        height: 1.5rem;
+        max-height: 1.5rem;
+        width: 1.5rem;
+    }
+
+    .header-style {
+        font-size: x-small;
+    }
+
+    .access-lv {
+        font-size: xx-small;
+    }
+
+    /* remove profile and search */
+    .header-child:nth-child(2),
+    .header-child:nth-child(3) {
+        display: none;
+    }
+
+    .header-child:nth-child(4) {
+        display: block;
+    }
+}
+
+@keyframes fadeInLeftToRight {
+    0% {
+        opacity: 0;
+        width: 0%;
+    }
+
+    100% {
+        opacity: 1;
+        width: 100%;
+    }
+}
