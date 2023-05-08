@@ -1,8 +1,15 @@
 <template>
-    <div class="dashboard-bg full-screen">
+    <div class="dashboard-bg fill-screen">
         <header class="header-style">
             <div class="header-child">
-                <span>Logo</span>
+                <div class="hamburger-menu" for="hamburger">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </div>
+            </div>
+            <div class="header-child">
+                <span>Dashboard > {{ currentPage }}</span>
             </div>
             <div class="header-child">
                 <div class="flex search-wrapper">
@@ -26,24 +33,13 @@
                 <div class="left-border-line"></div>
                 <button class="logout-btn">Logout</button>
             </div>
-            <div class="header-child">
-                <label class="hamburger-menu" for="hamburger">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </label>
+            <div class="header-child center">
+                <span>profile btn</span>
             </div>
         </header>
-        <div class="mobile-menu">
-            <input type="checkbox" id="hamburger">
-            <ul class="mobile-header-menu">
-                <li>hi</li>
-                <li>hi</li>
-                <li>hk</li>
-            </ul>
+        <div class="main-style">
+            <left-menu></left-menu>
         </div>
-        <main class="main-style">
-        </main>
     </div>
 </template>
 
@@ -51,7 +47,7 @@
 export default {
     data() {
         return {
-            title: 'Dashboard'
+            currentPage: 'Dashboard'
         }
     }
 }
