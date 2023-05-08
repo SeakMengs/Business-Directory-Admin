@@ -1,15 +1,16 @@
 <template>
-    <div class="dashboard-bg fill-screen">
+    <div class="dashboard-bg fill-screen height-100">
         <header class="header-style">
             <div class="header-child">
-                <div class="hamburger-menu" for="hamburger">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
+                <div @click="toggleLeftMenu" class="hamburger-menu">
+                    <input type="checkbox" id="hamburger">
+                    <span class="hamburger-line hamburger-line1"></span>
+                    <span class="hamburger-line hamburger-line2"></span>
+                    <span class="hamburger-line hamburger-line3"></span>
                 </div>
             </div>
             <div class="header-child">
-                <span>Dashboard > {{ currentPage }}</span>
+                <span>Dashboard > {{ inPage }}</span>
             </div>
             <div class="header-child">
                 <div class="flex search-wrapper">
@@ -37,8 +38,14 @@
                 <span>profile btn</span>
             </div>
         </header>
-        <div class="main-style">
-            <left-menu></left-menu>
+        <div class="flex left-menu-wrapper height-100">
+            <left-menu @closeMenu="closeMenu" @setPage="setPage"></left-menu>
+            <div class="full-width right-side-control" v-if="currentPage === 1">
+                <right-content></right-content>
+            </div>
+            <div class="full-width right-side-control" v-else-if="currentPage === 2">
+                <right-content2></right-content2>
+            </div>
         </div>
     </div>
 </template>
@@ -47,7 +54,47 @@
 export default {
     data() {
         return {
-            currentPage: 'Dashboard'
+            inPage: 'Dashboard',
+            currentPage: 1,
+        }
+    },
+    methods: {
+        toggleLeftMenu() {
+            let leftMenuSlider = document.getElementById('left-menu-slider')
+            let hamburger = document.getElementById('hamburger')
+            let isCloseMenu = document.getElementById('isCloseMenu')
+
+            if (leftMenuSlider.checked) {
+                hamburger.checked = false
+                leftMenuSlider.checked = false
+                isCloseMenu.checked = true
+            } else {
+                hamburger.checked = true
+                leftMenuSlider.checked = true
+                isCloseMenu.checked = false
+            }
+        },
+        closeMenu() {
+            let leftMenuSlider = document.getElementById('left-menu-slider')
+            let hamburger = document.getElementById('hamburger')
+            let isCloseMenu = document.getElementById('isCloseMenu')
+
+            if (leftMenuSlider.checked) {
+                hamburger.checked = false
+                leftMenuSlider.checked = false
+                isCloseMenu.checked = true
+            }
+        },
+        setPage(event, page) {
+            this.currentPage = page
+            if (page === 1) {
+                this.inPage = 'Dashboard'
+            } else if (page === 2) {
+                this.inPage = 'Dashboard2'
+            }
+
+            // after click on menu, close the menu
+            this.closeMenu()
         }
     }
 }

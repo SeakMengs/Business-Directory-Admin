@@ -11,6 +11,10 @@
     justify-content: center;
 }
 
+.full-width {
+    width: 100%;
+}
+
 .m-half {
     margin: 0.5rem;
 }

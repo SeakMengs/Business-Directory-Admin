@@ -1,1 +1,76 @@
+.left-menu-style {
+  position: sticky;
+  top: 60;
+  background-color: var(--bg-color-3);
+  height: calc(100vh - 60px);
+  width: 0px;
+  transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  -webkit-transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  -moz-transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  -ms-transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  -o-transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  overflow: hidden;
+  z-index: 99;
+  overflow-y: auto;
+}
 
+.main-content {
+  margin: 1rem;
+}
+
+.head-title {
+  color: var(--text-color-2);
+  font-weight: 800;
+}
+
+.head-child-wrapper {
+  margin: 1rem;
+}
+
+.head-child {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.head-child > img {
+  width: 16px;
+  height: 16px;
+}
+
+.head-child:hover {
+  background-color: var(--hover-menu);
+}
+
+.head-child-title {
+  margin-left: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+#left-menu-slider,
+#isCloseMenu {
+  display: none;
+}
+
+.close-content-on-click {
+  position: absolute;
+  width: 100%;
+  height: calc(100vh - 60px);
+  z-index: 1;
+}
+
+#left-menu-slider:checked ~ .left-menu-style {
+  width: 250px;
+}
+
+#isCloseMenu:checked ~ .close-content-on-click {
+  display: none;
+}
+
+@media screen and (max-width: 604px) {
+  #left-menu-slider:checked ~ .left-menu-style {
+    width: 500px;
+  }
+}
