@@ -16,13 +16,15 @@
 
 .main-content {
   margin: 1rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .head-title-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
   padding: 1rem;
   border-radius: 0.5rem;
   -webkit-border-radius: 0.5rem;
@@ -67,7 +69,7 @@
 }
 
 .head-child-wrapper {
-  margin: 0 1rem;
+  margin-left: 1rem;
   transition: transform 0.125s cubic-bezier(0.215, 0.61, 0.355, 1);
   -webkit-transition: transform 0.125s cubic-bezier(0.215, 0.61, 0.355, 1);
   -moz-transition: transform 0.125s cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -96,7 +98,7 @@
   align-items: center;
   padding: 1rem;
   border-radius: 0.5rem;
-  margin: 0.2rem;
+  margin: 0.2rem 0;
 }
 
 .head-child > img {
