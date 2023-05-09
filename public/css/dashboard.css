@@ -127,6 +127,10 @@ body {
   cursor: pointer;
 }
 
+.cur-page-title {
+  font-weight: bold;
+}
+
 .hamburger-line {
   display: block;
   border: 3px;

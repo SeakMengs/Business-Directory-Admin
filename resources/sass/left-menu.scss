@@ -18,6 +18,51 @@
     margin: 1rem;
 }
 
+.head-title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+}
+
+.head-title-wrapper:hover {
+    background-color: var(--hover-menu);
+    color: var(--text-color-2);
+
+    .arrow {
+        background-color: black;
+    }
+}
+
+// https://stackoverflow.com/questions/22384934/how-to-change-svg-fill-color-when-used-as-base-64-background-image-data
+.arrow {
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    transform: rotate(270deg);
+    transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    -webkit-transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    -moz-transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    -ms-transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    -o-transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.mask-image-arrow {
+    width: 16px;
+    height: 16px;
+    mask-size: auto 12px;
+    mask-repeat: no-repeat;
+    background-color: var(--border-color);
+    mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAABOklEQVR4nO3ZPyuFURzA8Q8i/xayMMkmm5RRGUyW+waUcksZlFdgMXgBymwQC6UsBhazZJNJd5EFiZB/3bqDnk4pg+7v9Hzq7N+nzr3POb+HUqn03zqxiCX0CKYXp/hqrEOBdOPkR3x9vQm0bY4K8fW1L4AOHCTiz9CnybVhNxF/jn4B4rcT8RcY0ORasZWIv8SgJteCzUT8FYYEiN9IxF9jWADrifgaRgSwloi/wagAVhPxtxgTwEoi/g7jAlhOxN9jQgAL+CzEP2BSAPP4KMQ/YUoAc4n4Z0wLoIL3QvwLZgRRK8S/YlYgtegPUIm+hcL/iLP4G83iRZbFUSKLw1wWx+ksLjRZXCmzuNSHH6tkMdjKYrSYxXA3i/H6bx84dgTShePCAzwK/pFvT0DtjaN4tbG1SqWSv/sGSWTN8LbUn/oAAAAASUVORK5CYII=);
+}
+
 .head-title {
     color: var(--text-color-2);
     font-weight: 700;
@@ -25,7 +70,28 @@
 }
 
 .head-child-wrapper {
-    margin: 1rem;
+    margin: 0 1rem;
+    transition: transform 0.125s cubic-bezier(0.215, 0.610, 0.355, 1);
+    -webkit-transition: transform 0.125s cubic-bezier(0.215, 0.610, 0.355, 1);
+    -moz-transition: transform 0.125s cubic-bezier(0.215, 0.610, 0.355, 1);
+    -ms-transition: transform 0.125s cubic-bezier(0.215, 0.610, 0.355, 1);
+    -o-transition: transform 0.125s cubic-bezier(0.215, 0.610, 0.355, 1);
+    overflow: hidden;
+    transform-origin: top;
+    transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -o-transform: scaleY(1);
+}
+
+.hide-content {
+    transform: scaleY(0);
+    -webkit-transform: scaleY(0);
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -o-transform: scaleY(0);
+    display: none;
 }
 
 .head-child {
@@ -57,7 +123,7 @@
 }
 
 #left-menu-slider,
-#isCloseMenu {
+#isCloseMenu, #arrowCheck1 {
     display: none;
 }
 
@@ -79,6 +145,16 @@
     ~ .close-content-on-click {
         display: none;
     }
+}
+
+#arrowCheck1:checked {
+    ~ .arrow {
+        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+}
 }
 
 @media screen and (max-width: 604px) {

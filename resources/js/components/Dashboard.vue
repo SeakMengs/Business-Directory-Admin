@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="header-child">
-                <span>{{ inPage }}</span>
+                <span class="cur-page-title"> Dashboard > {{ inPage }}</span>
             </div>
             <div class="header-child">
                 <div class="flex search-wrapper">
@@ -38,27 +38,38 @@
                 <span>.</span>
             </div>
         </header>
+        <!-- Component here ------------------------------------------------------------------- -->
         <div class="flex left-menu-wrapper height-100">
-            <left-menu @closeMenu="closeMenu" @setPage="setPage" :currentPage="currentPage"></left-menu>
+            <left-menu></left-menu>
+
             <div class="right-side-control" v-if="currentPage === 1" :class="isOpenMenu ? 'disable-width' : ''">
                 <!-- component can be found in resources/js/components/dashboard-content/Right-content' -->
-                <right-content></right-content>
+                <overview></overview>
             </div>
             <div class="right-side-control" v-else-if="currentPage === 2" :class="isOpenMenu ? 'disable-width' : ''">
                 <!-- component can be found in resources/js/components/dashboard-content/Right-content2' -->
-                <right-content2></right-content2>
+                <account-management></account-management>
             </div>
         </div>
+        <!-- End of Component here ------------------------------------------------------------- -->
     </div>
 </template>
 
 <script>
+
+import LeftMenu from './Left-menu.vue'
+import { computed, ref } from 'vue'
+
 export default {
-    data() {
+    setup() {
+        const inPage = ref('Overview')
+        const currentPage = ref(1)
+        const isOpenMenu = ref(false)
+
         return {
-            inPage: 'Account Management > Dashboard',
-            currentPage: 1,
-            isOpenMenu: false
+            inPage,
+            currentPage,
+            isOpenMenu
         }
     },
     methods: {
@@ -93,16 +104,44 @@ export default {
                 this.isOpenMenu = false
             }
         },
-        setPage(event, page) {
+        setPage(page) {
             this.currentPage = page
             if (page === 1) {
-                this.inPage = 'Account Management > Dashboard'
+                this.inPage = 'Overview'
             } else if (page === 2) {
-                this.inPage = 'Account Management > Dashboard2'
+                this.inPage = 'Account Management'
             }
 
             // after click on menu, close the menu
             this.closeMenu()
+        },
+        toggleContent(row) {
+            let contentRow = document.getElementById('arrowCheck' + row)
+            let ArrayIndex = row - 1
+
+            if (contentRow.checked) {
+                contentRow.checked = false
+            } else {
+                contentRow.checked = true
+            }
+
+            let headChildWrapper = document.querySelectorAll('.head-child-wrapper')[ArrayIndex]
+            headChildWrapper.classList.toggle('hide-content')
+        }
+    },
+    // child component
+    components: {
+        LeftMenu
+    },
+    provide() {
+        return {
+            // if we want to pass reactive data to child component
+            // use computed() to make it reactive
+            // https://vuejs.org/guide/components/provide-inject.html#inject
+            currentPage: computed(() => this.currentPage),
+            closeMenu: this.closeMenu,
+            setPage: this.setPage,
+            toggleContent: this.toggleContent
         }
     }
 }
