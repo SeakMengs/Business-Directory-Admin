@@ -4,8 +4,8 @@ import { createApp } from 'vue'
 import login from './components/Login'
 import dashboard from './components/Dashboard'
 import leftMenu from './components/Left-menu'
-import rightContent from './components/Right-content'
-import rightContent2 from './components/Right-content2'
+import rightContent from './components/dashboard-content/Right-content'
+import rightContent2 from './components/dashboard-content/Right-content2'
 
 const app = createApp({})
 

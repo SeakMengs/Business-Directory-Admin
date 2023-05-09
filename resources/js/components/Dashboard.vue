@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="header-child">
-                <span>Dashboard > {{ inPage }}</span>
+                <span>{{ inPage }}</span>
             </div>
             <div class="header-child">
                 <div class="flex search-wrapper">
@@ -35,15 +35,17 @@
                 <button class="logout-btn">Logout</button>
             </div>
             <div class="header-child center">
-                <span>profile btn</span>
+                <span>.</span>
             </div>
         </header>
         <div class="flex left-menu-wrapper height-100">
-            <left-menu @closeMenu="closeMenu" @setPage="setPage"></left-menu>
-            <div class="full-width right-side-control" v-if="currentPage === 1">
+            <left-menu @closeMenu="closeMenu" @setPage="setPage" :currentPage="currentPage"></left-menu>
+            <div class="right-side-control" v-if="currentPage === 1" :class="isOpenMenu ? 'disable-width' : ''">
+                <!-- component can be found in resources/js/components/dashboard-content/Right-content' -->
                 <right-content></right-content>
             </div>
-            <div class="full-width right-side-control" v-else-if="currentPage === 2">
+            <div class="right-side-control" v-else-if="currentPage === 2" :class="isOpenMenu ? 'disable-width' : ''">
+                <!-- component can be found in resources/js/components/dashboard-content/Right-content2' -->
                 <right-content2></right-content2>
             </div>
         </div>
@@ -54,8 +56,9 @@
 export default {
     data() {
         return {
-            inPage: 'Dashboard',
+            inPage: 'Account Management > Dashboard',
             currentPage: 1,
+            isOpenMenu: false
         }
     },
     methods: {
@@ -64,14 +67,18 @@ export default {
             let hamburger = document.getElementById('hamburger')
             let isCloseMenu = document.getElementById('isCloseMenu')
 
+            // if menu is open, close it
             if (leftMenuSlider.checked) {
                 hamburger.checked = false
                 leftMenuSlider.checked = false
                 isCloseMenu.checked = true
+                this.isOpenMenu = false
             } else {
+                // if menu is close, open it
                 hamburger.checked = true
                 leftMenuSlider.checked = true
                 isCloseMenu.checked = false
+                this.isOpenMenu = true
             }
         },
         closeMenu() {
@@ -83,14 +90,15 @@ export default {
                 hamburger.checked = false
                 leftMenuSlider.checked = false
                 isCloseMenu.checked = true
+                this.isOpenMenu = false
             }
         },
         setPage(event, page) {
             this.currentPage = page
             if (page === 1) {
-                this.inPage = 'Dashboard'
+                this.inPage = 'Account Management > Dashboard'
             } else if (page === 2) {
-                this.inPage = 'Dashboard2'
+                this.inPage = 'Account Management > Dashboard2'
             }
 
             // after click on menu, close the menu

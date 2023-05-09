@@ -1,7 +1,7 @@
 .left-menu-style {
     position: sticky;
     top: 60;
-    background-color: var(--bg-color-3);
+    background-color: var(--bg-color-1);
     height: calc(100vh - 60px);
     width: 0px;
     transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -10,7 +10,7 @@
     -ms-transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
     -o-transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
     overflow: hidden;
-    z-index: 99;
+    z-index: 2;
     overflow-y: auto;
 }
 
@@ -20,7 +20,8 @@
 
 .head-title {
     color: var(--text-color-2);
-    font-weight: 800;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 .head-child-wrapper {
@@ -32,6 +33,7 @@
     align-items: center;
     padding: 1rem;
     border-radius: 0.5rem;
+    margin: 0.2rem;
 }
 
 .head-child > img {
@@ -41,12 +43,17 @@
 
 .head-child:hover {
     background-color: var(--hover-menu);
+    color: var(--text-color-2);
+}
+
+.isCurrentPage {
+    background-color: var(--hover-menu);
+    color: var(--text-color-2);
+    font-weight: 600;
 }
 
 .head-child-title {
     margin-left: 1rem;
-    font-size: 1rem;
-    font-weight: 600;
 }
 
 #left-menu-slider,
@@ -64,7 +71,7 @@
 
 #left-menu-slider:checked {
     ~ .left-menu-style {
-        width: 250px;
+        width: 500px;
     }
 }
 
@@ -77,7 +84,7 @@
 @media screen and (max-width: 604px) {
     #left-menu-slider:checked {
         ~ .left-menu-style {
-            width: 500px;
+            width: 100%;
         }
     }
 }

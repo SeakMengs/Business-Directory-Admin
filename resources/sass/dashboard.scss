@@ -2,12 +2,13 @@
     --text-color: #495057;
     --text-color-2: #3f6ad8;
     --bg-color-1: #fafbfc;
-    --bg-color-2: #f7f9fa;
+    // --bg-color-2: #f7f9fa;
+    --bg-color-2: #f1f4f6;
     --bg-color-3: #f1f4f6;
     --glass-color: #ffffff05;
     --border-color: #dee2e6;
     --search-bg-color: #edeeef;
-    --hover-menu: #b8c6e9;
+    --hover-menu: #e0f3ff;
 }
 
 body {
@@ -27,7 +28,7 @@ body {
 .header-style {
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 3;
     background-color: var(--bg-color-1);
     height: 60px;
     width: 100%;
@@ -156,14 +157,14 @@ body {
         -moz-transform: rotate(45deg) translate(-2px, -1px);
         -ms-transform: rotate(45deg) translate(-2px, -1px);
         -o-transform: rotate(45deg) translate(-2px, -1px);
-}
+    }
     ~ .hamburger-line2 {
         transform: rotate(-45deg) translate(0, -1px);
         -webkit-transform: rotate(-45deg) translate(0, -1px);
         -moz-transform: rotate(-45deg) translate(0, -1px);
         -ms-transform: rotate(-45deg) translate(0, -1px);
         -o-transform: rotate(-45deg) translate(0, -1px);
-}
+    }
     ~ .hamburger-line3 {
         opacity: 0;
         transform: rotate(0deg) scale(0.2, 0.2);
@@ -171,7 +172,6 @@ body {
 }
 
 /* if not mobile size, don't show */
-.header-child:nth-child(2),
 .header-child:nth-child(5) {
     display: none;
 }
@@ -180,6 +180,7 @@ body {
     max-height: calc(100vh - 60px);
     overflow: hidden;
     overflow-y: auto;
+    width: 100%;
 }
 
 @media screen and (max-width: 768px) {
@@ -228,6 +229,11 @@ body {
     .header-child:nth-child(2),
     .header-child:nth-child(5) {
         display: block;
+    }
+
+    // if mobile we disable width when menu is open
+    .disable-width {
+        width: 0;
     }
 }
 
