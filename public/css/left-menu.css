@@ -84,13 +84,20 @@
   -o-transform: scaleY(1);
 }
 
-.hide-content {
+.hide-content-animation {
   transform: scaleY(0);
   -webkit-transform: scaleY(0);
   -moz-transform: scaleY(0);
   -ms-transform: scaleY(0);
   -o-transform: scaleY(0);
-  display: none;
+}
+
+.hide-content {
+  animation-delay: 0.125s;
+  animation-duration: 1ms;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-name: hideContent;
 }
 
 .head-child {
@@ -122,7 +129,7 @@
 }
 
 #left-menu-slider,
-#isCloseMenu, #arrowCheck1 {
+#isCloseMenu {
   display: none;
 }
 
@@ -141,7 +148,7 @@
   display: none;
 }
 
-#arrowCheck1:checked ~ .arrow {
+.arrowCheck:checked ~ .arrow {
   transform: rotate(360deg);
   -webkit-transform: rotate(360deg);
   -moz-transform: rotate(360deg);
@@ -152,5 +159,10 @@
 @media screen and (max-width: 604px) {
   #left-menu-slider:checked ~ .left-menu-style {
     width: 100%;
+  }
+}
+@keyframes hideContent {
+  to {
+    height: 0;
   }
 }

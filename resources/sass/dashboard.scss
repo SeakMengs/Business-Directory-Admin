@@ -176,7 +176,7 @@ body {
 }
 
 /* if not mobile size, don't show */
-.header-child:nth-child(5) {
+.header-child:nth-child(4) {
     display: none;
 }
 
@@ -230,8 +230,8 @@ body {
         display: none;
     }
 
-    .header-child:nth-child(2),
-    .header-child:nth-child(5) {
+    .header-child:nth-child(1),
+    .header-child:nth-child(4) {
         display: block;
     }
 
