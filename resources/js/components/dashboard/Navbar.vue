@@ -1,0 +1,52 @@
+<template>
+    <header class="header-style">
+        <div class="header-child">
+            <div @click="toggleLeftMenu()" class="hamburger-menu">
+                <input type="checkbox" id="hamburger">
+                <span class="hamburger-line hamburger-line1"></span>
+                <span class="hamburger-line hamburger-line2"></span>
+                <span class="hamburger-line hamburger-line3"></span>
+            </div>
+        </div>
+        <div class="header-child">
+            <span class="cur-page-title"> Dashboard > {{ inPage }}</span>
+        </div>
+        <div class="header-child center">
+            <a class="center link-profile" href="/profile">
+                <img src="https://i.redd.it/v0caqchbtn741.jpg" alt="profile">
+                <div class="flex flex-col m-half">
+                    <span class="profile-name">Admin Name</span>
+                    <span class="access-lv">Access level 2</span>
+                </div>
+            </a>
+            <div class="left-border-line"></div>
+            <button class="logout-btn">Logout</button>
+        </div>
+        <div @click="toggleProfilePopUp()" class="header-child center">
+            <div class="flex flex-col">
+                <i class="three-dots"></i>
+                <i class="three-dots"></i>
+                <i class="three-dots"></i>
+            </div>
+        </div>
+    </header>
+</template>
+
+<script>
+import { inject } from 'vue';
+
+export default {
+    setup() {
+        const inPage = inject('inPage')
+        const toggleLeftMenu = inject('toggleLeftMenu')
+        const toggleProfilePopUp = inject('toggleProfilePopUp')
+
+        return {
+            inPage,
+            toggleLeftMenu,
+            toggleProfilePopUp
+        }
+    }
+}
+
+</script>

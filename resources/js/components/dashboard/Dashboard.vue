@@ -1,32 +1,22 @@
 <template>
     <div class="dashboard-bg fill-screen height-100">
-        <header class="header-style">
-            <div class="header-child">
-                <div @click="toggleLeftMenu" class="hamburger-menu">
-                    <input type="checkbox" id="hamburger">
-                    <span class="hamburger-line hamburger-line1"></span>
-                    <span class="hamburger-line hamburger-line2"></span>
-                    <span class="hamburger-line hamburger-line3"></span>
+        <navbar></navbar>
+        <!-- pop up for mobile when user click on top right -->
+        <div class="center">
+            <div class="pop-up-pf">
+                <div class="pop-up-content">
+                    <a class="center link-profile" href="/profile">
+                        <img src="https://i.redd.it/v0caqchbtn741.jpg" alt="profile">
+                        <div class="flex flex-col m-half">
+                            <span class="profile-name">Admin Name</span>
+                            <span class="access-lv">Access level 2</span>
+                        </div>
+                    </a>
+                    <div class="left-border-line"></div>
+                    <button class="logout-btn">Logout</button>
                 </div>
             </div>
-            <div class="header-child">
-                <span class="cur-page-title"> Dashboard > {{ inPage }}</span>
-            </div>
-            <div class="header-child center">
-                <a class="center link-profile" href="/profile">
-                    <img src="https://i.redd.it/v0caqchbtn741.jpg" alt="profile">
-                    <div class="flex flex-col m-half">
-                        <span class="profile-name">Admin Name</span>
-                        <span class="access-lv">Access level 2</span>
-                    </div>
-                </a>
-                <div class="left-border-line"></div>
-                <button class="logout-btn">Logout</button>
-            </div>
-            <div class="header-child center">
-                <span>.</span>
-            </div>
-        </header>
+        </div>
         <!-- Component here ------------------------------------------------------------------- -->
         <div class="flex left-menu-wrapper height-100">
             <left-menu></left-menu>
@@ -35,7 +25,7 @@
                 <!-- component can be found in resources/js/components/dashboard-content/Right-content' -->
                 <overview></overview>
             </div>
-            <div class="right-side-control" v-else-if="currentPage === 12" :class="isOpenMenu ? 'disable-width' : ''">
+            <div class="right-side-control" v-else-if="currentPage === 21" :class="isOpenMenu ? 'disable-width' : ''">
                 <!-- component can be found in resources/js/components/dashboard-content/Right-content2' -->
                 <account-management></account-management>
             </div>
@@ -47,6 +37,7 @@
 <script>
 
 import LeftMenu from './Left-menu.vue'
+import Navbar from './Navbar.vue'
 import { computed, ref } from 'vue'
 
 export default {
@@ -100,8 +91,6 @@ export default {
             this.dashboardPage = page.toString().charAt(0)
             if (page === 11) {
                 this.inPage = 'Overview'
-            } else if (page === 12) {
-                this.inPage = 'Overview2'
             } else if (page === 21) {
                 this.inPage = 'Find user'
             } else if (page === 22) {
@@ -120,17 +109,25 @@ export default {
             // } else {
             //     contentRow.checked = true
             // }
+
             // shorter of above code logic
             contentRow.checked = !contentRow.checked
 
             let headChildWrapper = document.querySelectorAll('.head-child-wrapper')[ArrayIndex]
             headChildWrapper.classList.toggle('hide-content-animation')
             headChildWrapper.classList.toggle('hide-content')
+        },
+        toggleProfilePopUp() {
+            // this function will toggle pop us for profile in mobile version
+            let popUpProfile = document.querySelector('.pop-up-pf')
+            popUpProfile.classList.toggle('show-pop-up-profile')
+            popUpProfile.classList.toggle('hide-pop-up-content')
         }
     },
     // child component
     components: {
-        LeftMenu
+        LeftMenu,
+        Navbar
     },
     provide() {
         return {
@@ -139,9 +136,12 @@ export default {
             // https://vuejs.org/guide/components/provide-inject.html#inject
             currentPage: computed(() => this.currentPage),
             dashboardPage: computed(() => this.dashboardPage),
+            inPage: computed(() => this.inPage),
             closeMenu: this.closeMenu,
             setPage: this.setPage,
-            toggleContent: this.toggleContent
+            toggleContent: this.toggleContent,
+            toggleLeftMenu: this.toggleLeftMenu,
+            toggleProfilePopUp: this.toggleProfilePopUp
         }
     }
 }

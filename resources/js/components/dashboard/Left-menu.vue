@@ -6,33 +6,30 @@
                 <span class="head-title">Dashboard</span>
                 <!-- when copy main-content modify id and add 1 behind the number -->
                 <input class="hidden arrowCheck" type="checkbox" id="arrowCheck1">
-                <div class="arrow mask-image-arrow"></div>
+                <i class="arrow mask-image-arrow"></i>
             </div>
             <div class="head-child-wrapper">
                 <div @click="setPage(11)" class="head-child" :class="{ 'isCurrentPage': this.currentPage === 11 }">
-                    <img src="images/search.svg" alt="icon" width="16px" height="16px">
+                    <i class="i-overview"></i>
                     <span class="head-child-title">Overview</span>
-                </div>
-                <div @click="setPage(12)" class="head-child" :class="{ 'isCurrentPage': this.currentPage === 12 }">
-                    <img src="images/search.svg" alt="icon" width="16px" height="16px">
-                    <span class="head-child-title">Overview2</span>
                 </div>
             </div>
         </div>
+        <!-- second menu content -->
         <div class="main-content">
             <div @click="toggleContent(2)" class="head-title-wrapper" :class="{ 'isCurrentPage': this.dashboardPage === '2' }">
                 <span class="head-title">Account Management</span>
                 <input class="hidden arrowCheck" type="checkbox" id="arrowCheck2">
-                <div class="arrow mask-image-arrow"></div>
+                <i class="arrow mask-image-arrow"></i>
             </div>
             <div class="head-child-wrapper">
                 <div @click="setPage(21)" class="head-child" :class="{ 'isCurrentPage': this.currentPage === 21 }">
-                    <img src="images/search.svg" alt="icon" width="16px" height="16px">
+                    <i class="i-find-user"></i>
                     <span class="head-child-title">Find User</span>
                 </div>
                 <div @click="setPage(22)" class="head-child" :class="{ 'isCurrentPage': this.currentPage === 22 }">
-                    <img src="images/search.svg" alt="icon" width="16px" height="16px">
-                    <span class="head-child-title">Find Company</span>
+                    <i class="i-find-company"></i>
+                    <span class="head-child-title">Find Company User</span>
                 </div>
             </div>
         </div>
@@ -66,7 +63,7 @@ export default {
             closeMenu,
             setPage,
             toggleContent,
-            dashboardPage
+            dashboardPage,
         }
     }
 }

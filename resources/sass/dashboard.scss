@@ -187,6 +187,52 @@ body {
     width: 100%;
 }
 
+.three-dots {
+    border: 1px solid var(--text-color);
+    height: 2px;
+    width: 3px;
+    border-radius: 2px;
+    margin: 0.1rem;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+
+.pop-up-pf {
+    position: absolute;
+    z-index: 2;
+    width: 85%;
+    height: fit-content;
+    min-height: 3.5rem;
+    background-color: var(--bg-color-1);
+    transition: all 0.125s ease-in-out;
+    -webkit-transition: all 0.125s ease-in-out;
+    -moz-transition: all 0.125s ease-in-out;
+    -ms-transition: all 0.125s ease-in-out;
+    -o-transition: all 0.125s ease-in-out;
+    top: -4rem;
+    opacity: 1;
+    border-radius: 5rem;
+    -webkit-border-radius: 5rem;
+    -moz-border-radius: 5rem;
+    -ms-border-radius: 5rem;
+    -o-border-radius: 5rem;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03), 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03),
+        0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05), 0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
+}
+
+.show-pop-up-profile {
+    opacity: 1;
+    top: 75px;
+}
+
+.pop-up-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
 @media screen and (max-width: 768px) {
     .search-wrapper {
         width: 15rem;
@@ -211,9 +257,9 @@ body {
 
 @media screen and (max-width: 604px) {
     .link-profile > img {
-        height: 1.5rem;
-        max-height: 1.5rem;
-        width: 1.5rem;
+        height: 2.5rem;
+        max-height: 3rem;
+        width: 2.5rem;
     }
 
     .header-style {
