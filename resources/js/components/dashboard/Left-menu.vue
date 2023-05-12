@@ -2,7 +2,8 @@
     <input class="hidden" type="checkbox" id="left-menu-slider">
     <div class="left-menu-style">
         <div class="main-content">
-            <div @click="toggleContent(1)" class="head-title-wrapper" :class="{ 'isCurrentPage': this.dashboardPage === '1' }">
+            <div @click="toggleContent(1)" class="head-title-wrapper"
+                :class="{ 'isCurrentPage': this.dashboardPage === '1' }">
                 <span class="head-title">Dashboard</span>
                 <!-- when copy main-content modify id and add 1 behind the number -->
                 <input class="hidden arrowCheck" type="checkbox" id="arrowCheck1">
@@ -17,7 +18,8 @@
         </div>
         <!-- second menu content -->
         <div class="main-content">
-            <div @click="toggleContent(2)" class="head-title-wrapper" :class="{ 'isCurrentPage': this.dashboardPage === '2' }">
+            <div @click="toggleContent(2)" class="head-title-wrapper"
+                :class="{ 'isCurrentPage': this.dashboardPage === '2' }">
                 <span class="head-title">Account Management</span>
                 <input class="hidden arrowCheck" type="checkbox" id="arrowCheck2">
                 <i class="arrow mask-image-arrow"></i>
@@ -36,7 +38,7 @@
     </div>
     <!-- if user open menu and click on other side of the screen, close the screen -->
     <input class="hidden" type="checkbox" id="isCloseMenu">
-    <div @click="closeMenu()" class="close-content-on-click">
+    <div @click="closeMenu()" :class="{ 'close-content-on-click': this.isOpenMenu }">
     </div>
 </template>
 
@@ -57,6 +59,7 @@ export default {
         const closeMenu = inject('closeMenu')
         const setPage = inject('setPage')
         const toggleContent = inject('toggleContent')
+        const isOpenMenu = inject('isOpenMenu')
 
         return {
             currentPage,
@@ -64,6 +67,7 @@ export default {
             setPage,
             toggleContent,
             dashboardPage,
+            isOpenMenu
         }
     }
 }

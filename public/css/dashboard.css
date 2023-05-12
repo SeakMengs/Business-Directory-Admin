@@ -270,6 +270,22 @@ body {
     width: 0;
   }
 }
+@media screen and (max-width: 285px) {
+  .link-profile > img {
+    height: 2rem;
+    max-height: 3rem;
+    width: 2rem;
+  }
+  .profile-name {
+    font-size: small;
+  }
+  .logout-btn {
+    padding: 0.3rem;
+  }
+  .pop-up-pf {
+    width: 90%;
+  }
+}
 @keyframes fadeInLeftToRight {
   0% {
     opacity: 0;

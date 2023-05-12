@@ -19,3 +19,6 @@ u should be able to run the project now using these two commands at the same tim
 npm run watch
 php artisan serve
 ```
+
+## Icon resource
+https://icons8.com

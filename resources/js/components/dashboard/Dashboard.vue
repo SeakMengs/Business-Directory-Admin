@@ -38,6 +38,7 @@
 
 import LeftMenu from './Left-menu.vue'
 import Navbar from './Navbar.vue'
+import Overview from './Overview.vue'
 import { computed, ref } from 'vue'
 
 export default {
@@ -47,11 +48,15 @@ export default {
         const dashboardPage = ref('1')
         const isOpenMenu = ref(false)
 
+        // use this to format number
+        const numFormatter = Intl.NumberFormat('en', { notation: 'compact'})
+
         return {
             inPage,
             currentPage,
             isOpenMenu,
-            dashboardPage
+            dashboardPage,
+            numFormatter,
         }
     },
     methods: {
@@ -127,7 +132,8 @@ export default {
     // child component
     components: {
         LeftMenu,
-        Navbar
+        Navbar,
+        Overview
     },
     provide() {
         return {
@@ -137,6 +143,8 @@ export default {
             currentPage: computed(() => this.currentPage),
             dashboardPage: computed(() => this.dashboardPage),
             inPage: computed(() => this.inPage),
+            numFormatter: this.numFormatter,
+            isOpenMenu: computed(() => this.isOpenMenu),
             closeMenu: this.closeMenu,
             setPage: this.setPage,
             toggleContent: this.toggleContent,
