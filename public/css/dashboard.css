@@ -10,6 +10,10 @@
   --hover-menu: #e0f3ff;
 }
 
+*, html {
+  scroll-behavior: smooth !important;
+}
+
 body {
   color: var(--text-color);
 }
@@ -24,6 +28,9 @@ body {
 }
 
 .header-style {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   position: sticky;
   top: 0;
   z-index: 3;
@@ -268,6 +275,11 @@ body {
   }
   .disable-width {
     width: 0;
+  }
+}
+@media screen and (max-width: 384px) {
+  .cur-page-title {
+    font-size: smaller;
   }
 }
 @media screen and (max-width: 285px) {

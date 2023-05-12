@@ -19241,7 +19241,7 @@ __webpack_require__.r(__webpack_exports__);
     var currentPage = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)(11);
     var dashboardPage = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)('1');
     var isOpenMenu = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)(false);
-
+    var currentDashboardStr = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)('Dashboard');
     // use this to format number
     var numFormatter = Intl.NumberFormat('en', {
       notation: 'compact'
@@ -19251,7 +19251,8 @@ __webpack_require__.r(__webpack_exports__);
       currentPage: currentPage,
       isOpenMenu: isOpenMenu,
       dashboardPage: dashboardPage,
-      numFormatter: numFormatter
+      numFormatter: numFormatter,
+      currentDashboardStr: currentDashboardStr
     };
   },
   methods: {
@@ -19290,10 +19291,13 @@ __webpack_require__.r(__webpack_exports__);
       this.dashboardPage = page.toString().charAt(0);
       if (page === 11) {
         this.inPage = 'Overview';
+        this.currentDashboardStr = 'Dashboard';
       } else if (page === 21) {
         this.inPage = 'Find user';
+        this.currentDashboardStr = 'Account Management';
       } else if (page === 22) {
         this.inPage = 'Find company user';
+        this.currentDashboardStr = 'Account Management';
       }
 
       // after click on menu, close the menu
@@ -19346,6 +19350,9 @@ __webpack_require__.r(__webpack_exports__);
       numFormatter: this.numFormatter,
       isOpenMenu: (0,vue__WEBPACK_IMPORTED_MODULE_3__.computed)(function () {
         return _this.isOpenMenu;
+      }),
+      currentDashboardStr: (0,vue__WEBPACK_IMPORTED_MODULE_3__.computed)(function () {
+        return _this.currentDashboardStr;
       }),
       closeMenu: this.closeMenu,
       setPage: this.setPage,
@@ -19415,10 +19422,12 @@ __webpack_require__.r(__webpack_exports__);
     var inPage = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('inPage');
     var toggleLeftMenu = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('toggleLeftMenu');
     var toggleProfilePopUp = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('toggleProfilePopUp');
+    var currentDashboardStr = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('currentDashboardStr');
     return {
       inPage: inPage,
       toggleLeftMenu: toggleLeftMenu,
-      toggleProfilePopUp: toggleProfilePopUp
+      toggleProfilePopUp: toggleProfilePopUp,
+      currentDashboardStr: currentDashboardStr
     };
   }
 });
@@ -19760,7 +19769,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $setup.toggleLeftMenu();
     }),
     "class": "hamburger-menu"
-  }, _hoisted_7)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_9, " Dashboard > " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.inPage), 1 /* TEXT */)]), _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, _hoisted_7)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.currentDashboardStr) + " > " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.inPage), 1 /* TEXT */)]), _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return $setup.toggleProfilePopUp();
     }),
@@ -19790,7 +19799,7 @@ var _hoisted_2 = {
   "class": "section section-1"
 };
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "total-account"
+  "class": "total-header"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Total Accounts")], -1 /* HOISTED */);
 var _hoisted_4 = {
   "class": "total-wrapper"
@@ -19835,8 +19844,8 @@ var _hoisted_15 = {
   "class": "section-2-child"
 };
 var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "total-account"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Total Account")], -1 /* HOISTED */);
+  "class": "total-header"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Total Companies")], -1 /* HOISTED */);
 var _hoisted_17 = {
   "class": "total-wrapper"
 };
@@ -19844,19 +19853,19 @@ var _hoisted_18 = {
   "class": "total-card"
 };
 var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "i-normal-user-bg center"
+  "class": "i-company-user-bg center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "i-normal-user"
+  "class": "i-company"
 })], -1 /* HOISTED */);
 var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
-  "class": "h3-normal"
-}, "User Accounts", -1 /* HOISTED */);
+  "class": "h3-company"
+}, "Companies listed", -1 /* HOISTED */);
 var _hoisted_21 = {
   "class": "section-2-child"
 };
 var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "total-account"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Total Account")], -1 /* HOISTED */);
+  "class": "total-header"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Total Categories")], -1 /* HOISTED */);
 var _hoisted_23 = {
   "class": "total-wrapper"
 };
@@ -19864,36 +19873,16 @@ var _hoisted_24 = {
   "class": "total-card"
 };
 var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "i-normal-user-bg center"
+  "class": "i-admin-user-bg center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "i-normal-user"
+  "class": "i-category"
 })], -1 /* HOISTED */);
 var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
-  "class": "h3-normal"
-}, "User Accounts", -1 /* HOISTED */);
-var _hoisted_27 = {
-  "class": "section-2-child"
-};
-var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "total-account"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Total Account")], -1 /* HOISTED */);
-var _hoisted_29 = {
-  "class": "total-wrapper"
-};
-var _hoisted_30 = {
-  "class": "total-card"
-};
-var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "i-normal-user-bg center"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "i-normal-user"
-})], -1 /* HOISTED */);
-var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
-  "class": "h3-normal"
-}, "User Accounts", -1 /* HOISTED */);
+  "class": "h3-admin"
+}, "Categories", -1 /* HOISTED */);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" total account "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.numFormatter.format(303000000)), 1 /* TEXT */), _hoisted_7]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.numFormatter.format(502303000)), 1 /* TEXT */), _hoisted_10]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.numFormatter.format(3)), 1 /* TEXT */), _hoisted_13])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end of total account "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.numFormatter.format(303000000)), 1 /* TEXT */), _hoisted_20])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [_hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.numFormatter.format(303000000)), 1 /* TEXT */), _hoisted_26])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [_hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.numFormatter.format(303000000)), 1 /* TEXT */), _hoisted_32])])])])]);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" total account "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.numFormatter.format(303000000)), 1 /* TEXT */), _hoisted_7]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.numFormatter.format(502303000)), 1 /* TEXT */), _hoisted_10]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.numFormatter.format(3)), 1 /* TEXT */), _hoisted_13])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end of total account "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" start of section 2 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.numFormatter.format(102)), 1 /* TEXT */), _hoisted_20])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [_hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.numFormatter.format(3030)), 1 /* TEXT */), _hoisted_26])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" ! for now this card has unknown purpose, might delete if i don't know what to put "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"section-2-child\">\n                <div class=\"total-header\">\n                    <h1>Total Account</h1>\n                </div>\n                <div class=\"total-wrapper\">\n                    <div class=\"total-card\">\n                        <div class=\"i-normal-user-bg center\">\n                            <i class=\"i-normal-user\"></i>\n                        </div>\n                        <h1>{{ numFormatter.format(303000000)}}</h1>\n                        <h3 class=\"h3-normal\">User Accounts</h3>\n                    </div>\n                </div>\n            </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" !--------------------End---------------------------------------------------- ")])]);
 }
 
 /***/ }),

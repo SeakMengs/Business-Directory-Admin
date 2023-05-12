@@ -47,7 +47,7 @@ export default {
         const currentPage = ref(11)
         const dashboardPage = ref('1')
         const isOpenMenu = ref(false)
-
+        const currentDashboardStr = ref('Dashboard')
         // use this to format number
         const numFormatter = Intl.NumberFormat('en', { notation: 'compact'})
 
@@ -57,6 +57,7 @@ export default {
             isOpenMenu,
             dashboardPage,
             numFormatter,
+            currentDashboardStr
         }
     },
     methods: {
@@ -96,10 +97,13 @@ export default {
             this.dashboardPage = page.toString().charAt(0)
             if (page === 11) {
                 this.inPage = 'Overview'
+                this.currentDashboardStr = 'Dashboard'
             } else if (page === 21) {
                 this.inPage = 'Find user'
+                this.currentDashboardStr = 'Account Management'
             } else if (page === 22) {
                 this.inPage = 'Find company user'
+                this.currentDashboardStr = 'Account Management'
             }
 
             // after click on menu, close the menu
@@ -145,6 +149,7 @@ export default {
             inPage: computed(() => this.inPage),
             numFormatter: this.numFormatter,
             isOpenMenu: computed(() => this.isOpenMenu),
+            currentDashboardStr: computed(() => this.currentDashboardStr),
             closeMenu: this.closeMenu,
             setPage: this.setPage,
             toggleContent: this.toggleContent,

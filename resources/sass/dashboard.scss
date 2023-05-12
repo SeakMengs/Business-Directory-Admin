@@ -11,6 +11,10 @@
     --hover-menu: #e0f3ff;
 }
 
+*, html {
+    scroll-behavior: smooth !important;
+}
+
 body {
     color: var(--text-color);
     // overflow-y: hidden;
@@ -26,6 +30,7 @@ body {
 }
 
 .header-style {
+    user-select: none;
     position: sticky;
     top: 0;
     z-index: 3;
@@ -285,6 +290,12 @@ body {
     //! this class is applied only when menu is open
     .disable-width {
         width: 0;
+    }
+}
+
+@media screen and (max-width: 384px) {
+    .cur-page-title {
+        font-size: smaller;
     }
 }
 

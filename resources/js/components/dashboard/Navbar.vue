@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="header-child">
-            <span class="cur-page-title"> Dashboard > {{ inPage }}</span>
+            <h5 class="cur-page-title"> {{ currentDashboardStr }} > {{ inPage }}</h5>
         </div>
         <div class="header-child center">
             <a class="center link-profile" href="/profile">
@@ -40,11 +40,13 @@ export default {
         const inPage = inject('inPage')
         const toggleLeftMenu = inject('toggleLeftMenu')
         const toggleProfilePopUp = inject('toggleProfilePopUp')
+        const currentDashboardStr = inject('currentDashboardStr')
 
         return {
             inPage,
             toggleLeftMenu,
-            toggleProfilePopUp
+            toggleProfilePopUp,
+            currentDashboardStr,
         }
     }
 }
