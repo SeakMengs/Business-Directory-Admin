@@ -63,6 +63,7 @@
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
+  word-break: break-all;
 }
 
 @media screen and (max-width: 604px) {
@@ -129,7 +130,7 @@
   color: #f7b924;
 }
 
-.i-company-user {
+.i-company {
   width: 4rem;
   height: 4rem;
   -webkit-mask-size: auto 4rem;
@@ -194,7 +195,7 @@
   -o-border-radius: 10px;
 }
 
-.i-company {
+.i-company-user {
   width: 4rem;
   height: 4rem;
   -webkit-mask-size: auto 4rem;

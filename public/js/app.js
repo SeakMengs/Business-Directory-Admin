@@ -19238,8 +19238,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   setup: function setup() {
     var inPage = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)('Overview');
-    var currentPage = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)(11);
-    var dashboardPage = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)('1');
+    var currentPage = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)(21);
+    var dashboardPage = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)('2');
     var isOpenMenu = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)(false);
     var currentDashboardStr = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)('Dashboard');
     // use this to format number
@@ -19522,30 +19522,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/dashboard/Account-management.vue?vue&type=template&id=fce7abae":
-/*!**************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/dashboard/Account-management.vue?vue&type=template&id=fce7abae ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render)
-/* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-
-var _hoisted_1 = {
-  "class": "db-content-wrapper"
-};
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"flex search-wrapper\"><input class=\"search\" type=\"text\" name=\"search\" id=\"search\" placeholder=\"Search\"><div class=\"center search-bg\"><svg class=\"search-icon\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 50 50\"><path d=\"M 21 3 C 11.621094 3 4 10.621094 4 20 C 4 29.378906 11.621094 37 21 37 C 24.710938 37 28.140625 35.804688 30.9375 33.78125 L 44.09375 46.90625 L 46.90625 44.09375 L 33.90625 31.0625 C 36.460938 28.085938 38 24.222656 38 20 C 38 10.621094 30.378906 3 21 3 Z M 21 5 C 29.296875 5 36 11.703125 36 20 C 36 28.296875 29.296875 35 21 35 C 12.703125 35 6 28.296875 6 20 C 6 11.703125 12.703125 5 21 5 Z\"></path></svg></div></div>", 1);
-var _hoisted_3 = [_hoisted_2];
-function render(_ctx, _cache) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_3);
-}
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/dashboard/Dashboard.vue?vue&type=template&id=376ddb84":
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/dashboard/Dashboard.vue?vue&type=template&id=376ddb84 ***!
@@ -19570,14 +19546,66 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_navbar = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("navbar");
   var _component_left_menu = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("left-menu");
   var _component_overview = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("overview");
-  var _component_account_management = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("account-management");
+  var _component_find_user = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("find-user");
+  var _component_find_company_user = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("find-company-user");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_navbar), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" pop up for mobile when user click on top right "), _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Component here ------------------------------------------------------------------- "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_left_menu), $setup.currentPage === 11 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     key: 0,
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["right-side-control", $setup.isOpenMenu ? 'disable-width' : ''])
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" component can be found in resources/js/components/dashboard-content/Right-content' "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_overview)], 2 /* CLASS */)) : $setup.currentPage === 21 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     key: 1,
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["right-side-control", $setup.isOpenMenu ? 'disable-width' : ''])
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" component can be found in resources/js/components/dashboard-content/Right-content2' "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_account_management)], 2 /* CLASS */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" End of Component here ------------------------------------------------------------- ")]);
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" component can be found in resources/js/components/dashboard-content/Right-content2' "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_find_user)], 2 /* CLASS */)) : $setup.currentPage === 22 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+    key: 2,
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["right-side-control", $setup.isOpenMenu ? 'disable-width' : ''])
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" component can be found in resources/js/components/dashboard-content/Right-content2' "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_find_company_user)], 2 /* CLASS */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" End of Component here ------------------------------------------------------------- ")]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/dashboard/Find-company-user.vue?vue&type=template&id=1f958ad9":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/dashboard/Find-company-user.vue?vue&type=template&id=1f958ad9 ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "db-content-wrapper"
+};
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"acc-management-section\"><div class=\"search-wrapper\"><input class=\"search\" type=\"text\" name=\"search\" id=\"search\" placeholder=\"Search\"><div class=\"center search-bg\"><svg class=\"search-icon\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 50 50\"><path d=\"M 21 3 C 11.621094 3 4 10.621094 4 20 C 4 29.378906 11.621094 37 21 37 C 24.710938 37 28.140625 35.804688 30.9375 33.78125 L 44.09375 46.90625 L 46.90625 44.09375 L 33.90625 31.0625 C 36.460938 28.085938 38 24.222656 38 20 C 38 10.621094 30.378906 3 21 3 Z M 21 5 C 29.296875 5 36 11.703125 36 20 C 36 28.296875 29.296875 35 21 35 C 12.703125 35 6 28.296875 6 20 C 6 11.703125 12.703125 5 21 5 Z\"></path></svg></div></div><div class=\"total-wrapper\"><div class=\"acc-card\"><div class=\"i-company-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-company-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-company\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-company-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-company-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-company\">Tom</h3><button class=\"ban-user\">Ban User</button></div></div></div>", 1);
+var _hoisted_3 = [_hoisted_2];
+function render(_ctx, _cache) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_3);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/dashboard/Find-user.vue?vue&type=template&id=b5bce4ee":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/dashboard/Find-user.vue?vue&type=template&id=b5bce4ee ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "db-content-wrapper"
+};
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"acc-management-section\"><div class=\"search-wrapper\"><input class=\"search\" type=\"text\" name=\"search\" id=\"search\" placeholder=\"Search\"><div class=\"center search-bg\"><svg class=\"search-icon\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 50 50\"><path d=\"M 21 3 C 11.621094 3 4 10.621094 4 20 C 4 29.378906 11.621094 37 21 37 C 24.710938 37 28.140625 35.804688 30.9375 33.78125 L 44.09375 46.90625 L 46.90625 44.09375 L 33.90625 31.0625 C 36.460938 28.085938 38 24.222656 38 20 C 38 10.621094 30.378906 3 21 3 Z M 21 5 C 29.296875 5 36 11.703125 36 20 C 36 28.296875 29.296875 35 21 35 C 12.703125 35 6 28.296875 6 20 C 6 11.703125 12.703125 5 21 5 Z\"></path></svg></div></div><div class=\"total-wrapper\"><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><!-- !To Be deleted --><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div> <div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div> <div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div> <div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div> <div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div> <div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div> <div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div> <div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div> <div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div> <div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div> <div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div> <div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div> <div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div> <div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div> <div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div> <div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div> <div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div> <div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div> <div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div> <div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div> <div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div> <div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div> <div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div> <div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div> <div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><!-- &lt;i class=&quot;i-normal-user&quot;&gt;&lt;/i&gt; --><img src=\"https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg\" alt=\"\"></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><div class=\"acc-card\"><div class=\"i-normal-user-bg center\"><!-- default profile if user has never uploaded profile before --><i class=\"i-normal-user\"></i></div><h6>Join since: 9/12/2022</h6><h6>ID: 15150</h6><h3 class=\"h3-normal\">Tom</h3><button class=\"ban-user\">Ban User</button></div><!-- !End of to be deleted --></div></div>", 1);
+var _hoisted_3 = [_hoisted_2];
+function render(_ctx, _cache) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_3);
 }
 
 /***/ }),
@@ -19901,8 +19929,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_dashboard_Left_menu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/dashboard/Left-menu */ "./resources/js/components/dashboard/Left-menu.vue");
 /* harmony import */ var _components_dashboard_Navbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/dashboard/Navbar */ "./resources/js/components/dashboard/Navbar.vue");
 /* harmony import */ var _components_dashboard_Overview__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/dashboard/Overview */ "./resources/js/components/dashboard/Overview.vue");
-/* harmony import */ var _components_dashboard_Account_management__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/dashboard/Account-management */ "./resources/js/components/dashboard/Account-management.vue");
+/* harmony import */ var _components_dashboard_Find_user__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/dashboard/Find-user */ "./resources/js/components/dashboard/Find-user.vue");
+/* harmony import */ var _components_dashboard_Find_company_user__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/dashboard/Find-company-user */ "./resources/js/components/dashboard/Find-company-user.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
 
 
 
@@ -19918,7 +19948,8 @@ app.component('dashboard', _components_dashboard_Dashboard__WEBPACK_IMPORTED_MOD
 app.component('left-menu', _components_dashboard_Left_menu__WEBPACK_IMPORTED_MODULE_3__["default"]);
 app.component('navbar', _components_dashboard_Navbar__WEBPACK_IMPORTED_MODULE_4__["default"]);
 app.component('overview', _components_dashboard_Overview__WEBPACK_IMPORTED_MODULE_5__["default"]);
-app.component('account-management', _components_dashboard_Account_management__WEBPACK_IMPORTED_MODULE_6__["default"]);
+app.component('find-user', _components_dashboard_Find_user__WEBPACK_IMPORTED_MODULE_6__["default"]);
+app.component('find-company-user', _components_dashboard_Find_company_user__WEBPACK_IMPORTED_MODULE_7__["default"]);
 app.mount('#app');
 
 /***/ }),
@@ -37171,6 +37202,19 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
 /***/ }),
 
+/***/ "./resources/sass/acc-management.scss":
+/*!********************************************!*\
+  !*** ./resources/sass/acc-management.scss ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./resources/css/app.css":
 /*!*******************************!*\
   !*** ./resources/css/app.css ***!
@@ -37480,32 +37524,6 @@ if (false) {}
 
 /***/ }),
 
-/***/ "./resources/js/components/dashboard/Account-management.vue":
-/*!******************************************************************!*\
-  !*** ./resources/js/components/dashboard/Account-management.vue ***!
-  \******************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _Account_management_vue_vue_type_template_id_fce7abae__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Account-management.vue?vue&type=template&id=fce7abae */ "./resources/js/components/dashboard/Account-management.vue?vue&type=template&id=fce7abae");
-/* harmony import */ var E_Meng_Projects_Business_Directory_Admin_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
-
-const script = {}
-
-;
-const __exports__ = /*#__PURE__*/(0,E_Meng_Projects_Business_Directory_Admin_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__["default"])(script, [['render',_Account_management_vue_vue_type_template_id_fce7abae__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/dashboard/Account-management.vue"]])
-/* hot reload */
-if (false) {}
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
-
-/***/ }),
-
 /***/ "./resources/js/components/dashboard/Dashboard.vue":
 /*!*********************************************************!*\
   !*** ./resources/js/components/dashboard/Dashboard.vue ***!
@@ -37526,6 +37544,58 @@ __webpack_require__.r(__webpack_exports__);
 
 ;
 const __exports__ = /*#__PURE__*/(0,E_Meng_Projects_Business_Directory_Admin_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Dashboard_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Dashboard_vue_vue_type_template_id_376ddb84__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/dashboard/Dashboard.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/components/dashboard/Find-company-user.vue":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/dashboard/Find-company-user.vue ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Find_company_user_vue_vue_type_template_id_1f958ad9__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Find-company-user.vue?vue&type=template&id=1f958ad9 */ "./resources/js/components/dashboard/Find-company-user.vue?vue&type=template&id=1f958ad9");
+/* harmony import */ var E_Meng_Projects_Business_Directory_Admin_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+const script = {}
+
+;
+const __exports__ = /*#__PURE__*/(0,E_Meng_Projects_Business_Directory_Admin_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__["default"])(script, [['render',_Find_company_user_vue_vue_type_template_id_1f958ad9__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/dashboard/Find-company-user.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/components/dashboard/Find-user.vue":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/dashboard/Find-user.vue ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Find_user_vue_vue_type_template_id_b5bce4ee__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Find-user.vue?vue&type=template&id=b5bce4ee */ "./resources/js/components/dashboard/Find-user.vue?vue&type=template&id=b5bce4ee");
+/* harmony import */ var E_Meng_Projects_Business_Directory_Admin_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+const script = {}
+
+;
+const __exports__ = /*#__PURE__*/(0,E_Meng_Projects_Business_Directory_Admin_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__["default"])(script, [['render',_Find_user_vue_vue_type_template_id_b5bce4ee__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/dashboard/Find-user.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -37714,22 +37784,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/dashboard/Account-management.vue?vue&type=template&id=fce7abae":
-/*!************************************************************************************************!*\
-  !*** ./resources/js/components/dashboard/Account-management.vue?vue&type=template&id=fce7abae ***!
-  \************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Account_management_vue_vue_type_template_id_fce7abae__WEBPACK_IMPORTED_MODULE_0__.render)
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Account_management_vue_vue_type_template_id_fce7abae__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Account-management.vue?vue&type=template&id=fce7abae */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/dashboard/Account-management.vue?vue&type=template&id=fce7abae");
-
-
-/***/ }),
-
 /***/ "./resources/js/components/dashboard/Dashboard.vue?vue&type=template&id=376ddb84":
 /*!***************************************************************************************!*\
   !*** ./resources/js/components/dashboard/Dashboard.vue?vue&type=template&id=376ddb84 ***!
@@ -37742,6 +37796,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Dashboard_vue_vue_type_template_id_376ddb84__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Dashboard_vue_vue_type_template_id_376ddb84__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Dashboard.vue?vue&type=template&id=376ddb84 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/dashboard/Dashboard.vue?vue&type=template&id=376ddb84");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/dashboard/Find-company-user.vue?vue&type=template&id=1f958ad9":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/dashboard/Find-company-user.vue?vue&type=template&id=1f958ad9 ***!
+  \***********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Find_company_user_vue_vue_type_template_id_1f958ad9__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Find_company_user_vue_vue_type_template_id_1f958ad9__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Find-company-user.vue?vue&type=template&id=1f958ad9 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/dashboard/Find-company-user.vue?vue&type=template&id=1f958ad9");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/dashboard/Find-user.vue?vue&type=template&id=b5bce4ee":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/dashboard/Find-user.vue?vue&type=template&id=b5bce4ee ***!
+  \***************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Find_user_vue_vue_type_template_id_b5bce4ee__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Find_user_vue_vue_type_template_id_b5bce4ee__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Find-user.vue?vue&type=template&id=b5bce4ee */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/dashboard/Find-user.vue?vue&type=template&id=b5bce4ee");
 
 
 /***/ }),
@@ -38150,7 +38236,8 @@ function compileToFunction(template, options) {
 /******/ 			"css/app": 0,
 /******/ 			"css/overview": 0,
 /******/ 			"css/dashboard": 0,
-/******/ 			"css/left-menu": 0
+/******/ 			"css/left-menu": 0,
+/******/ 			"css/acc-management": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -38200,12 +38287,13 @@ function compileToFunction(template, options) {
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/overview","css/dashboard","css/left-menu"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/overview","css/dashboard","css/left-menu"], () => (__webpack_require__("./resources/sass/app.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/overview","css/dashboard","css/left-menu"], () => (__webpack_require__("./resources/sass/left-menu.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/overview","css/dashboard","css/left-menu"], () => (__webpack_require__("./resources/sass/dashboard.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/overview","css/dashboard","css/left-menu"], () => (__webpack_require__("./resources/sass/overview.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app","css/overview","css/dashboard","css/left-menu"], () => (__webpack_require__("./resources/css/app.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/overview","css/dashboard","css/left-menu","css/acc-management"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/overview","css/dashboard","css/left-menu","css/acc-management"], () => (__webpack_require__("./resources/sass/app.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/overview","css/dashboard","css/left-menu","css/acc-management"], () => (__webpack_require__("./resources/sass/left-menu.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/overview","css/dashboard","css/left-menu","css/acc-management"], () => (__webpack_require__("./resources/sass/dashboard.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/overview","css/dashboard","css/left-menu","css/acc-management"], () => (__webpack_require__("./resources/sass/overview.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/overview","css/dashboard","css/left-menu","css/acc-management"], () => (__webpack_require__("./resources/sass/acc-management.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app","css/overview","css/dashboard","css/left-menu","css/acc-management"], () => (__webpack_require__("./resources/css/app.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
