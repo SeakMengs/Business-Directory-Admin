@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ asset('css/left-menu.css') }}">
     <link rel="stylesheet" href="{{ asset('css/overview.css') }}">
     <link rel="stylesheet" href="{{ asset('css/acc-management.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/category.css') }}">
 </head>
 
 <body>

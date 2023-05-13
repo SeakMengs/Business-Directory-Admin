@@ -21,6 +21,7 @@
             <div @click="toggleContent(2)" class="head-title-wrapper"
                 :class="{ 'isCurrentPage': this.dashboardPage === '2' }">
                 <span class="head-title">Account Management</span>
+                <!-- when copy main-content modify id and add 1 behind the number -->
                 <input class="hidden arrowCheck" type="checkbox" id="arrowCheck2">
                 <i class="arrow mask-image-arrow"></i>
             </div>
@@ -32,6 +33,26 @@
                 <div @click="setPage(22)" class="head-child" :class="{ 'isCurrentPage': this.currentPage === 22 }">
                     <i class="i-find-company"></i>
                     <span class="head-child-title">Find Company User</span>
+                </div>
+            </div>
+        </div>
+        <!-- Third menu content -->
+        <div class="main-content">
+            <div @click="toggleContent(3)" class="head-title-wrapper"
+                :class="{ 'isCurrentPage': this.dashboardPage === '3' }">
+                <span class="head-title">Site Management</span>
+                <!-- when copy main-content modify id and add 1 behind the number -->
+                <input class="hidden arrowCheck" type="checkbox" id="arrowCheck3">
+                <i class="arrow mask-image-arrow"></i>
+            </div>
+            <div class="head-child-wrapper">
+                <div @click="setPage(31)" class="head-child" :class="{ 'isCurrentPage': this.currentPage === 31 }">
+                    <i class="i-menu-category"></i>
+                    <span class="head-child-title">Category</span>
+                </div>
+                <div @click="setPage(32)" class="head-child" :class="{ 'isCurrentPage': this.currentPage === 32 }">
+                    <i class="i-find-company"></i>
+                    <span class="head-child-title">What's next?</span>
                 </div>
             </div>
         </div>

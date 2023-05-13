@@ -8,6 +8,7 @@ import navbar from './components/dashboard/Navbar'
 import overview from './components/dashboard/Overview'
 import findUser from './components/dashboard/Find-user'
 import findCompanyUser from './components/dashboard/Find-company-user'
+import category from './components/dashboard/Category'
 
 const app = createApp({})
 
@@ -19,5 +20,6 @@ app.component('navbar', navbar)
 app.component('overview', overview)
 app.component('find-user', findUser)
 app.component('find-company-user', findCompanyUser)
+app.component('category', category)
 
 app.mount('#app')

@@ -3,6 +3,7 @@
         <navbar></navbar>
         <!-- pop up for mobile when user click on top right -->
         <div class="center">
+            <!-- there is a function that toggle hide content to the div below -->
             <div class="pop-up-pf">
                 <div class="pop-up-content">
                     <a class="center link-profile" href="/profile">
@@ -21,18 +22,27 @@
         <div class="flex left-menu-wrapper height-100">
             <left-menu></left-menu>
 
+            <!--* Start of right side content *-->
             <div class="right-side-control" v-if="currentPage === 11" :class="isOpenMenu ? 'disable-width' : ''">
-                <!-- component can be found in resources/js/components/dashboard-content/Right-content' -->
+                <!--! component can be found in resources/js/components/dashboard/overview' -->
                 <overview></overview>
             </div>
+            <!-- component 2 -->
             <div class="right-side-control" v-else-if="currentPage === 21" :class="isOpenMenu ? 'disable-width' : ''">
-                <!-- component can be found in resources/js/components/dashboard-content/Right-content2' -->
+                <!--! component can be found in resources/js/components/dashboard/Find-user' -->
                 <find-user></find-user>
             </div>
+            <!-- component 3 -->
             <div class="right-side-control" v-else-if="currentPage === 22" :class="isOpenMenu ? 'disable-width' : ''">
-                <!-- component can be found in resources/js/components/dashboard-content/Right-content2' -->
+                <!--! component can be found in resources/js/components/dashboard/Find-company-user' -->
                 <find-company-user></find-company-user>
             </div>
+            <!-- component 4 -->
+            <div class="right-side-control" v-else-if="currentPage === 31" :class="isOpenMenu ? 'disable-width' : ''">
+                <!--! component can be found in resources/js/components/dashboard/category' -->
+                <category></category>
+            </div>
+            <!--* End of right side content *-->
         </div>
         <!-- End of Component here ------------------------------------------------------------- -->
     </div>
@@ -47,11 +57,11 @@ import { computed, ref } from 'vue'
 
 export default {
     setup() {
-        const inPage = ref('Overview')
-        const currentPage = ref(21)
-        const dashboardPage = ref('2')
+        const inPage = ref('Category')
+        const currentPage = ref(31)
+        const dashboardPage = ref('3')
         const isOpenMenu = ref(false)
-        const currentDashboardStr = ref('Dashboard')
+        const currentDashboardStr = ref('Site Management')
         // use this to format number
         const numFormatter = Intl.NumberFormat('en', { notation: 'compact'})
 
@@ -108,6 +118,12 @@ export default {
             } else if (page === 22) {
                 this.inPage = 'Find company user'
                 this.currentDashboardStr = 'Account Management'
+            } else if (page === 31) {
+                this.inPage = 'Category'
+                this.currentDashboardStr = 'Site Management'
+            } else if (page === 32) {
+                this.inPage = 'What next?'
+                this.currentDashboardStr = 'Site Management'
             }
 
             // after click on menu, close the menu
