@@ -68,9 +68,9 @@
                             <div class="cate-input-wrapper">
                                 <input @click="() => this.isUpdateIcon = !this.isUpdateIcon" type="checkbox"
                                     id="isUpdateIcon" checked>
-                                    <label for="isUpdateIcon">
-                                        <h3>Update Icon</h3>
-                                    </label>
+                                <label for="isUpdateIcon">
+                                    <h3>Update Icon</h3>
+                                </label>
                             </div>
                             <!-- if user check update icon, show it -->
                             <div v-if="this.isUpdateIcon === true" @click="uploadFile" class="upload-box">
@@ -112,79 +112,56 @@
             </div>
             <div class="cate-list">
                 <div class="category-wrapper">
-                    <span title="id: 1023" >dnsajkndsjandsajdnasj</span>
+                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
+                    <span title="id: 1023">dnsajkndsjandsajdnasj</span>
                 </div>
                 <div class="category-wrapper">
-                    <span>dnsajkndsjandsdsaajdnasj</span>
+                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
+                    <span title="id: 1023">dnsajkndsjandsajdnasj</span>
                 </div>
                 <div class="category-wrapper">
-                    <span>dnsajkndsjandsadasdasjdnasj</span>
+                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
+                    <span title="id: 1023">dnsajkndsjandsajdnasj</span>
                 </div>
                 <div class="category-wrapper">
-                    <span>dnsajkndsjandssadasajdnasj</span>
+                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
+                    <span title="id: 1023">dnsajkndsjandsajdnasj</span>
                 </div>
                 <div class="category-wrapper">
-                    <span>dnsajkndsjandsajdnasj</span>
+                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
+                    <span title="id: 1023">dnsajkndsjandsajdnasj</span>
                 </div>
                 <div class="category-wrapper">
-                    <span>dnsajkndsjanasdaddsajdnasj</span>
+                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
+                    <span title="id: 1023">dnsajkndsjandsajdnasj</span>
                 </div>
                 <div class="category-wrapper">
-                    <span>dnsajkndsjandsajdnasj</span>
+                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
+                    <span title="id: 1023">dnsajknadasdadsjandsajdnasj</span>
                 </div>
                 <div class="category-wrapper">
-                    <span>dnsajkndsjandsajdnasj</span>
+                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
+                    <span title="id: 1023">dnsajkndsasdsjandsajdnasj</span>
                 </div>
                 <div class="category-wrapper">
-                    <span>dnsajkndsjandsajdnasj</span>
+                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
+                    <span title="id: 1023">dnsajkndsjdasdsadandsajdnasj</span>
                 </div>
                 <div class="category-wrapper">
-                    <span>dnsajkndsjandsajdnasj</span>
+                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
+                    <span title="id: 1023">dnsajkndsdajandsajdnasj</span>
                 </div>
                 <div class="category-wrapper">
-                    <span>dnsajkndsjandsajdnasj</span>
+                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
+                    <span title="id: 1023">dnsajknddasdassjandsajdnasj</span>
                 </div>
                 <div class="category-wrapper">
-                    <span>dnsajkndsjandsajdnasj</span>
+                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
+                    <span title="id: 1023">dnsajkndsjandasdasdsajdnasj</span>
                 </div>
                 <div class="category-wrapper">
-                    <span>dnsajkndsjandsadasdasjdnasj</span>
-                </div>
-                <div class="category-wrapper">
-                    <span>dnsajkndsjandsadsaasdasjdnasj</span>
-                </div>
-                <div class="category-wrapper">
-                    <span>dnsajkndsjandsadasdasdasjdnasj</span>
-                </div>
-                <div class="category-wrapper">
-                    <span>dnsajkndsjandsajdasdasdnasj</span>
-                </div>
-                <div class="category-wrapper">
-                    <span>dnsajkndsjandsaasdassdajdnasj</span>
-                </div>
-                <div class="category-wrapper">
-                    <span>dnsajkndsjandsajdnasj</span>
-                </div>
-                <div class="category-wrapper">
-                    <span>dnsajkndsjandsajdnasj</span>
-                </div>
-                <div class="category-wrapper">
-                    <span>dnsajkndsjaasdasndsajdnasj</span>
-                </div>
-                <div class="category-wrapper">
-                    <span>dnsajkndsasdasdasjandsajdnasj</span>
-                </div>
-                <div class="category-wrapper">
-                    <span>dnsajkndsjandsajdnasj</span>
-                </div>
-                <div class="category-wrapper">
-                    <span>dnsajkndsjandsajdasdasdasdnasj</span>
-                </div>
-                <div class="category-wrapper">
-                    <span>dnsajkndsjandsajdnasj</span>
-                </div>
-                <div class="category-wrapper">
-                    <span>dnsajkndsjandsasdsdddddddddddsadasajdnasj</span>
+                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
+                    <span title="id: 1023">dnsajknddadasjandsajdnasj</span>
                 </div>
             </div>
         </div>

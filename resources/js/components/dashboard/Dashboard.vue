@@ -38,6 +38,11 @@
                 <find-company-user></find-company-user>
             </div>
             <!-- component 4 -->
+            <div class="right-side-control" v-else-if="currentPage === 23" :class="isOpenMenu ? 'disable-width' : ''">
+                <!--! component can be found in resources/js/components/dashboard/Company' -->
+                <company></company>
+            </div>
+            <!-- component 5 -->
             <div class="right-side-control" v-else-if="currentPage === 31" :class="isOpenMenu ? 'disable-width' : ''">
                 <!--! component can be found in resources/js/components/dashboard/category' -->
                 <category></category>
@@ -57,11 +62,11 @@ import { computed, ref } from 'vue'
 
 export default {
     setup() {
-        const inPage = ref('Category')
-        const currentPage = ref(31)
-        const dashboardPage = ref('3')
+        const inPage = ref('Overview')
+        const currentPage = ref(23)
+        const dashboardPage = ref('2')
         const isOpenMenu = ref(false)
-        const currentDashboardStr = ref('Site Management')
+        const currentDashboardStr = ref('Dashboard')
         // use this to format number
         const numFormatter = Intl.NumberFormat('en', { notation: 'compact'})
 
@@ -118,6 +123,10 @@ export default {
             } else if (page === 22) {
                 this.inPage = 'Find company user'
                 this.currentDashboardStr = 'Account Management'
+            }
+            else if (page === 23) {
+                this.inPage = 'Company Management'
+                this.currentDashboardStr = 'Account Management'
             } else if (page === 31) {
                 this.inPage = 'Category'
                 this.currentDashboardStr = 'Site Management'
@@ -133,13 +142,7 @@ export default {
             let contentRow = document.getElementById('arrowCheck' + row)
             let ArrayIndex = row - 1
 
-            // if (contentRow.checked) {
-            //     contentRow.checked = false
-            // } else {
-            //     contentRow.checked = true
-            // }
-
-            // shorter of above code logic
+            // example: true -> false, false -> true
             contentRow.checked = !contentRow.checked
 
             let headChildWrapper = document.querySelectorAll('.head-child-wrapper')[ArrayIndex]

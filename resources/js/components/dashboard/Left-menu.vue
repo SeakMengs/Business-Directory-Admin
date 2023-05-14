@@ -34,6 +34,10 @@
                     <i class="i-find-company"></i>
                     <span class="head-child-title">Find Company User</span>
                 </div>
+                <div @click="setPage(23)" class="head-child" :class="{ 'isCurrentPage': this.currentPage === 23 }">
+                    <i class="i-find-company"></i>
+                    <span class="head-child-title">Company Management</span>
+                </div>
             </div>
         </div>
         <!-- Third menu content -->

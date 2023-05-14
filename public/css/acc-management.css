@@ -38,8 +38,8 @@
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
-  max-width: 20rem;
-  word-break: break-all;
+  max-width: 30rem;
+  word-break: break-word;
   gap: 1rem;
   -webkit-user-select: text;
      -moz-user-select: text;
@@ -94,6 +94,10 @@
   -moz-border-radius: 4rem;
   -ms-border-radius: 4rem;
   -o-border-radius: 4rem;
+}
+
+.sus-color {
+  color: #ed7a7a;
 }
 
 .search-wrapper:hover {
