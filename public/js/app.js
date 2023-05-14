@@ -19227,9 +19227,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   setup: function setup() {
-    return {};
+    var isUpdateIcon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
+    var allCategory = [{
+      name: 'General Accountants',
+      icon: 'https://img.icons8.com/ios/50/diversity.png',
+      id: '1'
+    }, {
+      name: 'Auto Repair',
+      icon: 'https://img.icons8.com/ios/50/diversity.png',
+      id: '2'
+    }, {
+      name: 'Car Dealers',
+      icon: 'https://img.icons8.com/ios/50/diversity.png',
+      id: '3'
+    }];
+    return {
+      allCategory: allCategory,
+      isUpdateIcon: isUpdateIcon
+    };
   },
   methods: {
     uploadFile: function uploadFile() {
@@ -19576,19 +19595,20 @@ var _hoisted_3 = {
 };
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "total-header"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Add A Category")], -1 /* HOISTED */);
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Add Category")], -1 /* HOISTED */);
 var _hoisted_5 = {
   "class": "cate-card"
 };
 var _hoisted_6 = {
-  "class": "flex"
+  "class": "add-cate-wrapper"
 };
 var _hoisted_7 = {
   "class": "add-cate-form"
 };
 var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "flex"
+  "class": "cate-input-wrapper"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Category Name:"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  "class": "cate-input-box",
   type: "text",
   placeholder: "Ex: Accountants - General"
 })], -1 /* HOISTED */);
@@ -19606,14 +19626,89 @@ var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "class": "add-cate-btn"
 }, "Add Category")], -1 /* HOISTED */);
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"cate-line\"></div><div class=\"preview-wrapper\"><h3>Preview</h3><div class=\"preview-upload\"><div class=\"flex flex-col\"><span>64px</span><img width=\"64\" height=\"64\" src=\"https://img.icons8.com/ios/50/diversity.png\" alt=\"diversity\"></div><div class=\"flex flex-col\"><span>32px</span><img width=\"32\" height=\"32\" src=\"https://img.icons8.com/ios/50/diversity.png\" alt=\"diversity\"></div><div class=\"flex flex-col\"><span>16px</span><img width=\"16\" height=\"16\" src=\"https://img.icons8.com/ios/50/diversity.png\" alt=\"diversity\"></div></div></div>", 2);
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"cate-section-2\"><div class=\"total-header\"><h1>All Category | 102</h1></div><div class=\"cate-list\"><div class=\"category-wrapper\"><span>dnsajkndsjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsdsaajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsadasdasjdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandssadasajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjanasdaddsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsadasdasjdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsadsaasdasjdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsadasdasdasjdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdasdasdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsaasdassdajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjaasdasndsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsasdasdasjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdasdasdasdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsasdsdddddddddddsadasajdnasj</span></div></div></div>", 1);
+var _hoisted_15 = {
+  "class": "cate-section-1-child"
+};
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "total-header"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Edit Category")], -1 /* HOISTED */);
+var _hoisted_17 = {
+  "class": "cate-card"
+};
+var _hoisted_18 = {
+  "class": "add-cate-wrapper"
+};
+var _hoisted_19 = {
+  "class": "add-cate-form"
+};
+var _hoisted_20 = {
+  "class": "cate-input-wrapper"
+};
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Category Name:", -1 /* HOISTED */);
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  "class": "cate-input-box",
+  type: "text",
+  placeholder: "Ex: Accountants - General",
+  list: "chooseCategory"
+}, null, -1 /* HOISTED */);
+var _hoisted_23 = {
+  id: "chooseCategory"
+};
+var _hoisted_24 = ["value"];
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "cate-input-wrapper"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Change to :"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  "class": "cate-input-box",
+  type: "text",
+  placeholder: "Ex: Accountants - General"
+})], -1 /* HOISTED */);
+var _hoisted_26 = {
+  "class": "cate-input-wrapper"
+};
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "isUpdateIcon"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Update Icon")], -1 /* HOISTED */);
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  "class": "hidden",
+  type: "file",
+  name: "",
+  id: "uploadIcon"
+}, null, -1 /* HOISTED */);
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Drag the icon in or Click in this area", -1 /* HOISTED */);
+var _hoisted_30 = [_hoisted_28, _hoisted_29];
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "center"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  "class": "add-cate-btn"
+}, "Edit Category")], -1 /* HOISTED */);
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"cate-line\"></div><div class=\"preview-wrapper\"><h3>Preview</h3><div class=\"preview-upload\"><div class=\"flex flex-col\"><span>64px</span><img width=\"64\" height=\"64\" src=\"https://img.icons8.com/ios/50/diversity.png\" alt=\"diversity\"></div><div class=\"flex flex-col\"><span>32px</span><img width=\"32\" height=\"32\" src=\"https://img.icons8.com/ios/50/diversity.png\" alt=\"diversity\"></div><div class=\"flex flex-col\"><span>16px</span><img width=\"16\" height=\"16\" src=\"https://img.icons8.com/ios/50/diversity.png\" alt=\"diversity\"></div></div></div>", 2);
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"cate-section-2\"><div class=\"total-header\"><h1>All Category | 102</h1></div><div class=\"cate-list\"><div class=\"category-wrapper\"><span title=\"id: 1023\">dnsajkndsjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsdsaajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsadasdasjdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandssadasajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjanasdaddsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsadasdasjdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsadsaasdasjdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsadasdasdasjdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdasdasdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsaasdassdajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjaasdasndsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsasdasdasjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdasdasdasdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsajdnasj</span></div><div class=\"category-wrapper\"><span>dnsajkndsjandsasdsdddddddddddsadasajdnasj</span></div></div></div>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _this = this;
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     onClick: _cache[0] || (_cache[0] = function () {
       return $options.uploadFile && $options.uploadFile.apply($options, arguments);
     }),
     "class": "upload-box"
-  }, _hoisted_11), _hoisted_12]), _hoisted_13])])])]), _hoisted_15]);
+  }, _hoisted_11), _hoisted_12]), _hoisted_13])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" edit category section "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("datalist", _hoisted_23, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(this.allCategory, function (category) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
+      key: category.id,
+      value: category.name
+    }, null, 8 /* PROPS */, _hoisted_24);
+  }), 128 /* KEYED_FRAGMENT */))])]), _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    onClick: _cache[1] || (_cache[1] = function () {
+      return _this.isUpdateIcon = !_this.isUpdateIcon;
+    }),
+    type: "checkbox",
+    id: "isUpdateIcon",
+    checked: ""
+  }), _hoisted_27]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" if user check update icon, show it "), this.isUpdateIcon === true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+    key: 0,
+    onClick: _cache[2] || (_cache[2] = function () {
+      return $options.uploadFile && $options.uploadFile.apply($options, arguments);
+    }),
+    "class": "upload-box"
+  }, _hoisted_30)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_31]), _hoisted_32])])])]), _hoisted_34]);
 }
 
 /***/ }),
