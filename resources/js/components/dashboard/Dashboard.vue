@@ -63,12 +63,12 @@ import { computed, ref } from 'vue'
 export default {
     setup() {
         const inPage = ref('Overview')
-        const currentPage = ref(23)
-        const dashboardPage = ref('2')
+        const currentPage = ref(31)
+        const dashboardPage = ref('3')
         const isOpenMenu = ref(false)
         const currentDashboardStr = ref('Dashboard')
         // use this to format number
-        const numFormatter = Intl.NumberFormat('en', { notation: 'compact'})
+        const numFormatter = Intl.NumberFormat('en', { notation: 'compact' })
 
         return {
             inPage,
@@ -76,7 +76,7 @@ export default {
             isOpenMenu,
             dashboardPage,
             numFormatter,
-            currentDashboardStr
+            currentDashboardStr,
         }
     },
     methods: {
@@ -110,6 +110,7 @@ export default {
                 isCloseMenu.checked = true
                 this.isOpenMenu = false
             }
+
         },
         setPage(page) {
             this.currentPage = page
@@ -123,16 +124,18 @@ export default {
             } else if (page === 22) {
                 this.inPage = 'Find company user'
                 this.currentDashboardStr = 'Account Management'
-            }
-            else if (page === 23) {
+            } else if (page === 23) {
                 this.inPage = 'Company Management'
                 this.currentDashboardStr = 'Account Management'
             } else if (page === 31) {
                 this.inPage = 'Category'
                 this.currentDashboardStr = 'Site Management'
-            } else if (page === 32) {
-                this.inPage = 'What next?'
-                this.currentDashboardStr = 'Site Management'
+            } else if (page === 41) {
+                this.inPage = 'My Admin Profile'
+                this.currentDashboardStr = 'Admin'
+            } else if (page === 42) {
+                this.inPage = 'Admin Management'
+                this.currentDashboardStr = 'Admin'
             }
 
             // after click on menu, close the menu

@@ -2,7 +2,7 @@
     <div class="db-content-wrapper">
         <div class="acc-management-section">
             <div class="search-wrapper">
-                <input class="search" type="text" name="search" id="search" placeholder="Search">
+                <input class="search" type="text" name="search" id="search" placeholder="Search" autocomplete="off">
                 <div class="center search-bg">
                     <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
                         <path
@@ -10,8 +10,14 @@
                     </svg>
                 </div>
             </div>
-            <div class="">
-                <h3>sort</h3>
+            <div class="sort-wrapper">
+                <label for="sort-comp">Show By:</label>
+                <select name="sortSelect" id="sort-comp" class="sort-select">
+                    <option value="Most Report">Most Report</option>
+                    <option value="Least Report">Least Report</option>
+                    <option value="Newest">Newest</option>
+                    <option value="Oldest">Oldest</option>
+                </select>
             </div>
             <div class="total-wrapper">
                 <div class="acc-card">

@@ -83,6 +83,10 @@ body {
   -o-border-radius: 0.4rem;
 }
 
+.logout-btn:hover {
+  background-color: rgba(255, 0, 0, 0.6784313725);
+}
+
 .left-border-line {
   border-left: 0.1rem solid var(--border-color);
   color: var(--bg-color-1);

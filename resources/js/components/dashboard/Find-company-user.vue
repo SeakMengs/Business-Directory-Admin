@@ -2,7 +2,7 @@
     <div class="db-content-wrapper">
         <div class="acc-management-section">
             <div class="search-wrapper">
-                <input class="search" type="text" name="search" id="search" placeholder="Search">
+                <input autocomplete="off" class="search" type="text" name="search" id="search" placeholder="Search" >
                 <div class="center search-bg">
                     <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
                         <path
@@ -10,29 +10,37 @@
                     </svg>
                 </div>
             </div>
-                <div class="total-wrapper">
-                    <div class="acc-card">
-                        <div class="i-company-user-bg center">
-                            <!-- default profile if user has never uploaded profile before -->
-                            <!-- <i class="i-company-user"></i> -->
-                            <img src="https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg" alt="">
-                        </div>
-                        <h6>Join since: 9/12/2022</h6>
-                        <h6>ID: 15150</h6>
-                        <h3 class="h3-company">Tom</h3>
-                        <button class="ban-user">Ban User</button>
+            <div class="sort-wrapper">
+                <label for="sort-comp">Show By:</label>
+                <select name="sortSelect" id="sort-comp-user" class="sort-select">
+                    <option value="Newest">Newest</option>
+                    <option value="Oldest">Oldest</option>
+                </select>
+            </div>
+            <div class="total-wrapper">
+                <div class="acc-card">
+                    <div class="i-company-user-bg center">
+                        <!-- default profile if user has never uploaded profile before -->
+                        <!-- <i class="i-company-user"></i> -->
+                        <img src="https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg"
+                            alt="">
                     </div>
-                    <div class="acc-card">
-                        <div class="i-company-user-bg center">
-                            <!-- default profile if user has never uploaded profile before -->
-                            <i class="i-company-user"></i>
-                        </div>
-                        <h6>Join since: 9/12/2022</h6>
-                        <h6>ID: 15150</h6>
-                        <h3 class="h3-company">Tom</h3>
-                        <button class="ban-user">Ban User</button>
+                    <h6>Join since: 9/12/2022</h6>
+                    <h6>ID: 15150</h6>
+                    <h3 class="h3-company">Tom</h3>
+                    <button class="ban-user">Ban User</button>
+                </div>
+                <div class="acc-card">
+                    <div class="i-company-user-bg center">
+                        <!-- default profile if user has never uploaded profile before -->
+                        <i class="i-company-user"></i>
                     </div>
+                    <h6>Join since: 9/12/2022</h6>
+                    <h6>ID: 15150</h6>
+                    <h3 class="h3-company">Tom</h3>
+                    <button class="ban-user">Ban User</button>
                 </div>
             </div>
+        </div>
     </div>
 </template>
