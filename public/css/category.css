@@ -164,7 +164,15 @@
 
 .cate-input-wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.cate-tick-wrapper {
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
   gap: 1rem;
 }
@@ -188,7 +196,7 @@
   display: flex;
 }
 
-#isUpdateIcon {
+.tick-input {
   height: 1.5rem;
   width: 1.5rem;
   border-radius: 5px;

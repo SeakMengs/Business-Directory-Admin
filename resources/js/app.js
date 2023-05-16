@@ -10,6 +10,7 @@ import findUser from './components/dashboard/Find-user'
 import findCompanyUser from './components/dashboard/Find-company-user'
 import category from './components/dashboard/Category'
 import company from './components/dashboard/Company'
+import admin from './components/dashboard/Admin'
 
 const app = createApp({})
 
@@ -23,5 +24,6 @@ app.component('find-user', findUser)
 app.component('find-company-user', findCompanyUser)
 app.component('category', category)
 app.component('company', company)
+app.component('admin', admin)
 
 app.mount('#app')

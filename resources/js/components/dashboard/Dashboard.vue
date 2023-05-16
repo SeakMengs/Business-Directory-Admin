@@ -47,6 +47,11 @@
                 <!--! component can be found in resources/js/components/dashboard/category' -->
                 <category></category>
             </div>
+            <!-- component 6 -->
+            <div class="right-side-control" v-else-if="currentPage === 42" :class="isOpenMenu ? 'disable-width' : ''">
+                <!--! component can be found in resources/js/components/dashboard/category' -->
+                <admin></admin>
+            </div>
             <!--* End of right side content *-->
         </div>
         <!-- End of Component here ------------------------------------------------------------- -->
@@ -63,8 +68,8 @@ import { computed, ref } from 'vue'
 export default {
     setup() {
         const inPage = ref('Overview')
-        const currentPage = ref(31)
-        const dashboardPage = ref('3')
+        const currentPage = ref(42)
+        const dashboardPage = ref('4')
         const isOpenMenu = ref(false)
         const currentDashboardStr = ref('Dashboard')
         // use this to format number
