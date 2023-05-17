@@ -163,6 +163,18 @@
     }
 }
 
+span[contenteditable] {
+    margin-left: 0.5rem;
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1rem;
+}
 
 @keyframes fadeInLeftToRight {
     0% {

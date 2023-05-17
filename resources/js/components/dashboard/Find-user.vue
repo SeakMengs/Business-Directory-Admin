@@ -28,6 +28,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <div class="acc-card">
@@ -38,6 +39,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <!-- !To Be deleted -->
@@ -51,6 +53,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <div class="acc-card">
@@ -61,6 +64,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <div class="acc-card">
@@ -73,6 +77,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <div class="acc-card">
@@ -83,6 +88,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <div class="acc-card">
@@ -95,6 +101,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <div class="acc-card">
@@ -105,6 +112,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <div class="acc-card">
@@ -117,6 +125,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <div class="acc-card">
@@ -127,6 +136,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <div class="acc-card">
@@ -139,6 +149,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <div class="acc-card">
@@ -149,6 +160,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <div class="acc-card">
@@ -161,6 +173,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <div class="acc-card">
@@ -171,6 +184,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <div class="acc-card">
@@ -183,6 +197,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <div class="acc-card">
@@ -193,6 +208,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <div class="acc-card">
@@ -205,6 +221,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <div class="acc-card">
@@ -215,6 +232,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <div class="acc-card">
@@ -227,6 +245,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <div class="acc-card">
@@ -237,6 +256,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <div class="acc-card">
@@ -249,6 +269,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <div class="acc-card">
@@ -259,6 +280,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <div class="acc-card">
@@ -271,6 +293,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <div class="acc-card">
@@ -281,6 +304,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <div class="acc-card">
@@ -293,6 +317,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <div class="acc-card">
@@ -303,294 +328,9 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-normal">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
-                <div class="acc-card">
-                    <div class="i-normal-user-bg center">
-                        <!-- default profile if user has never uploaded profile before -->
-                        <!-- <i class="i-normal-user"></i> -->
-                        <img src="https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg"
-                            alt="">
-                    </div>
-                    <h6>Join since: 9/12/2022</h6>
-                    <h6>ID: 15150</h6>
-                    <h3 class="h3-normal">Tom</h3>
-                    <button class="ban-user">Ban User</button>
-                </div>
-                <div class="acc-card">
-                    <div class="i-normal-user-bg center">
-                        <!-- default profile if user has never uploaded profile before -->
-                        <i class="i-normal-user"></i>
-                    </div>
-                    <h6>Join since: 9/12/2022</h6>
-                    <h6>ID: 15150</h6>
-                    <h3 class="h3-normal">Tom</h3>
-                    <button class="ban-user">Ban User</button>
-                </div>
-                <div class="acc-card">
-                    <div class="i-normal-user-bg center">
-                        <!-- default profile if user has never uploaded profile before -->
-                        <!-- <i class="i-normal-user"></i> -->
-                        <img src="https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg"
-                            alt="">
-                    </div>
-                    <h6>Join since: 9/12/2022</h6>
-                    <h6>ID: 15150</h6>
-                    <h3 class="h3-normal">Tom</h3>
-                    <button class="ban-user">Ban User</button>
-                </div>
-                <div class="acc-card">
-                    <div class="i-normal-user-bg center">
-                        <!-- default profile if user has never uploaded profile before -->
-                        <i class="i-normal-user"></i>
-                    </div>
-                    <h6>Join since: 9/12/2022</h6>
-                    <h6>ID: 15150</h6>
-                    <h3 class="h3-normal">Tom</h3>
-                    <button class="ban-user">Ban User</button>
-                </div>
-                <div class="acc-card">
-                    <div class="i-normal-user-bg center">
-                        <!-- default profile if user has never uploaded profile before -->
-                        <!-- <i class="i-normal-user"></i> -->
-                        <img src="https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg"
-                            alt="">
-                    </div>
-                    <h6>Join since: 9/12/2022</h6>
-                    <h6>ID: 15150</h6>
-                    <h3 class="h3-normal">Tom</h3>
-                    <button class="ban-user">Ban User</button>
-                </div>
-                <div class="acc-card">
-                    <div class="i-normal-user-bg center">
-                        <!-- default profile if user has never uploaded profile before -->
-                        <i class="i-normal-user"></i>
-                    </div>
-                    <h6>Join since: 9/12/2022</h6>
-                    <h6>ID: 15150</h6>
-                    <h3 class="h3-normal">Tom</h3>
-                    <button class="ban-user">Ban User</button>
-                </div>
-                <div class="acc-card">
-                    <div class="i-normal-user-bg center">
-                        <!-- default profile if user has never uploaded profile before -->
-                        <!-- <i class="i-normal-user"></i> -->
-                        <img src="https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg"
-                            alt="">
-                    </div>
-                    <h6>Join since: 9/12/2022</h6>
-                    <h6>ID: 15150</h6>
-                    <h3 class="h3-normal">Tom</h3>
-                    <button class="ban-user">Ban User</button>
-                </div>
-                <div class="acc-card">
-                    <div class="i-normal-user-bg center">
-                        <!-- default profile if user has never uploaded profile before -->
-                        <i class="i-normal-user"></i>
-                    </div>
-                    <h6>Join since: 9/12/2022</h6>
-                    <h6>ID: 15150</h6>
-                    <h3 class="h3-normal">Tom</h3>
-                    <button class="ban-user">Ban User</button>
-                </div>
-                <div class="acc-card">
-                    <div class="i-normal-user-bg center">
-                        <!-- default profile if user has never uploaded profile before -->
-                        <!-- <i class="i-normal-user"></i> -->
-                        <img src="https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg"
-                            alt="">
-                    </div>
-                    <h6>Join since: 9/12/2022</h6>
-                    <h6>ID: 15150</h6>
-                    <h3 class="h3-normal">Tom</h3>
-                    <button class="ban-user">Ban User</button>
-                </div>
-                <div class="acc-card">
-                    <div class="i-normal-user-bg center">
-                        <!-- default profile if user has never uploaded profile before -->
-                        <i class="i-normal-user"></i>
-                    </div>
-                    <h6>Join since: 9/12/2022</h6>
-                    <h6>ID: 15150</h6>
-                    <h3 class="h3-normal">Tom</h3>
-                    <button class="ban-user">Ban User</button>
-                </div>
-                <div class="acc-card">
-                    <div class="i-normal-user-bg center">
-                        <!-- default profile if user has never uploaded profile before -->
-                        <!-- <i class="i-normal-user"></i> -->
-                        <img src="https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg"
-                            alt="">
-                    </div>
-                    <h6>Join since: 9/12/2022</h6>
-                    <h6>ID: 15150</h6>
-                    <h3 class="h3-normal">Tom</h3>
-                    <button class="ban-user">Ban User</button>
-                </div>
-                <div class="acc-card">
-                    <div class="i-normal-user-bg center">
-                        <!-- default profile if user has never uploaded profile before -->
-                        <i class="i-normal-user"></i>
-                    </div>
-                    <h6>Join since: 9/12/2022</h6>
-                    <h6>ID: 15150</h6>
-                    <h3 class="h3-normal">Tom</h3>
-                    <button class="ban-user">Ban User</button>
-                </div>
-                <div class="acc-card">
-                    <div class="i-normal-user-bg center">
-                        <!-- default profile if user has never uploaded profile before -->
-                        <!-- <i class="i-normal-user"></i> -->
-                        <img src="https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg"
-                            alt="">
-                    </div>
-                    <h6>Join since: 9/12/2022</h6>
-                    <h6>ID: 15150</h6>
-                    <h3 class="h3-normal">Tom</h3>
-                    <button class="ban-user">Ban User</button>
-                </div>
-                <div class="acc-card">
-                    <div class="i-normal-user-bg center">
-                        <!-- default profile if user has never uploaded profile before -->
-                        <i class="i-normal-user"></i>
-                    </div>
-                    <h6>Join since: 9/12/2022</h6>
-                    <h6>ID: 15150</h6>
-                    <h3 class="h3-normal">Tom</h3>
-                    <button class="ban-user">Ban User</button>
-                </div>
-                <div class="acc-card">
-                    <div class="i-normal-user-bg center">
-                        <!-- default profile if user has never uploaded profile before -->
-                        <!-- <i class="i-normal-user"></i> -->
-                        <img src="https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg"
-                            alt="">
-                    </div>
-                    <h6>Join since: 9/12/2022</h6>
-                    <h6>ID: 15150</h6>
-                    <h3 class="h3-normal">Tom</h3>
-                    <button class="ban-user">Ban User</button>
-                </div>
-                <div class="acc-card">
-                    <div class="i-normal-user-bg center">
-                        <!-- default profile if user has never uploaded profile before -->
-                        <i class="i-normal-user"></i>
-                    </div>
-                    <h6>Join since: 9/12/2022</h6>
-                    <h6>ID: 15150</h6>
-                    <h3 class="h3-normal">Tom</h3>
-                    <button class="ban-user">Ban User</button>
-                </div>
-                <div class="acc-card">
-                    <div class="i-normal-user-bg center">
-                        <!-- default profile if user has never uploaded profile before -->
-                        <!-- <i class="i-normal-user"></i> -->
-                        <img src="https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg"
-                            alt="">
-                    </div>
-                    <h6>Join since: 9/12/2022</h6>
-                    <h6>ID: 15150</h6>
-                    <h3 class="h3-normal">Tom</h3>
-                    <button class="ban-user">Ban User</button>
-                </div>
-                <div class="acc-card">
-                    <div class="i-normal-user-bg center">
-                        <!-- default profile if user has never uploaded profile before -->
-                        <i class="i-normal-user"></i>
-                    </div>
-                    <h6>Join since: 9/12/2022</h6>
-                    <h6>ID: 15150</h6>
-                    <h3 class="h3-normal">Tom</h3>
-                    <button class="ban-user">Ban User</button>
-                </div>
-                <div class="acc-card">
-                    <div class="i-normal-user-bg center">
-                        <!-- default profile if user has never uploaded profile before -->
-                        <!-- <i class="i-normal-user"></i> -->
-                        <img src="https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg"
-                            alt="">
-                    </div>
-                    <h6>Join since: 9/12/2022</h6>
-                    <h6>ID: 15150</h6>
-                    <h3 class="h3-normal">Tom</h3>
-                    <button class="ban-user">Ban User</button>
-                </div>
-                <div class="acc-card">
-                    <div class="i-normal-user-bg center">
-                        <!-- default profile if user has never uploaded profile before -->
-                        <i class="i-normal-user"></i>
-                    </div>
-                    <h6>Join since: 9/12/2022</h6>
-                    <h6>ID: 15150</h6>
-                    <h3 class="h3-normal">Tom</h3>
-                    <button class="ban-user">Ban User</button>
-                </div>
-                <div class="acc-card">
-                    <div class="i-normal-user-bg center">
-                        <!-- default profile if user has never uploaded profile before -->
-                        <!-- <i class="i-normal-user"></i> -->
-                        <img src="https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg"
-                            alt="">
-                    </div>
-                    <h6>Join since: 9/12/2022</h6>
-                    <h6>ID: 15150</h6>
-                    <h3 class="h3-normal">Tom</h3>
-                    <button class="ban-user">Ban User</button>
-                </div>
-                <div class="acc-card">
-                    <div class="i-normal-user-bg center">
-                        <!-- default profile if user has never uploaded profile before -->
-                        <i class="i-normal-user"></i>
-                    </div>
-                    <h6>Join since: 9/12/2022</h6>
-                    <h6>ID: 15150</h6>
-                    <h3 class="h3-normal">Tom</h3>
-                    <button class="ban-user">Ban User</button>
-                </div>
-                <div class="acc-card">
-                <div class="i-normal-user-bg center">
-                    <!-- default profile if user has never uploaded profile before -->
-                    <!-- <i class="i-normal-user"></i> -->
-                    <img src="https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg"
-                        alt="">
-                </div>
-                <h6>Join since: 9/12/2022</h6>
-                <h6>ID: 15150</h6>
-                <h3 class="h3-normal">Tom</h3>
-                <button class="ban-user">Ban User</button>
-            </div>
-            <div class="acc-card">
-                <div class="i-normal-user-bg center">
-                    <!-- default profile if user has never uploaded profile before -->
-                    <i class="i-normal-user"></i>
-                </div>
-                <h6>Join since: 9/12/2022</h6>
-                <h6>ID: 15150</h6>
-                <h3 class="h3-normal">Tom</h3>
-                <button class="ban-user">Ban User</button>
-            </div>
-            <div class="acc-card">
-                <div class="i-normal-user-bg center">
-                    <!-- default profile if user has never uploaded profile before -->
-                    <!-- <i class="i-normal-user"></i> -->
-                    <img src="https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg"
-                        alt="">
-                </div>
-                <h6>Join since: 9/12/2022</h6>
-                <h6>ID: 15150</h6>
-                <h3 class="h3-normal">Tom</h3>
-                <button class="ban-user">Ban User</button>
-            </div>
-            <div class="acc-card">
-                <div class="i-normal-user-bg center">
-                    <!-- default profile if user has never uploaded profile before -->
-                    <i class="i-normal-user"></i>
-                </div>
-                <h6>Join since: 9/12/2022</h6>
-                <h6>ID: 15150</h6>
-                <h3 class="h3-normal">Tom</h3>
-                <button class="ban-user">Ban User</button>
-            </div>
             <!-- !End of to be deleted -->
         </div>
     </div>

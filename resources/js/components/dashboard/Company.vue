@@ -32,6 +32,7 @@
                     <h6 class="sus-color">Suspicious Level: 105</h6>
                     <h6>Listed by: @Meta</h6>
                     <h6 class="h3-company">Company Name: Facebook</h6>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban Company</button>
                 </div>
                 <div class="acc-card">
@@ -44,6 +45,7 @@
                     <h6 class="sus-color">Suspicious Level: 2</h6>
                     <h6>Listed by: @Meta</h6>
                     <h6 class="h3-company">Company Name: Amazon</h6>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban Company</button>
                 </div>
 
@@ -60,6 +62,7 @@
                     <h6 class="sus-color">Suspicious Level: 105</h6>
                     <h6>Listed by: @Meta</h6>
                     <h6 class="h3-company">Company Name: Facebook</h6>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban Company</button>
                 </div>
                 <div class="acc-card">
@@ -72,6 +75,7 @@
                     <h6 class="sus-color">Suspicious Level: 2</h6>
                     <h6>Listed by: @Meta</h6>
                     <h6 class="h3-company">Company Name: Amazon</h6>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban Company</button>
                 </div>
                 <div class="acc-card">
@@ -86,6 +90,7 @@
                     <h6 class="sus-color">Suspicious Level: 105</h6>
                     <h6>Listed by: @Meta</h6>
                     <h6 class="h3-company">Company Name: Fadddcebook</h6>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban Company</button>
                 </div>
                 <div class="acc-card">
@@ -98,6 +103,7 @@
                     <h6 class="sus-color">Suspicious Level: 2</h6>
                     <h6>Listed by: @Meta</h6>
                     <h6 class="h3-company">Company Name: Amaddddddddzon</h6>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban Company</button>
                 </div>
                 <div class="acc-card">
@@ -112,6 +118,7 @@
                     <h6 class="sus-color">Suspicious Level: 105</h6>
                     <h6>Listed by: @Meta</h6>
                     <h6 class="h3-company">Company Name: Facddddddddddddddddddddddebook</h6>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban Company</button>
                 </div>
                 <div class="acc-card">
@@ -124,6 +131,7 @@
                     <h6 class="sus-color">Suspicious Level: 2</h6>
                     <h6>Listed by: @Meta</h6>
                     <h6 class="h3-company">Company Name: Amazonddddddddddd</h6>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban Company</button>
                 </div>
                 <div class="acc-card">
@@ -138,6 +146,7 @@
                     <h6 class="sus-color">Suspicious Level: 105</h6>
                     <h6>Listed by: @Meta</h6>
                     <h6 class="h3-company">Company Name: Facebddddddddddddddddook</h6>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban Company</button>
                 </div>
                 <div class="acc-card">
@@ -150,6 +159,7 @@
                     <h6 class="sus-color">Suspicious Level: 2</h6>
                     <h6>Listed by: @Meta</h6>
                     <h6 class="h3-company">Company Name: Amazon</h6>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban Company</button>
                 </div>
                 <!-- ! End of To be deleted -->

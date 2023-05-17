@@ -74,6 +74,10 @@
                     <i class="i-find-company"></i>
                     <span class="head-child-title">Admin Management</span>
                 </div>
+                <div @click="setPage(43)" class="head-child" :class="{ 'isCurrentPage': this.currentPage === 43 }">
+                    <i class="i-find-company"></i>
+                    <span class="head-child-title">Ban List</span>
+                </div>
             </div>
         </div>
     </div>

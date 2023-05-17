@@ -28,6 +28,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-company">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
                 <div class="acc-card">
@@ -38,6 +39,7 @@
                     <h6>Join since: 9/12/2022</h6>
                     <h6>ID: 15150</h6>
                     <h3 class="h3-company">Tom</h3>
+                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
                     <button class="ban-user">Ban User</button>
                 </div>
             </div>

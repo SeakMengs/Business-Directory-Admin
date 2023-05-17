@@ -23,34 +23,23 @@
             <left-menu></left-menu>
 
             <!--* Start of right side content *-->
-            <div class="right-side-control" v-if="currentPage === 11" :class="isOpenMenu ? 'disable-width' : ''">
-                <!--! component can be found in resources/js/components/dashboard/overview' -->
-                <overview></overview>
-            </div>
-            <!-- component 2 -->
-            <div class="right-side-control" v-else-if="currentPage === 21" :class="isOpenMenu ? 'disable-width' : ''">
-                <!--! component can be found in resources/js/components/dashboard/Find-user' -->
-                <find-user></find-user>
-            </div>
-            <!-- component 3 -->
-            <div class="right-side-control" v-else-if="currentPage === 22" :class="isOpenMenu ? 'disable-width' : ''">
-                <!--! component can be found in resources/js/components/dashboard/Find-company-user' -->
-                <find-company-user></find-company-user>
-            </div>
-            <!-- component 4 -->
-            <div class="right-side-control" v-else-if="currentPage === 23" :class="isOpenMenu ? 'disable-width' : ''">
-                <!--! component can be found in resources/js/components/dashboard/Company' -->
-                <company></company>
-            </div>
-            <!-- component 5 -->
-            <div class="right-side-control" v-else-if="currentPage === 31" :class="isOpenMenu ? 'disable-width' : ''">
-                <!--! component can be found in resources/js/components/dashboard/category' -->
-                <category></category>
-            </div>
-            <!-- component 6 -->
-            <div class="right-side-control" v-else-if="currentPage === 42" :class="isOpenMenu ? 'disable-width' : ''">
-                <!--! component can be found in resources/js/components/dashboard/category' -->
-                <admin></admin>
+            <div class="right-side-control" :class="isOpenMenu ? 'disable-width' : ''">
+                <!-- component can be found in resources/js/components/dashboard/Overview' -->
+                <overview v-if="currentPage === 11"></overview>
+                <!-- component can be found in resources/js/components/dashboard/Find-user' -->
+                <find-user v-else-if="currentPage === 21"></find-user>
+                <!-- component can be found in resources/js/components/dashboard/Find-company-user' -->
+                <find-company-user v-else-if="currentPage === 22"></find-company-user>
+                <!-- component can be found in resources/js/components/dashboard/Company' -->
+                <company v-else-if="currentPage === 23"></company>
+                <!-- component can be found in resources/js/components/dashboard/Category' -->
+                <category v-else-if="currentPage === 31"></category>
+                <!-- component can be found in resources/js/components/dashboard/Admin-profile' -->
+                <admin-profile v-else-if="currentPage === 41"></admin-profile>
+                <!-- component can be found in resources/js/components/dashboard/Admin' -->
+                <admin v-else-if="currentPage === 42"></admin>
+                <!-- component can be found in resources/js/components/dashboard/Ban-list' -->
+                <ban-list v-else-if="currentPage === 43"></ban-list>
             </div>
             <!--* End of right side content *-->
         </div>
@@ -68,8 +57,8 @@ import { computed, ref } from 'vue'
 export default {
     setup() {
         const inPage = ref('Overview')
-        const currentPage = ref(42)
-        const dashboardPage = ref('4')
+        const currentPage = ref(21)
+        const dashboardPage = ref('2')
         const isOpenMenu = ref(false)
         const currentDashboardStr = ref('Dashboard')
         // use this to format number
@@ -140,6 +129,9 @@ export default {
                 this.currentDashboardStr = 'Admin'
             } else if (page === 42) {
                 this.inPage = 'Admin Management'
+                this.currentDashboardStr = 'Admin'
+            } else if (page === 43) {
+                this.inPage = 'Ban List'
                 this.currentDashboardStr = 'Admin'
             }
 

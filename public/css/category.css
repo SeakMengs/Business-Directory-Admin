@@ -257,6 +257,13 @@
     display: none;
   }
 }
+@media only screen and (max-width: 750px) {
+  .total-result {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
 @media screen and (max-width: 582px) {
   .cate-section-1 {
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
