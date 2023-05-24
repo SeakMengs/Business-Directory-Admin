@@ -57,8 +57,8 @@ import { computed, ref } from 'vue'
 export default {
     setup() {
         const inPage = ref('Overview')
-        const currentPage = ref(21)
-        const dashboardPage = ref('2')
+        const currentPage = ref(11)
+        const dashboardPage = ref('1')
         const isOpenMenu = ref(false)
         const currentDashboardStr = ref('Dashboard')
         // use this to format number

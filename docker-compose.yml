@@ -1,0 +1,12 @@
+services:
+  bd-admin:
+    container_name: bd-admin
+    # path to project. can be also an url
+    # since it's a relative path, it will be relative to the location of the docker-compose.yml file
+    build: .
+    volumes:
+      # mount the project directory on the host to the container
+      - .:/var/www/html
+    ports:
+      # map the port 80 of the container to the port 8080 of the host
+      - 8080:80

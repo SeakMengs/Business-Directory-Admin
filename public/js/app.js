@@ -19339,8 +19339,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   setup: function setup() {
     var inPage = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)('Overview');
-    var currentPage = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)(21);
-    var dashboardPage = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)('2');
+    var currentPage = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)(11);
+    var dashboardPage = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)('1');
     var isOpenMenu = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)(false);
     var currentDashboardStr = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)('Dashboard');
     // use this to format number
