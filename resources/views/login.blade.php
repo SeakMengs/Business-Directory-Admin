@@ -14,12 +14,18 @@
 </head>
 
 <body>
-    {{-- use it temporary to navigate --}}
-    <a href="/dashboard">Dashboard</a>
-    <div id="app">
-        {{-- login component can be found in \resources\js\components\Login.vue --}}
-        <login></login>
-    </div>
+    @if (Auth::guard('adminUser')->check())
+        <script>
+            window.location.href = "/admin/dashboard";
+        </script>
+    @else
+        {{-- use it temporary to navigate --}}
+        <a href="/admin/dashboard">Dashboard</a>
+        <div id="app">
+            {{-- login component can be found in \resources\js\components\Login.vue --}}
+            <login csrf={{ csrf_token() }}></login>
+        </div>
+    @endif
 </body>
 
 </html>

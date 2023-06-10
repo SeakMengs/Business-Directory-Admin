@@ -3,15 +3,15 @@
         <div class="glass p-5 center m-3">
             <div class="flex-col center">
                 <span class="m-1 admin-login-text">Admin Login</span>
-                <form action="" method="POST" enctype="multipart/form-data">
-                    <!-- @csrf -->
+                <form action="/logging-in/admin" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="_token" :value="this.csrf">
                     <div class="flex flex-col m-1">
-                        <label for="username">Username</label>
-                        <input class="p-1 input" type="text" name="username" id="username" placeholder="Username">
+                        <label for="Email">Email</label>
+                        <input v-model="email" class="p-1 input" type="text" name="email" id="Email" placeholder="Email">
                     </div>
                     <div class="flex flex-col m-1">
                         <label for="password">Password</label>
-                        <input class="p-1 input" type="password" name="password" id="password" placeholder="Password">
+                        <input v-model="password" class="p-1 input" type="password" name="password" id="password" placeholder="Password">
                     </div>
                     <div class="flex flex-col m-1">
                         <label class="wrong-input">The username or password is incorrect</label>
@@ -27,5 +27,9 @@
 
 <script>
 export default {
+    // get props
+    props: [
+        'csrf'
+    ]
 }
 </script>

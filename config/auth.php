@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\AdminUser;
+
 return [
 
     /*
@@ -40,12 +42,16 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
             'hash' => false,
         ],
+        // custom guard for role management
+        'adminUser' => [
+            'driver' => 'session',
+            'provider' => 'adminUser',
+        ]
     ],
 
     /*
@@ -66,9 +72,13 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        // 'users' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\User::class,
+        // ],
+        'adminUser' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\AdminUser::class,
         ],
 
         // 'users' => [

@@ -81,15 +81,39 @@
 </template>
 
 <script>
-import { inject } from 'vue'
+import { inject, ref } from 'vue'
 
 export default {
     setup() {
         const numFormatter = inject('numFormatter')
+        const csrf = inject('csrf')
+        const user = inject('user')
+        const website = ref('');
 
         return {
-            numFormatter
+            numFormatter,
+            website
         }
-    }
+    },
+    async mounted() {
+        console.log(this.csrf)
+        console.log(this.user)
+
+        // await getWebsiteDetail()
+
+        // console.log(this.website)
+    },
+    methods: {
+        async getWebsiteDetail() {
+            const res = await axios.get('/admin/website-detail', {
+                headers: {
+                    'X-CSRF-TOKEN': this.csrf,
+                    'Authorization': this.api_token
+                }
+            })
+
+            this.website = res.data
+        }
+    },
 }
 </script>

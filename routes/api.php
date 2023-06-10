@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+//----------Group Admin Controller with middleware adminUser---------- */
+Route::middleware(['userAuth:adminUser'])->group(function () {
+
+    Route::controller(AdminApiController::class)->group(function () {
+
+        Route::get('/admin/user', 'getUser')->name('api.admin.getUser');
+        Route::get('/admin/website-detail', 'getUser')->name('api.admin.web-detail');
+
+    });
+
 });
+//----------End of Group Admin Controller with middleware adminUser---------- */

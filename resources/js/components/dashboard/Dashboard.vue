@@ -9,12 +9,15 @@
                     <a class="center link-profile" href="/profile">
                         <img src="https://i.redd.it/v0caqchbtn741.jpg" alt="profile">
                         <div class="flex flex-col m-half">
-                            <span class="profile-name">Admin Name</span>
+                            <span class="profile-name">{{this.user.name}}</span>
                             <span class="access-lv">Access level 2</span>
                         </div>
                     </a>
                     <div class="left-border-line"></div>
-                    <button class="logout-btn">Logout</button>
+                    <form action="/logging-out/admin" method="POST">
+                        <input type="hidden" name="_token" :value="this.csrf">
+                        <button class="logout-btn">Logout</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -55,6 +58,11 @@ import Overview from './Overview.vue'
 import { computed, ref } from 'vue'
 
 export default {
+    // get csrf token from laravel
+    props: [
+        'csrf',
+        'api_token',
+    ],
     setup() {
         const inPage = ref('Overview')
         const currentPage = ref(11)
@@ -63,6 +71,7 @@ export default {
         const currentDashboardStr = ref('Dashboard')
         // use this to format number
         const numFormatter = Intl.NumberFormat('en', { notation: 'compact' })
+        const user = ref('');
 
         return {
             inPage,
@@ -71,7 +80,14 @@ export default {
             dashboardPage,
             numFormatter,
             currentDashboardStr,
+            user,
         }
+    },
+    async mounted() {
+        // after component is mounted, get user info
+        await this.getUser()
+
+        console.log(this.user)
     },
     methods: {
         toggleLeftMenu() {
@@ -154,6 +170,20 @@ export default {
             let popUpProfile = document.querySelector('.pop-up-pf')
             popUpProfile.classList.toggle('show-pop-up-profile')
             popUpProfile.classList.toggle('hide-pop-up-content')
+        },
+        async getUser() {
+            try {
+                const res = await axios.get('/api/admin/user', {
+                    headers: {
+                        'X-CSRF-TOKEN': this.csrf,
+                        'Authorization': this.api_token,
+                    }
+                })
+
+                this.user = res.data
+            } catch(err) {
+                alert(err);
+            }
         }
     },
     // child component
@@ -177,7 +207,9 @@ export default {
             setPage: this.setPage,
             toggleContent: this.toggleContent,
             toggleLeftMenu: this.toggleLeftMenu,
-            toggleProfilePopUp: this.toggleProfilePopUp
+            toggleProfilePopUp: this.toggleProfilePopUp,
+            csrf: computed(() => this.csrf),
+            user: computed(() => this.user),
         }
     }
 }
