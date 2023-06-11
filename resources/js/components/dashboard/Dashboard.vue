@@ -9,7 +9,7 @@
                     <a class="center link-profile" href="/profile">
                         <img src="https://i.redd.it/v0caqchbtn741.jpg" alt="profile">
                         <div class="flex flex-col m-half">
-                            <span class="profile-name">{{this.user.name}}</span>
+                            <span class="profile-name">{{ this.user.name }}</span>
                             <span class="access-lv">Access level 2</span>
                         </div>
                     </a>
@@ -24,30 +24,31 @@
         <!-- Component here ------------------------------------------------------------------- -->
         <div class="flex left-menu-wrapper height-100">
             <left-menu></left-menu>
+            <Suspense>
+                <template #default>
+                    <!--* Start of right side content *-->
 
-            <!--* Start of right side content *-->
-            <div class="right-side-control" :class="isOpenMenu ? 'disable-width' : ''">
-                <!-- component can be found in resources/js/components/dashboard/Overview' -->
-                <overview v-if="currentPage === 11"></overview>
-                <!-- component can be found in resources/js/components/dashboard/Find-user' -->
-                <find-user v-else-if="currentPage === 21"></find-user>
-                <!-- component can be found in resources/js/components/dashboard/Find-company-user' -->
-                <find-company-user v-else-if="currentPage === 22"></find-company-user>
-                <!-- component can be found in resources/js/components/dashboard/Company' -->
-                <company v-else-if="currentPage === 23"></company>
-                <!-- component can be found in resources/js/components/dashboard/Category' -->
-                <category v-else-if="currentPage === 31"></category>
-                <!-- component can be found in resources/js/components/dashboard/Admin-profile' -->
-                <admin-profile v-else-if="currentPage === 41"></admin-profile>
-                <!-- component can be found in resources/js/components/dashboard/Admin' -->
-                <admin v-else-if="currentPage === 42"></admin>
-                <!-- component can be found in resources/js/components/dashboard/Ban-list' -->
-                <ban-list v-else-if="currentPage === 43"></ban-list>
-            </div>
-            <!--* End of right side content *-->
+                    <div class="right-side-control" :class="isOpenMenu ? 'disable-width' : ''">
+                        <!-- these components can be found in resources/js/components/dashboard -->
+                        <overview v-if="currentPage === 11"></overview>
+                        <find-user v-else-if="currentPage === 21"></find-user>
+                        <find-company-user v-else-if="currentPage === 22"></find-company-user>
+                        <company v-else-if="currentPage === 23"></company>
+                        <category v-else-if="currentPage === 31"></category>
+                        <admin-profile v-else-if="currentPage === 41"></admin-profile>
+                        <admin v-else-if="currentPage === 42"></admin>
+                        <ban-list v-else-if="currentPage === 43"></ban-list>
+                    </div>
+                    <!--* End of right side content *-->
+                </template>
+                <template #fallback>
+                    <loading></loading>
+                </template>
+            </Suspense>
         </div>
         <!-- End of Component here ------------------------------------------------------------- -->
     </div>
+    <loading></loading>
 </template>
 
 <script>
@@ -87,7 +88,7 @@ export default {
         // after component is mounted, get user info
         await this.getUser()
 
-        console.log(this.user)
+        // console.log(this.user)
     },
     methods: {
         toggleLeftMenu() {
@@ -181,7 +182,7 @@ export default {
                 })
 
                 this.user = res.data
-            } catch(err) {
+            } catch (err) {
                 alert(err);
             }
         }
@@ -209,6 +210,7 @@ export default {
             toggleLeftMenu: this.toggleLeftMenu,
             toggleProfilePopUp: this.toggleProfilePopUp,
             csrf: computed(() => this.csrf),
+            api_token: computed(() => this.api_token),
             user: computed(() => this.user),
         }
     }

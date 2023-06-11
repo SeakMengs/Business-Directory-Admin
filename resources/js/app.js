@@ -18,6 +18,7 @@ import editProfile from './components/dashboard/admin-profile/Edit-profile'
 import banList from './components/dashboard/Ban-list'
 import banListCompany from './components/dashboard/ban-list/Ban-list-company'
 import banListUser from './components/dashboard/ban-list/Ban-list-user'
+import loading from './components/Loading'
 
 const app = createApp({})
 
@@ -39,5 +40,6 @@ app.component('edit-profile', editProfile)
 app.component('ban-list', banList)
 app.component('ban-list-company', banListCompany)
 app.component('ban-list-user', banListUser)
+app.component('loading', loading)
 
 app.mount('#app')

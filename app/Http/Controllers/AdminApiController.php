@@ -39,45 +39,24 @@ class AdminApiController extends Controller
         }
     }
 
-    // public function getDetail()
-    // {
-    //     $totalUser = NormalUser::all()->count();
-    //     $totalCompanyUser = CompanyUser::all()->count();
-    //     $totalAdmin = AdminUser::all()->count();
-    //     $totalCompany = Company::all()->count();
-    //     $totalCategory = Category::all()->count();
-    //     if ($this->userData) {
-    //         return response()->json([
-    //                 'user' => $this->userData,
-    //                 'total' => [
-    //                     'normalUsers' => $totalUser,
-    //                     'companyUsers' => $totalCompanyUser,
-    //                     'admins' => $totalAdmin,
-    //                     'companies' => $totalCompany,
-    //                     'categories' => $totalCategory,
-    //                 ],
-    //         ],200);
-    //     }
-    // }
+    public function getWebsiteOverview()
+    {
+        if ($this->userData) {
+            $totalUser = NormalUser::count();
+            $totalCompanyUser = CompanyUser::count();
+            $totalAdmin = AdminUser::count();
+            $totalCompany = Company::count();
+            $totalCategory = Category::count();
 
-    // public function getWebsiteDetail()
-    // {
-    //     if ($this->userData) {
-    //         $totalUser = NormalUser::all()->count();
-    //         $totalCompanyUser = CompanyUser::all()->count();
-    //         $totalAdmin = AdminUser::all()->count();
-    //         $totalCompany = Company::all()->count();
-    //         $totalCategory = Category::all()->count();
-
-    //         return response()->json([
-    //             'total' => [
-    //                 'normalUsers' => $totalUser,
-    //                 'companyUsers' => $totalCompanyUser,
-    //                 'admins' => $totalAdmin,
-    //                 'companies' => $totalCompany,
-    //                 'categories' => $totalCategory,
-    //             ]
-    //         ], 200);
-    //     }
-    // }
+            return response()->json([
+                'total' => [
+                    'normalUsers' => $totalUser,
+                    'companyUsers' => $totalCompanyUser,
+                    'admins' => $totalAdmin,
+                    'companies' => $totalCompany,
+                    'categories' => $totalCategory,
+                ]
+            ], 200);
+        }
+    }
 }

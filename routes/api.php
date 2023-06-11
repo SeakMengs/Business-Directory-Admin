@@ -21,7 +21,8 @@ Route::middleware(['userAuth:adminUser'])->group(function () {
     Route::controller(AdminApiController::class)->group(function () {
 
         Route::get('/admin/user', 'getUser')->name('api.admin.getUser');
-        Route::get('/admin/website-detail', 'getUser')->name('api.admin.web-detail');
+
+        Route::get('/admin/website-overview', 'getWebsiteOverview')->name('api.admin.web-overview');
 
     });
 
