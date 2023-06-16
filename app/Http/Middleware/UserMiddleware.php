@@ -36,7 +36,7 @@ class UserMiddleware
 
             // for debug
             // return response()->json([
-            //     'api_token' => $token
+            //     'api_token' => $api_token
             // ], 200);
 
             $adminData = AdminUser::where('api_token', $api_token)->first();
@@ -56,7 +56,7 @@ class UserMiddleware
         // if they have no access show them forbidden message
         return response()->json(
             [
-                'message' => 'you do not have access to this page.'
+                'message' => 'you do not have access to this page.',
             ],
             403
         );

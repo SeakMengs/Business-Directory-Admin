@@ -26,6 +26,11 @@ Route::middleware(['userAuth:adminUser'])->group(function () {
 
         Route::get('/admin/acc-management/normalUsers', 'getNormalUsers')->name('api.admin.acc-management.normalUsers');
 
+        Route::get('/admin/acc-management/companyUsers', 'getCompanyUsers')->name('api.admin.acc-management.companyUsers');
+
+        Route::get('/admin/acc-management/companies', 'getCompanies')->name('api.admin.acc-management.companies');
+
+        Route::post('/admin/acc-management/post/banCompany', 'banCompany')->name('api.admin.acc-management.post.banCompany');
     });
 
 });

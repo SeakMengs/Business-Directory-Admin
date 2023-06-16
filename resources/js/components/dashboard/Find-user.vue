@@ -2,7 +2,7 @@
     <div class="db-content-wrapper">
         <div class="acc-management-section">
             <div class="search-wrapper">
-                <input @change="changeQuery($event)" class="search" type="text" name="search" id="search"
+                <input v-on:input="changeQuery($event)" class="search" type="text" name="search" id="search"
                     placeholder="Search" autocomplete="off">
                 <div class="center search-bg">
                     <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
@@ -11,26 +11,31 @@
                     </svg>
                 </div>
             </div>
+            <label class="searching" v-if="this.isSearching">Loading...</label>
             <div class="sort-wrapper">
                 <label for="sort-comp">Show By:</label>
-                <select @change="changeSortBy($event)" v-model="this.searchQuery.sortBy" name="sortSelect" id="sort-user" class="sort-select">
-                    <option value="asc">Newest</option>
-                    <option value="desc">Oldest</option>
+                <select v-model="this.searchQuery.sortOrderBy" name="sortSelect" id="sort-user" class="sort-select">
+                    <option value="desc">Newest</option>
+                    <option value="asc">Oldest</option>
                 </select>
             </div>
             <div class="total-wrapper">
-                <div class="acc-card" v-for="user in this.data?.users" :key="user?.normal_user_id">
+                <div class="acc-card show-content" v-for="user, i in this.data?.users" :key="i">
                     <div class="i-normal-user-bg center">
                         <!-- default profile if user has never uploaded profile before -->
                         <i class="i-normal-user"></i>
                         <!-- <img src="https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg"
                             alt=""> -->
                     </div>
-                    <h6>Join since: {{ user?.created_at }}</h6>
+                    <h6>Join since: {{ isoToStringDate(user?.created_at) }}</h6>
                     <h6>ID: {{ user?.normal_user_id }}</h6>
                     <h3 class="h3-normal">{{ user?.name }}</h3>
-                    <h6>Ban reason: <span role="textarea" contenteditable></span></h6>
-                    <button class="ban-user">Ban User</button>
+                    <h6 v-if="user?.is_banned" class="sus-color">This user has been banned</h6>
+                    <h6>Ban reason: {{ user?.ban_reason }}</h6>
+                    <textarea v-if="!user?.is_banned" name="" :id="'ban_reason_' + user?.normal_user_id" cols="30"
+                        rows="5">{{ user?.ban_reason }}</textarea>
+                    <button v-if="!user?.is_banned" class="ban-user">Ban
+                        User</button>
                 </div>
             </div>
         </div>
@@ -39,19 +44,21 @@
 
 <script>
 import { ref, inject } from 'vue';
+import debounce from "lodash.debounce";
 import useFetch from '../../hooks/useFetch'
 
 export default {
     async setup() {
         const csrf = inject('csrf')
         const api_token = inject('api_token')
+        const isSearching = ref(false)
         const searchQuery = ref({
             searchValue: '',
-            sortBy: 'asc',
+            sortOrderBy: 'desc',
             searchBy: 'name',
         })
 
-        const { data, error } = await useFetch(`/api/admin/acc-management/normalUsers?sortBy=${searchQuery.value.sortBy}&query=${searchQuery.value.searchValue}&searchBy=${searchQuery.value.searchBy}`, {
+        const { data, error } = await useFetch(`/api/admin/acc-management/normalUsers?sortOrderBy=${searchQuery.value.sortOrderBy}&query=${searchQuery.value.searchValue}&searchBy=${searchQuery.value.searchBy}`, {
             csrf: csrf.value,
             api_token: api_token.value,
         })
@@ -61,12 +68,13 @@ export default {
             api_token,
             searchQuery,
             data,
-            error
+            error,
+            isSearching
         }
     },
     methods: {
         async search() {
-            const { data: result, error } = await useFetch(`/api/admin/acc-management/normalUsers?sortBy=${this.searchQuery.sortBy}&query=${this.searchQuery.searchValue}&searchBy=${this.searchQuery.searchBy}`, {
+            const { data: result, error } = await useFetch(`/api/admin/acc-management/normalUsers?sortOrderBy=${this.searchQuery.sortOrderBy}&query=${this.searchQuery.searchValue}&searchBy=${this.searchQuery.searchBy}`, {
                 csrf: this.csrf,
                 api_token: this.api_token,
             })
@@ -78,15 +86,9 @@ export default {
 
             this.data.users = result.value.users
 
-            console.log(this.data.users)
+            // console.log(this.data.users)
         },
-        async changeSortBy(event) {
-            this.searchQuery.sortBy = event.target.value
-
-            console.log(this.searchQuery)
-            await this.search()
-        },
-        async changeQuery(event) {
+        changeQuery(event) {
             if (event.target.value[0] === '#') {
                 this.searchQuery.searchBy = 'normal_user_id'
                 this.searchQuery.searchValue = event.target.value.slice(1)
@@ -94,17 +96,23 @@ export default {
                 this.searchQuery.searchBy = 'name'
                 this.searchQuery.searchValue = event.target.value
             }
-
-            console.log(this.searchQuery)
-            await this.search()
         },
+        isoToStringDate(isoDate) {
+            // https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_tolocalestring
+            const date = new Date(isoDate)
+            return date.toLocaleDateString()
+        }
     },
     watch: {
         searchQuery: {
-            handler: async function () {
-                console.log('ran', this.searchQuery)
-                // await this.search()
-            },
+            handler: debounce(async function () {
+                this.isSearching = true
+                await this.search()
+                this.isSearching = false
+                // 300ms delay
+            }, 300),
+            // deep watch is needed to watch for changes in object
+            deep: true
         }
     }
 }
