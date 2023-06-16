@@ -24,6 +24,8 @@ Route::middleware(['userAuth:adminUser'])->group(function () {
 
         Route::get('/admin/website-overview', 'getWebsiteOverview')->name('api.admin.web-overview');
 
+        Route::get('/admin/acc-management/normalUsers', 'getNormalUsers')->name('api.admin.acc-management.normalUsers');
+
     });
 
 });

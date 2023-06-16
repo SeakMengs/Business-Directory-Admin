@@ -59,4 +59,21 @@ class AdminApiController extends Controller
             ], 200);
         }
     }
+
+    public function getNormalUsers(Request $request) {
+        // for debug purpose
+        // return response()->json($request, 200);
+
+        $sortBy = $request->query('sortBy');
+        $searchBy = $request->query('searchBy');
+        $query = $request->query('query');
+
+        if ($this->userData) {
+            $normalUsers = NormalUser::where($searchBy, 'like', '%' . $query . '%')->orderBy('created_at', $sortBy)->get();
+
+            return response()->json([
+                'users' => $normalUsers
+            ], 200);
+        }
+    }
 }

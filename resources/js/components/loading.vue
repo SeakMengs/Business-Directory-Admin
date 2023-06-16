@@ -3,12 +3,14 @@
 .eye {
     width: 20px;
     height: 8px;
-    background-color: rgba(240, 220, 220, 1);
+    /* background-color: rgba(240, 220, 220, 1); */
+    background-color: #fafbfc;
     border-radius: 0px 0px 20px 20px;
     position: relative;
     left: 10px;
     top: 40px;
-    box-shadow: 40px 0px 0px 0px rgba(240, 220, 220, 1);
+    /* box-shadow: 40px 0px 0px 0px rgba(240, 220, 220, 1); */
+    box-shadow: 40px 0px 0px 0px #fafbfc;
 }
 
 .head {
@@ -19,7 +21,8 @@
     height: 80px;
     background-color: #111;
     border-radius: 50px;
-    box-shadow: inset -4px 2px 0px 0px rgba(240, 220, 220, 1);
+    /* box-shadow: inset -4px 2px 0px 0px rgba(240, 220, 220, 1); */
+    box-shadow: inset -4px 2px 0px 0px #fafbfc;
     animation: headAnim 1.5s infinite alternate;
     animation-timing-function: ease-out;
 }
@@ -31,7 +34,8 @@
     height: 120px;
     background-color: #111;
     border-radius: 50px/25px;
-    box-shadow: inset -5px 2px 0px 0px rgba(240, 220, 220, 1);
+    /* box-shadow: inset -5px 2px 0px 0px rgba(240, 220, 220, 1); */
+    box-shadow: inset -5px 2px 0px 0px #fafbfc;
     animation: bodyAnim 1.5s infinite alternate;
     animation-timing-function: ease-out;
 }
@@ -71,7 +75,7 @@
     height: 180px;
     border-radius: 0px 0px 50px 50px;
     position: relative;
-    z-index: -1;
+    z-index: 1;
     left: 0%;
     top: 20%;
     overflow: hidden;
@@ -84,7 +88,8 @@
     position: absolute;
     background-color: #111;
     border-radius: 20px;
-    box-shadow: -1px -4px 0px 0px rgba(240, 220, 220, 1);
+    /* box-shadow: -1px -4px 0px 0px rgba(240, 220, 220, 1); */
+    box-shadow: -1px -4px 0px 0px #fafbfc;
     transform: rotate(45deg);
     top: 75%;
     left: 16%;

@@ -88,9 +88,12 @@ export default {
     async setup() {
         const numFormatter = inject('numFormatter')
         const csrf = inject('csrf')
-        // const user = inject('user')
         const api_token = inject('api_token')
-        const { data: website } = await useFetch('/api/admin/website-overview', csrf.value, api_token.value);
+        // const user = inject('user')
+        const { data: website } = await useFetch('/api/admin/website-overview', {
+            csrf: csrf.value,
+            api_token: api_token.value
+        })
 
         return {
             numFormatter,
@@ -108,6 +111,8 @@ export default {
         // user() {
         //     console.log(this.user)
         // }
+    },
+    methods: {
     },
 }
 </script>

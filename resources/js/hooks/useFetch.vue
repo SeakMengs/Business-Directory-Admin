@@ -1,7 +1,7 @@
 <script>
     import { ref } from 'vue';
 
-    export default async function useFetch (url, csrf = null, api_token=null) {
+    export default async function useFetch (url, { csrf, api_token, params }) {
         const data = ref(null);
         const error = ref(null);
         const loading = ref(false);
@@ -13,7 +13,7 @@
                 headers: {
                     'X-CSRF-TOKEN': csrf,
                     'Authorization': api_token
-                }
+                },
             });
 
             data.value = res.data;

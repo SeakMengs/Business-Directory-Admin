@@ -24,20 +24,20 @@
         <!-- Component here ------------------------------------------------------------------- -->
         <div class="flex left-menu-wrapper height-100">
             <left-menu></left-menu>
-            <Suspense>
+            <Suspense :key="this.currentPage">
                 <template #default>
                     <!--* Start of right side content *-->
 
-                    <div class="right-side-control" :class="isOpenMenu ? 'disable-width' : ''">
+                    <div class="right-side-control" :class="this.isOpenMenu ? 'disable-width' : ''">
                         <!-- these components can be found in resources/js/components/dashboard -->
-                        <overview v-if="currentPage === 11"></overview>
-                        <find-user v-else-if="currentPage === 21"></find-user>
-                        <find-company-user v-else-if="currentPage === 22"></find-company-user>
-                        <company v-else-if="currentPage === 23"></company>
-                        <category v-else-if="currentPage === 31"></category>
-                        <admin-profile v-else-if="currentPage === 41"></admin-profile>
-                        <admin v-else-if="currentPage === 42"></admin>
-                        <ban-list v-else-if="currentPage === 43"></ban-list>
+                        <overview v-if="this.currentPage === 11"></overview>
+                        <find-user v-else-if="this.currentPage === 21"></find-user>
+                        <find-company-user v-else-if="this.currentPage === 22"></find-company-user>
+                        <company v-else-if="this.currentPage === 23"></company>
+                        <category v-else-if="this.currentPage === 31"></category>
+                        <admin-profile v-else-if="this.currentPage === 41"></admin-profile>
+                        <admin v-else-if="this.currentPage === 42"></admin>
+                        <ban-list v-else-if="this.currentPage === 43"></ban-list>
                     </div>
                     <!--* End of right side content *-->
                 </template>
@@ -48,7 +48,6 @@
         </div>
         <!-- End of Component here ------------------------------------------------------------- -->
     </div>
-    <loading></loading>
 </template>
 
 <script>
@@ -57,6 +56,7 @@ import LeftMenu from './Left-menu.vue'
 import Navbar from './Navbar.vue'
 import Overview from './Overview.vue'
 import { computed, ref } from 'vue'
+import useFetch from '../../hooks/useFetch'
 
 export default {
     // get csrf token from laravel
@@ -86,7 +86,13 @@ export default {
     },
     async mounted() {
         // after component is mounted, get user info
-        await this.getUser()
+        this.user = await useFetch('/api/admin/user',
+            {
+                csrf: this.csrf,
+                api_token: this.api_token
+            })
+        // because my custom useFetch hook return three objects, so I need to get the data object
+        this.user = this.user.data
 
         // console.log(this.user)
     },
@@ -172,20 +178,6 @@ export default {
             popUpProfile.classList.toggle('show-pop-up-profile')
             popUpProfile.classList.toggle('hide-pop-up-content')
         },
-        async getUser() {
-            try {
-                const res = await axios.get('/api/admin/user', {
-                    headers: {
-                        'X-CSRF-TOKEN': this.csrf,
-                        'Authorization': this.api_token,
-                    }
-                })
-
-                this.user = res.data
-            } catch (err) {
-                alert(err);
-            }
-        }
     },
     // child component
     components: {
