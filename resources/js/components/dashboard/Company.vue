@@ -25,9 +25,11 @@
                 <div class="acc-card show-content" v-for="company, i in this.data?.companies" :key="i">
                     <div class="i-company-user-bg center">
                         <!-- default profile if user has never uploaded profile before -->
-                        <i class="i-company-user"></i>
-                        <!-- <img src="https://static01.nyt.com/images/2021/02/27/arts/tomjerry1/tomjerry1-mediumSquareAt3X.jpg"
+                        <!-- <img v-if="company?.logo"
+                            :src=company?.logo
                             alt=""> -->
+                        <!-- <i v-else class="i-company-user"></i> -->
+                        <i class="i-company-user"></i>
                     </div>
                     <h6>Join since: {{ isoToStringDate(company?.created_at) }}</h6>
                     <h6>ID: {{ company?.company_id }}</h6>
@@ -36,8 +38,11 @@
                     <h6 class="h3-company">Company Name: {{ company?.name }}</h6>
                     <h6 v-if="company?.is_banned" class="sus-color">This company has been banned</h6>
                     <h6>Ban reason: {{ company?.ban_reason }}</h6>
-                    <textarea v-if="!company?.is_banned" name="" :id="'ban_reason_' + company?.company_id" cols="30" rows="5">{{ company?.ban_reason }}</textarea>
-                    <button v-if="!company?.is_banned" class="ban-user" @click="banCompany(company?.company_id, company?.company_user_id)">Ban
+                    <h6 v-if="company?.is_banned">Banned by admin id: {{ company?.ban_by_admin_id }}</h6>
+                    <textarea v-if="!company?.is_banned" name="" :id="'ban_reason_' + company?.company_id" cols="30"
+                        rows="5">{{ company?.ban_reason }}</textarea>
+                    <button v-if="!company?.is_banned" class="ban-user"
+                        @click="banCompany(company?.company_id, company?.company_user_id)">Ban
                         Company</button>
                 </div>
             </div>
@@ -128,30 +133,33 @@ export default {
             const date = new Date(isoDate)
             return date.toLocaleDateString()
         },
-        async banCompany(company_id, companyUser_id) {
+        async banCompany(company_id, company_user_id) {
             const ban_reason = document.getElementById(`ban_reason_${company_id}`).value
 
             if (!ban_reason) return alert('Please fill in the ban reason')
 
-            // console.log(company_id, companyUser_id, ban_reason)
+            // console.log(company_id, company_user_id, ban_reason)
 
             const { res, error } = await usePost(`/api/admin/acc-management/post/banCompany`,
                 {
                     params: {
                         company_id: company_id,
-                        company_user_id: companyUser_id,
+                        company_user_id: company_user_id,
                         ban_reason: ban_reason,
                     },
                     csrf: this.csrf,
                     api_token: this.api_token,
                 })
 
-            if (res.value.data?.status === 'success') {
-                alert('Company has been banned')
+            if (res.value?.data?.status === 'success') {
+                // get data again
+                this.isSearching = true
+                await this.search()
+                this.isSearching = false
             } else {
                 alert('Something went wrong, please try again')
             }
-        }
+        },
     },
     watch: {
         searchQuery: {

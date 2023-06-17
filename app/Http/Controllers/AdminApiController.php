@@ -119,7 +119,7 @@ class AdminApiController extends Controller
 
     public function banCompany(Request $request)
     {
-        $companyId = $request->input('company_id');
+        $company_id = $request->input('company_id');
         $banReason = $request->input('ban_reason');
         $company_user_id = $request->input('company_user_id');
 
@@ -127,28 +127,119 @@ class AdminApiController extends Controller
         // return response()->json(
         //     [
         //         'status' => 'success',
-        //         'company_id' => $companyId,
+        //         'company_id' => $company_id,
         //         'ban_reason' => $banReason,
         //         'company_user_id' => $company_user_id,
         //     ],
         //     200
         // );
         if ($this->userData) {
-            $banCompany = Company::where('company_id', $companyId)->update([
+            $banCompany = Company::where('company_id', $company_id)->update([
                 'is_banned' => true,
                 'ban_reason' => $banReason,
                 'ban_by_admin_id' => $this->userData->admin_id,
+                'unban_by_admin_id' => null,
             ]);
 
             $banCompanyUser = CompanyUser::where('company_user_id', $company_user_id)->update([
                 'is_banned' => true,
                 'ban_reason' => "One of the company owned by this user has been banned",
                 'ban_by_admin_id' => $this->userData->admin_id,
+                'unban_by_admin_id' => null,
             ]);
 
             return response()->json([
                 'status' => 'success',
                 'message' => 'Company has been banned'
+            ], 200);
+        }
+    }
+
+    public function banCompanyUser(Request $request) {
+        $banReason = $request->input('ban_reason');
+        $company_user_id = $request->input('company_user_id');
+
+        if ($this->userData) {
+            $banCompanyUser = CompanyUser::where('company_user_id', $company_user_id)->update([
+                'is_banned' => true,
+                'ban_reason' => $banReason,
+                'ban_by_admin_id' => $this->userData->admin_id,
+                'unban_by_admin_id' => null,
+            ]);
+
+            // ban all company owned by this user
+            $banCompany = Company::where('company_user_id',  $company_user_id)->update([
+                'is_banned' => true,
+                'ban_reason' => "The account of this listed company has been banned",
+                'ban_by_admin_id' => $this->userData->admin_id,
+                'unban_by_admin_id' => null,
+            ]);
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Company user has been banned'
+            ], 200);
+        }
+    }
+
+    public function banNormalUser(Request $request) {
+        $banReason = $request->input('ban_reason');
+        $normal_user_id = $request->input('normal_user_id');
+
+        if ($this->userData) {
+            $banNormalUser = NormalUser::where('normal_user_id', $normal_user_id)->update([
+                'is_banned' => true,
+                'ban_reason' => $banReason,
+                'ban_by_admin_id' => $this->userData->admin_id,
+                'unban_by_admin_id' => null,
+            ]);
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Normal user has been banned'
+            ], 200);
+        }
+    }
+
+    public function unBanCompanyUser(Request $request) {
+        $company_user_id = $request->input('company_user_id');
+
+        if ($this->userData) {
+            $unBanCompanyUser = CompanyUser::where('company_user_id', $company_user_id)->update([
+                'is_banned' => false,
+                'ban_reason' => null,
+                'ban_by_admin_id' => null,
+                'unban_by_admin_id' => $this->userData->admin_id,
+            ]);
+
+            $unBanAllRelatedCompanies = Company::where('company_user_id', $company_user_id)->update([
+                'is_banned' => false,
+                'ban_reason' => null,
+                'ban_by_admin_id' => null,
+                'unban_by_admin_id' => $this->userData->admin_id,
+            ]);
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Company user has been unbanned'
+            ], 200);
+        }
+    }
+
+    public function unBanNormalUser(Request $request) {
+        $normal_user_id = $request->input('normal_user_id');
+
+        if ($this->userData) {
+            $unBanNormalUser = NormalUser::where('normal_user_id', $normal_user_id)->update([
+                'is_banned' => false,
+                'ban_reason' => null,
+                'ban_by_admin_id' => null,
+                'unban_by_admin_id' => $this->userData->admin_id,
+            ]);
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Normal user has been unbanned'
             ], 200);
         }
     }

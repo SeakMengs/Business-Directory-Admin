@@ -32,9 +32,12 @@
                     <h3 class="h3-company">{{ user?.name }}</h3>
                     <h6 v-if="user?.is_banned" class="sus-color">This user has been banned</h6>
                     <h6>Ban reason: {{ user?.ban_reason }}</h6>
+                    <h6 v-if="user?.is_banned">Banned by admin id: {{ user?.ban_by_admin_id }}</h6>
                     <textarea v-if="!user?.is_banned" name="" :id="'ban_reason_' + user?.company_user_id" cols="30"
                         rows="5">{{ user?.ban_reason }}</textarea>
-                    <button v-if="!user?.is_banned" class="ban-user">Ban
+                    <button v-if="!user?.is_banned" class="ban-user" @click="banCompanyUser(user?.company_user_id)">Ban
+                        User</button>
+                    <button v-if="user?.is_banned" class="reset-cate-btn" @click="unBanCompanyUser(user?.company_user_id)">Unban
                         User</button>
                 </div>
             </div>
@@ -46,6 +49,7 @@
 import { ref, inject } from 'vue';
 import debounce from "lodash.debounce";
 import useFetch from '../../hooks/useFetch'
+import usePost from '../../hooks/usePost'
 
 export default {
     async setup() {
@@ -101,6 +105,49 @@ export default {
             // https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_tolocalestring
             const date = new Date(isoDate)
             return date.toLocaleDateString()
+        },
+        async banCompanyUser(company_user_id) {
+            const ban_reason = document.getElementById(`ban_reason_${company_user_id}`).value
+
+            if (!ban_reason) return alert('Please fill in the ban reason')
+
+            const { res, error } = await usePost(`/api/admin/acc-management/post/banCompanyUser`,
+                {
+                    params: {
+                        company_user_id: company_user_id,
+                        ban_reason: ban_reason,
+                    },
+                    csrf: this.csrf,
+                    api_token: this.api_token,
+                })
+
+            if (res.value?.data?.status === 'success') {
+                // get data again
+                this.isSearching = true
+                await this.search()
+                this.isSearching = false
+            } else {
+                alert('Something went wrong, please try again')
+            }
+        },
+        async unBanCompanyUser(company_user_id) {
+            const { res, error } = await usePost(`/api/admin/acc-management/post/unBanCompanyUser`,
+                {
+                    params: {
+                        company_user_id: company_user_id,
+                    },
+                    csrf: this.csrf,
+                    api_token: this.api_token,
+                })
+
+            if (res.value?.data?.status === 'success') {
+                // get data again
+                this.isSearching = true
+                await this.search()
+                this.isSearching = false
+            } else {
+                alert('Something went wrong, please try again')
+            }
         }
     },
     watch: {

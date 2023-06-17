@@ -50,6 +50,8 @@
     gap: 1rem;
     user-select: text;
 
+    text-align: center;
+
     h6 {
         font-size: 1rem;
         font-weight: 600;
@@ -70,6 +72,10 @@
         -o-border-radius: 100%;
     }
 
+    textarea {
+        padding: 5px;
+        max-width: 25rem;
+    }
 }
 
 .show-content {
@@ -217,7 +223,7 @@ span[contenteditable] {
     .search-wrapper {
         width: 20rem;
         height: 30px;
-        max-width: 20rem;
+        max-width: 15rem;
     }
 
     .search-icon {
@@ -236,6 +242,11 @@ span[contenteditable] {
 
     .acc-card {
         padding: 2rem;
+        max-width: 22rem;
+
+        textarea {
+            max-width: 20rem;
+        }
     }
 
     .sort-wrapper {
@@ -243,7 +254,7 @@ span[contenteditable] {
     }
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 405px) {
     .search-wrapper {
         width: 15rem;
         height: 30px;
@@ -252,6 +263,11 @@ span[contenteditable] {
 
     .acc-card {
         padding: 2rem;
+        max-width: 15rem;
+
+        textarea {
+            max-width: 10rem;
+        }
     }
 }
 
