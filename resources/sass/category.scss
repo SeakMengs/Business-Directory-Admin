@@ -333,3 +333,40 @@
         flex-direction: column;
     }
 }
+
+// custom style from business-directory site
+.business-cate-parent {
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    cursor: pointer;
+
+    .business-cate-div {
+        padding: 1rem;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+
+        .card-title {
+            font-size: 16px;
+            margin-bottom: 0;
+            font-weight: 500;
+            line-height: 1.2;
+            color: #214f6a;
+
+            &:hover {
+                color: #c93434
+            }
+
+            i {
+                color: #c93434;
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+.fontawe-icon {
+    color: #c93434;
+    margin-right: 10px;
+}

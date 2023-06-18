@@ -44,6 +44,17 @@
                     <button v-if="!company?.is_banned" class="ban-user"
                         @click="banCompany(company?.company_id, company?.company_user_id)">Ban
                         Company</button>
+                    <details v-if="company?.reports.length > 0">
+                        <summary>Report by user</summary>
+                        <div style="align-items: flex-start;" class="flex flex-col">
+                            <div style="align-items: flex-start; gap: 2px;" class="flex" v-for="report, i in company?.reports"
+                                :key="i">
+                                <strong style="word-break: initial;white-space: nowrap;">{{ report?.report_by?.name }}:&#160;</strong>
+                                <span style="text-align: initial;">{{ report?.reason
+                                }}</span>
+                            </div>
+                        </div>
+                    </details>
                 </div>
             </div>
         </div>

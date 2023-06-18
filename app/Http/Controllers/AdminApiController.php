@@ -155,7 +155,8 @@ class AdminApiController extends Controller
         }
     }
 
-    public function banCompanyUser(Request $request) {
+    public function banCompanyUser(Request $request)
+    {
         $banReason = $request->input('ban_reason');
         $company_user_id = $request->input('company_user_id');
 
@@ -168,7 +169,7 @@ class AdminApiController extends Controller
             ]);
 
             // ban all company owned by this user
-            $banCompany = Company::where('company_user_id',  $company_user_id)->update([
+            $banCompany = Company::where('company_user_id', $company_user_id)->update([
                 'is_banned' => true,
                 'ban_reason' => "The account of this listed company has been banned",
                 'ban_by_admin_id' => $this->userData->admin_id,
@@ -182,7 +183,8 @@ class AdminApiController extends Controller
         }
     }
 
-    public function banNormalUser(Request $request) {
+    public function banNormalUser(Request $request)
+    {
         $banReason = $request->input('ban_reason');
         $normal_user_id = $request->input('normal_user_id');
 
@@ -201,7 +203,8 @@ class AdminApiController extends Controller
         }
     }
 
-    public function unBanCompanyUser(Request $request) {
+    public function unBanCompanyUser(Request $request)
+    {
         $company_user_id = $request->input('company_user_id');
 
         if ($this->userData) {
@@ -226,7 +229,8 @@ class AdminApiController extends Controller
         }
     }
 
-    public function unBanNormalUser(Request $request) {
+    public function unBanNormalUser(Request $request)
+    {
         $normal_user_id = $request->input('normal_user_id');
 
         if ($this->userData) {
@@ -240,6 +244,38 @@ class AdminApiController extends Controller
             return response()->json([
                 'status' => 'success',
                 'message' => 'Normal user has been unbanned'
+            ], 200);
+        }
+    }
+
+    public function getCategory(Request $request)
+    {
+        $sortOrderBy = $request->query('sortOrderBy');
+        $searchBy = $request->query('searchBy');
+        $query = $request->query('query');
+
+        if ($this->userData) {
+            $categories = Category::where($searchBy, 'like', '%' . $query . '%')->orderBy('created_at', $sortOrderBy)->get();
+
+            return response()->json($categories, 200);
+        }
+    }
+
+    public function addCategory(Request $request) {
+
+        $newCategoryName = $request->input('name');
+        $newCategoryIcon = $request->input('logo_url');
+
+        if ($this->userData) {
+            $saveNewCategory = Category::create([
+                'name' => $newCategoryName,
+                'logo_url' => $newCategoryIcon,
+                'add_by_admin_id' => $this->userData->admin_id,
+            ]);
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'New category has been added'
             ], 200);
         }
     }

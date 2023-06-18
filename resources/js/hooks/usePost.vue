@@ -5,6 +5,8 @@ export default async function usePost(url, { csrf, api_token, params }) {
     const res = ref(null)
     const error = ref(null)
 
+    // console.log(csrf, api_token, params)
+
     try {
         res.value = await axios.post(url, params, {
             headers: {

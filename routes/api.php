@@ -39,6 +39,10 @@ Route::middleware(['userAuth:adminUser'])->group(function () {
         Route::post('/admin/acc-management/post/unBanCompanyUser', 'unBanCompanyUser')->name('api.admin.acc-management.post.unBanCompanyUser');
 
         Route::post('/admin/acc-management/post/unBanNormalUser', 'unBanNormalUser')->name('api.admin.acc-management.post.unBanNormalUser');
+
+        Route::get('/admin/site-management/category', 'getCategory')->name('api.admin.site-management.category');
+
+        Route::post('/admin/site-management/post/addCategory', 'addCategory')->name('api.admin.site-management.post.addCategory');
     });
 
 });

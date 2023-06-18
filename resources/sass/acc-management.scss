@@ -76,6 +76,16 @@
         padding: 5px;
         max-width: 25rem;
     }
+
+    details {
+        font-size: 1rem;
+        font-weight: 600;
+
+        span {
+            font-size: 1rem;
+            font-weight: 450;
+        }
+    }
 }
 
 .show-content {

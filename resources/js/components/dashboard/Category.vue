@@ -10,35 +10,31 @@
                         <div class="add-cate-form">
                             <div class="cate-input-wrapper">
                                 <h3>Category Name:</h3>
-                                <input class="cate-input-box" type="text" placeholder="Ex: Accountants - General"
+                                <input v-model="this.addCategory.name" v-on:input="changeAddCategoryName"
+                                    class="cate-input-box" type="text" placeholder="Ex: Accountants - General"
                                     autocomplete="off">
                             </div>
-                            <div @click="uploadFile" class="upload-box">
-                                <input class="hidden" type="file" name="" id="uploadIcon">
-                                <span>Drag the icon in or Click in this area</span>
+                            <div class="cate-input-wrapper">
+                                <h3>Category Icon:</h3>
+                                <input v-model="this.addCategory.logo_url" v-on:input="previewAddCategoryIcon"
+                                    class="cate-input-box" type="text"
+                                    placeholder="Ex: <i class='fa-solid fa-car fontawe-icon'></i>" autocomplete="off">
                             </div>
                             <div class="center">
-                                <button class="add-cate-btn">Add Category</button>
+                                <button class="add-cate-btn" @click="saveNewCategory">Add Category</button>
                             </div>
                         </div>
                         <div class="cate-line"></div>
                         <div class="preview-wrapper">
                             <h3>Preview</h3>
                             <div class="preview-upload">
-                                <div class="flex flex-col">
-                                    <span>64px</span>
-                                    <img width="64" height="64" src="https://img.icons8.com/ios/50/diversity.png"
-                                        alt="diversity" />
-                                </div>
-                                <div class="flex flex-col">
-                                    <span>32px</span>
-                                    <img width="32" height="32" src="https://img.icons8.com/ios/50/diversity.png"
-                                        alt="diversity" />
-                                </div>
-                                <div class="flex flex-col">
-                                    <span>16px</span>
-                                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png"
-                                        alt="diversity" />
+                                <div class="business-cate-parent">
+                                    <div class="business-cate-div">
+                                        <h5 class="card-title" :key="this.addCategory.name" id="add-icon-preview">
+                                            <!-- <i class='fa-solid fa-car fontawe-icon'></i> -->
+                                            {{ this.addCategory.name }}
+                                        </h5>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -58,7 +54,7 @@
                                 <input class="cate-input-box" type="text" placeholder="Ex: Accountants - General"
                                     list="chooseCategory">
                                 <datalist id="chooseCategory">
-                                    <option v-for="category in this.allCategory" :key="category.id" :value="category.name">
+                                    <option v-for="category in this.categories" :key="category.id" :value="category.name">
                                     </option>
                                 </datalist>
                             </div>
@@ -67,17 +63,10 @@
                                 <input class="cate-input-box" type="text" placeholder="Ex: Accountants - General"
                                     autocomplete="off">
                             </div>
-                            <div class="cate-tick-wrapper">
-                                <input class="tick-input" @click="() => this.isUpdateIcon = !this.isUpdateIcon" type="checkbox"
-                                    id="isUpdateIcon">
-                                <label for="isUpdateIcon">
-                                    <h3>Update Icon</h3>
-                                </label>
-                            </div>
-                            <!-- if user check update icon, show it -->
-                            <div v-if="this.isUpdateIcon === true" @click="uploadFile" class="upload-box">
-                                <input class="hidden" type="file" name="" id="uploadIcon">
-                                <span>Drag the icon in or Click in this area</span>
+                            <div class="cate-input-wrapper">
+                                <h3>Change Icon :</h3>
+                                <input class="cate-input-box" type="text"
+                                    placeholder="Ex: <i class='fa-solid fa-car fontawe-icon'></i>" autocomplete="off">
                             </div>
                             <div class="cate-add-remove-wrapper">
                                 <button class="add-cate-btn">Edit Category</button>
@@ -88,20 +77,13 @@
                         <div class="preview-wrapper">
                             <h3>Preview</h3>
                             <div class="preview-upload">
-                                <div class="flex flex-col">
-                                    <span>64px</span>
-                                    <img width="64" height="64" src="https://img.icons8.com/ios/50/diversity.png"
-                                        alt="diversity" />
-                                </div>
-                                <div class="flex flex-col">
-                                    <span>32px</span>
-                                    <img width="32" height="32" src="https://img.icons8.com/ios/50/diversity.png"
-                                        alt="diversity" />
-                                </div>
-                                <div class="flex flex-col">
-                                    <span>16px</span>
-                                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png"
-                                        alt="diversity" />
+                                <div class="business-cate-parent">
+                                    <div class="business-cate-div">
+                                        <h5 class="card-title">
+                                            <i class='fa-solid fa-car fontawe-icon'></i>
+                                            General Accountants
+                                        </h5>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -132,60 +114,18 @@
                 </div>
             </div>
             <div class="total-result">
-                <span  >Total result: 305</span>
+                <span>Total result: 305</span>
             </div>
             <div class="cate-list">
-                <div class="category-wrapper">
-                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
-                    <span title="id: 1023">dnsajkndsjandsajdnasj</span>
-                </div>
-                <div class="category-wrapper">
-                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
-                    <span title="id: 1023">dnsajkndsjandsajdnasj</span>
-                </div>
-                <div class="category-wrapper">
-                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
-                    <span title="id: 1023">dnsajkndsjandsajdnasj</span>
-                </div>
-                <div class="category-wrapper">
-                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
-                    <span title="id: 1023">dnsajkndsjandsajdnasj</span>
-                </div>
-                <div class="category-wrapper">
-                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
-                    <span title="id: 1023">dnsajkndsjandsajdnasj</span>
-                </div>
-                <div class="category-wrapper">
-                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
-                    <span title="id: 1023">dnsajkndsjandsajdnasj</span>
-                </div>
-                <div class="category-wrapper">
-                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
-                    <span title="id: 1023">dnsajknadasdadsjandsajdnasj</span>
-                </div>
-                <div class="category-wrapper">
-                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
-                    <span title="id: 1023">dnsajkndsasdsjandsajdnasj</span>
-                </div>
-                <div class="category-wrapper">
-                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
-                    <span title="id: 1023">dnsajkndsjdasdsadandsajdnasj</span>
-                </div>
-                <div class="category-wrapper">
-                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
-                    <span title="id: 1023">dnsajkndsdajandsajdnasj</span>
-                </div>
-                <div class="category-wrapper">
-                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
-                    <span title="id: 1023">dnsajknddasdassjandsajdnasj</span>
-                </div>
-                <div class="category-wrapper">
-                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
-                    <span title="id: 1023">dnsajkndsjandasdasdsajdnasj</span>
-                </div>
-                <div class="category-wrapper">
-                    <img width="16" height="16" src="https://img.icons8.com/ios/50/diversity.png" alt="diversity" />
-                    <span title="id: 1023">dnsajknddadasjandsajdnasj</span>
+                <div class="business-cate-parent" v-for="category, i in this.cateForSearch" :title="'id ' + category.category_id"
+                    :key="i">
+                    <div class="business-cate-div">
+                        <h5 style="display: flex;" class="card-title">
+                            <!-- <i class='fa-solid fa-car fontawe-icon'></i> -->
+                            <div class="" v-html="category.logo_url"></div>
+                            {{ category.name }}
+                        </h5>
+                    </div>
                 </div>
             </div>
         </div>
@@ -194,38 +134,114 @@
 
 <script>
 
-import { ref } from 'vue';
+import { ref, inject } from 'vue';
+import debounce from "lodash.debounce";
+import useFetch from '../../hooks/useFetch'
+import usePost from '../../hooks/usePost'
 
 export default {
-    setup() {
-        const isUpdateIcon = ref(false);
-        const allCategory = [
-            {
-                name: 'General Accountants',
-                icon: 'https://img.icons8.com/ios/50/diversity.png',
-                id: '1'
-            },
-            {
-                name: 'Auto Repair',
-                icon: 'https://img.icons8.com/ios/50/diversity.png',
-                id: '2'
-            },
-            {
-                name: 'Car Dealers',
-                icon: 'https://img.icons8.com/ios/50/diversity.png',
-                id: '3'
-            },
-        ]
+    async setup() {
+        const csrf = inject('csrf')
+        const api_token = inject('api_token')
+        const addCategory = ref({
+            name: '',
+            logo_url: '',
+        })
+        const changeCategory = ref({
+            id: null,
+            name: null,
+            logo_url: null,
+        })
+        const searchQuery = ref({
+            searchValue: '',
+            sortOrderBy: 'desc',
+            searchBy: 'name',
+        })
+
+        const { data: categories } = await useFetch(`/api/admin/site-management/category?sortOrderBy=${searchQuery.value.sortOrderBy}&query=${searchQuery.value.searchValue}&searchBy=${searchQuery.value.searchBy}`, {
+            csrf: csrf.value,
+            api_token: api_token.value,
+        })
+        const { data: cateForSearch } = await useFetch(`/api/admin/site-management/category?sortOrderBy=${searchQuery.value.sortOrderBy}&query=${searchQuery.value.searchValue}&searchBy=${searchQuery.value.searchBy}`, {
+            csrf: csrf.value,
+            api_token: api_token.value,
+        })
+
+        console.log(categories.value)
 
         return {
-            allCategory,
-            isUpdateIcon
+            csrf,
+            api_token,
+            categories,
+            cateForSearch,
+            searchQuery,
+            addCategory,
+            changeCategory,
         }
     },
     methods: {
-        uploadFile() {
-            document.getElementById('uploadIcon').click();
+        changeAddCategoryName(event) {
+            if (this.addCategory.name.length >= 50) {
+                // slice(0, 50) => cut string from 0 to 50
+                this.addCategory.name = this.addCategory.name.slice(0, 50)
+                alert("Category name must be less than 50 characters")
+                return
+            }
+
+            this.previewAddCategoryIcon(event)
+        },
+        previewAddCategoryIcon(event) {
+            const parent = document.querySelector('#add-icon-preview')
+
+            // verify font-awesome icon by checking it has <i> tag or not first
+            if (this.addCategory.logo_url.includes('<i') && this.addCategory.logo_url.includes('</i>')) {
+                // if it has <i> tag, then check if it has 'fa-' class or not
+                // https://fontawesome.com/docs/web/add-icons/how-to
+                if (this.addCategory.logo_url.includes('fa')) {
+                    parent.innerHTML = this.addCategory.logo_url + this.addCategory.name
+                    return
+                }
+            }
+
+            // if it doesn't have <i> tag, then re-render icon
+            parent.innerHTML = this.addCategory.name
+        },
+        async saveNewCategory() {
+            if (!this.addCategory.name) {
+                alert('Category name is required')
+                return
+            }
+            if (!this.addCategory.logo_url.includes('<i') && !this.addCategory.logo_url.includes('</i>')) {
+                alert('Category icon is required')
+                return
+            }
+            // if it has <i> tag, then check if it has 'fa-' class or not
+            if (!this.addCategory.logo_url.includes('fa')) {
+                alert('Category icon is required')
+                return
+            }
+
+            const { res } = await usePost('/api/admin/site-management/post/addCategory', {
+                params: this.addCategory,
+                csrf: this.csrf,
+                api_token: this.api_token,
+            })
+
+            if (res.value?.data?.status === 'success') {
+                this.addCategory.name = ''
+                this.addCategory.logo_url = ''
+
+                alert('Add category successfully')
+                // get data again
+                // this.isSearching = true
+                // await this.search()
+                // this.isSearching = false
+            } else {
+                alert('Something went wrong, please try again')
+            }
         }
+    },
+    watch: {
     }
 }
 </script>
