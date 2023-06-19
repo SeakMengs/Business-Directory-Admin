@@ -96,6 +96,7 @@ export default {
         changeQuery(event) {
             if (event.target.value[0] === '#') {
                 this.searchQuery.searchBy = 'normal_user_id'
+                // remove the # from the search value
                 this.searchQuery.searchValue = event.target.value.slice(1)
             } else {
                 this.searchQuery.searchBy = 'name'

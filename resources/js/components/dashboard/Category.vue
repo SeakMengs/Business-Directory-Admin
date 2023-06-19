@@ -22,7 +22,7 @@
                                     placeholder="Ex: <i class='fa-solid fa-car fontawe-icon'></i>" autocomplete="off">
                             </div>
                             <div class="center">
-                                <button class="add-cate-btn" @click="saveNewCategory">Add Category</button>
+                                <button class="add-cate-btn" @click="saveNewCategory">Add</button>
                             </div>
                         </div>
                         <div class="cate-line"></div>
@@ -61,7 +61,7 @@
                                 <select class="sort-select" id="update-cate-select" @change="updateCategory()"
                                     v-model="this.changeCategory.inputName">
                                     <option value="" selected>Choose Category</option>
-                                    <option v-for="category in this.categories" :key="category.id" :value="category.name">
+                                    <option v-for="category in this.categories" :key="category.name" :value="category.name">
                                         {{ category.name }}
                                     </option>
                                 </select>
@@ -105,7 +105,7 @@
             <div class="total-header all-cate-wrapper">
                 <h1>Categories</h1>
                 <div class="search-wrapper search-cate">
-                    <input class="search" type="text" name="search" id="search" placeholder="Search" autocomplete="off">
+                    <input v-on:input="changeQuery($event)" class="search" type="text" name="search" id="search" placeholder="Search" autocomplete="off">
                     <div class="center search-bg">
                         <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
                             <path
@@ -113,22 +113,23 @@
                         </svg>
                     </div>
                 </div>
+                <label class="searching" v-if="this.isSearching">Loading...</label>
             </div>
             <div class="total-result">
                 <div class="sort-wrapper">
                     <label for="sort-comp">Show By:</label>
-                    <select name="sortSelect" id="sort-comp" class="sort-select">
-                        <option value="Most Report">Recent</option>
-                        <option value="Least Report">Old</option>
+                    <select v-model="this.searchQuery.sortOrderBy" name="sortSelect" id="sort-comp" class="sort-select">
+                        <option value="desc">Newest</option>
+                        <option value="asc">Oldest</option>
                     </select>
                 </div>
             </div>
             <div class="total-result">
-                <span>Total result: 305</span>
+                <span>Total result: {{ this.cateForSearch?.length }}</span>
             </div>
             <div class="cate-list">
-                <div class="business-cate-parent" v-for="category, i in this.cateForSearch"
-                    :title="'id ' + category.category_id" :key="i">
+                <div class="business-cate-parent show-content" v-for="category, i in this.cateForSearch"
+                    :title="'id ' + category.category_id" :key="category.name">
                     <div class="business-cate-div">
                         <h5 style="display: flex;" class="card-title">
                             <!-- <i class='fa-solid fa-car fontawe-icon'></i> -->
@@ -153,26 +154,32 @@ export default {
     async setup() {
         const csrf = inject('csrf')
         const api_token = inject('api_token')
+
+        const isSearching = ref(false)
+
         const addCategory = ref({
             name: '',
             logo_url: '',
         })
+
         const changeCategory = ref({
             inputName: '',
             id: '',
             name: '',
             logo_url: '',
         })
+
         const searchQuery = ref({
             searchValue: '',
             sortOrderBy: 'desc',
             searchBy: 'name',
         })
 
-        const { data: categories } = await useFetch(`/api/admin/site-management/category?sortOrderBy=${searchQuery.value.sortOrderBy}&query=${searchQuery.value.searchValue}&searchBy=${searchQuery.value.searchBy}`, {
+        const { data: categories } = await useFetch("/api/admin/site-management/category?sortOrderBy=desc&query=&searchBy=name", {
             csrf: csrf.value,
             api_token: api_token.value,
         })
+
         const { data: cateForSearch } = await useFetch(`/api/admin/site-management/category?sortOrderBy=${searchQuery.value.sortOrderBy}&query=${searchQuery.value.searchValue}&searchBy=${searchQuery.value.searchBy}`, {
             csrf: csrf.value,
             api_token: api_token.value,
@@ -188,9 +195,28 @@ export default {
             searchQuery,
             addCategory,
             changeCategory,
+            isSearching,
         }
     },
     methods: {
+        async fetchCategories() {
+            const { data: result } = await useFetch("/api/admin/site-management/category?sortOrderBy=desc&query=&searchBy=name", {
+                csrf: this.csrf,
+                api_token: this.api_token,
+            })
+
+            this.categories = result.value
+
+            // console.log(this.categories)
+        },
+        async searchCategories() {
+            const { data: result } = await useFetch(`/api/admin/site-management/category?sortOrderBy=${this.searchQuery.sortOrderBy}&query=${this.searchQuery.searchValue}&searchBy=${this.searchQuery.searchBy}`, {
+                csrf: this.csrf,
+                api_token: this.api_token,
+            })
+
+            this.cateForSearch = result.value
+        },
         changeAddCategoryName(event) {
             if (this.addCategory.name.length >= 50) {
                 // slice(0, 50) => cut string from 0 to 50
@@ -230,7 +256,6 @@ export default {
         updateCategory(event) {
             for (let i = 0; i < this.categories.length; i++) {
                 if (this.categories[i].name === this.changeCategory.inputName) {
-                    console.log('i ran')
                     this.changeCategory.id = this.categories[i].category_id
                     this.changeCategory.name = this.categories[i].name
                     this.changeCategory.logo_url = this.categories[i].logo_url
@@ -285,13 +310,29 @@ export default {
                 this.addCategory.logo_url = ''
 
                 alert('Add category successfully')
-                // get data again
-                // this.isSearching = true
-                // await this.search()
-                // this.isSearching = false
+
+                // fetch new categories
+                this.fetchCategories()
             } else {
                 alert(error.value?.data?.message || 'Something went wrong, please try again')
             }
+        },
+        resetAfterUpdateCategory() {
+            // reset changeCategory data to empty
+            this.changeCategory.id = ''
+            this.changeCategory.name = ''
+            this.changeCategory.logo_url = ''
+            this.changeCategory.inputName = ''
+
+            // reset select option
+            const select = document.getElementById('update-cate-select')
+            select.selectedIndex = 0
+
+            // reset preview icon
+            this.previewAddCategoryIcon('event', 'change-icon-preview', this.changeCategory.name, this.changeCategory.logo_url)
+
+            // fetch new categories
+            this.fetchCategories()
         },
         async saveUpdateCategory() {
 
@@ -311,16 +352,7 @@ export default {
 
             if (res.value?.data?.status === 'success') {
                 alert('Update category successfully')
-
-                // reset changeCategory data to empty
-                this.changeCategory.id = ''
-                this.changeCategory.name = ''
-                this.changeCategory.logo_url = ''
-                this.changeCategory.inputName = ''
-
-                // reset select option
-                const select = document.getElementById('change-category-select')
-                select.selectedIndex = 0
+                this.resetAfterUpdateCategory()
             } else {
                 alert(error.value?.data?.message || 'Something went wrong, please try again')
             }
@@ -341,28 +373,33 @@ export default {
 
             if (res.value?.data?.status === 'success') {
                 alert('Category has been removed')
-
-                // reset changeCategory data to empty
-                this.changeCategory.id = ''
-                this.changeCategory.name = ''
-                this.changeCategory.logo_url = ''
-                this.changeCategory.inputName = ''
-
-                // reset select option
-                const select = document.getElementById('change-category-select')
-                select.selectedIndex = 0
+                this.resetAfterUpdateCategory()
             } else {
                 alert(error.value?.data?.message || 'Something went wrong, please try again')
             }
-        }
+        },
+        changeQuery(event) {
+            if (event.target.value[0] === '#') {
+                this.searchQuery.searchBy = 'category_id'
+                // remove the # from the search value
+                this.searchQuery.searchValue = event.target.value.slice(1)
+            } else {
+                this.searchQuery.searchBy = 'name'
+                this.searchQuery.searchValue = event.target.value
+            }
+
+            // console.log(this.searchQuery)
+        },
     },
     watch: {
-        // changeCategory: {
-        //     handler: debounce(function (val) {
-        //         console.log(this.changeCategory)
-        //     }, 500),
-        //     deep: true,
-        // },
+        searchQuery: {
+            handler: debounce(async function () {
+                this.isSearching = true
+                await this.searchCategories()
+                this.isSearching = false
+            }, 300),
+            deep: true
+        }
     }
 }
 </script>
