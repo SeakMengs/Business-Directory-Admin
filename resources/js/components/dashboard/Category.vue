@@ -16,7 +16,8 @@
                             </div>
                             <div class="cate-input-wrapper">
                                 <h3>Category Icon:</h3>
-                                <input v-model="this.addCategory.logo_url" v-on:input="previewAddCategoryIcon"
+                                <input v-model="this.addCategory.logo_url"
+                                    v-on:input="previewAddCategoryIcon(event, 'add-icon-preview', this.addCategory.name, this.addCategory.logo_url)"
                                     class="cate-input-box" type="text"
                                     placeholder="Ex: <i class='fa-solid fa-car fontawe-icon'></i>" autocomplete="off">
                             </div>
@@ -51,26 +52,35 @@
                         <div class="add-cate-form">
                             <div class="cate-input-wrapper">
                                 <h3>Category Name:</h3>
-                                <input class="cate-input-box" type="text" placeholder="Ex: Accountants - General"
-                                    list="chooseCategory">
+                                <!-- <input class="cate-input-box" type="text" placeholder="Ex: Accountants - General"
+                                    list="chooseCategory" v-on:input="updateCategory()" v-model="this.changeCategory.inputName" autocomplete="off">
                                 <datalist id="chooseCategory">
                                     <option v-for="category in this.categories" :key="category.id" :value="category.name">
                                     </option>
-                                </datalist>
+                                </datalist> -->
+                                <select class="sort-select" id="update-cate-select" @change="updateCategory()"
+                                    v-model="this.changeCategory.inputName">
+                                    <option value="" selected>Choose Category</option>
+                                    <option v-for="category in this.categories" :key="category.id" :value="category.name">
+                                        {{ category.name }}
+                                    </option>
+                                </select>
                             </div>
                             <div class="cate-input-wrapper">
                                 <h3>Change to :</h3>
                                 <input class="cate-input-box" type="text" placeholder="Ex: Accountants - General"
-                                    autocomplete="off">
+                                    autocomplete="off" v-model="this.changeCategory.name" v-on:input="changeCategoryName">
                             </div>
                             <div class="cate-input-wrapper">
                                 <h3>Change Icon :</h3>
                                 <input class="cate-input-box" type="text"
-                                    placeholder="Ex: <i class='fa-solid fa-car fontawe-icon'></i>" autocomplete="off">
+                                    placeholder="Ex: <i class='fa-solid fa-car fontawe-icon'></i>" autocomplete="off"
+                                    v-model="this.changeCategory.logo_url"
+                                    v-on:input="previewAddCategoryIcon(event, 'change-icon-preview', this.changeCategory.name, this.changeCategory.logo_url)">
                             </div>
                             <div class="cate-add-remove-wrapper">
-                                <button class="add-cate-btn">Edit Category</button>
-                                <button class="remove-cate-btn">Remove Category</button>
+                                <button class="add-cate-btn" @click="saveUpdateCategory">Update</button>
+                                <button class="remove-cate-btn" @click="removeOneCategory">Remove</button>
                             </div>
                         </div>
                         <div class="cate-line"></div>
@@ -79,9 +89,9 @@
                             <div class="preview-upload">
                                 <div class="business-cate-parent">
                                     <div class="business-cate-div">
-                                        <h5 class="card-title">
-                                            <i class='fa-solid fa-car fontawe-icon'></i>
-                                            General Accountants
+                                        <h5 class="card-title flex" id="change-icon-preview">
+                                            <!-- <i class='fa-solid fa-car fontawe-icon'></i> -->
+                                            {{ this.changeCategory.name }}
                                         </h5>
                                     </div>
                                 </div>
@@ -117,8 +127,8 @@
                 <span>Total result: 305</span>
             </div>
             <div class="cate-list">
-                <div class="business-cate-parent" v-for="category, i in this.cateForSearch" :title="'id ' + category.category_id"
-                    :key="i">
+                <div class="business-cate-parent" v-for="category, i in this.cateForSearch"
+                    :title="'id ' + category.category_id" :key="i">
                     <div class="business-cate-div">
                         <h5 style="display: flex;" class="card-title">
                             <!-- <i class='fa-solid fa-car fontawe-icon'></i> -->
@@ -148,9 +158,10 @@ export default {
             logo_url: '',
         })
         const changeCategory = ref({
-            id: null,
-            name: null,
-            logo_url: null,
+            inputName: '',
+            id: '',
+            name: '',
+            logo_url: '',
         })
         const searchQuery = ref({
             searchValue: '',
@@ -188,40 +199,82 @@ export default {
                 return
             }
 
-            this.previewAddCategoryIcon(event)
+            this.previewAddCategoryIcon(event, 'add-icon-preview', this.addCategory.name, this.addCategory.logo_url)
         },
-        previewAddCategoryIcon(event) {
-            const parent = document.querySelector('#add-icon-preview')
+        changeCategoryName(event) {
+            if (this.changeCategory.name.length >= 50) {
+                // slice(0, 50) => cut string from 0 to 50
+                this.changeCategory.name = this.changeCategory.name.slice(0, 50)
+                alert("Category name must be less than 50 characters")
+                return
+            }
+
+            this.previewAddCategoryIcon(event, 'change-icon-preview', this.changeCategory.name, this.changeCategory.logo_url)
+        },
+        previewAddCategoryIcon(event, id, name, logo_url) {
+            const parent = document.getElementById(id)
 
             // verify font-awesome icon by checking it has <i> tag or not first
-            if (this.addCategory.logo_url.includes('<i') && this.addCategory.logo_url.includes('</i>')) {
+            if (logo_url?.includes('<i') && logo_url?.includes('</i>')) {
                 // if it has <i> tag, then check if it has 'fa-' class or not
                 // https://fontawesome.com/docs/web/add-icons/how-to
-                if (this.addCategory.logo_url.includes('fa')) {
-                    parent.innerHTML = this.addCategory.logo_url + this.addCategory.name
+                if (logo_url?.includes('fa')) {
+                    parent.innerHTML = logo_url + name
                     return
                 }
             }
 
             // if it doesn't have <i> tag, then re-render icon
-            parent.innerHTML = this.addCategory.name
+            parent.innerHTML = name
         },
-        async saveNewCategory() {
-            if (!this.addCategory.name) {
-                alert('Category name is required')
-                return
+        updateCategory(event) {
+            for (let i = 0; i < this.categories.length; i++) {
+                if (this.categories[i].name === this.changeCategory.inputName) {
+                    console.log('i ran')
+                    this.changeCategory.id = this.categories[i].category_id
+                    this.changeCategory.name = this.categories[i].name
+                    this.changeCategory.logo_url = this.categories[i].logo_url
+
+                    this.previewAddCategoryIcon(event, 'change-icon-preview', this.changeCategory.name, this.changeCategory.logo_url)
+                    return
+                }
             }
-            if (!this.addCategory.logo_url.includes('<i') && !this.addCategory.logo_url.includes('</i>')) {
+
+            this.changeCategory.id = ''
+            this.changeCategory.name = ''
+            this.changeCategory.logo_url = ''
+
+            // reset preview icon
+            this.previewAddCategoryIcon(event, 'change-icon-preview', this.changeCategory.name, this.changeCategory.logo_url)
+        },
+        checkCanSaveAddOrUpdateCategory(name, logo, id) {
+            if (!name) {
+                alert('Category name is required')
+                return false
+            }
+            if (!logo.includes('<i') && !logo.includes('</i>')) {
                 alert('Category icon is required')
-                return
+                return false
             }
             // if it has <i> tag, then check if it has 'fa-' class or not
-            if (!this.addCategory.logo_url.includes('fa')) {
+            if (!logo.includes('fa')) {
                 alert('Category icon is required')
+                return false
+            }
+            if (!id) {
+                alert('ID is required to update a category')
+                return false
+            }
+
+            return true
+        },
+        async saveNewCategory() {
+
+            if (!this.checkCanSaveAddOrUpdateCategory(this.addCategory.name, this.addCategory.logo_url, 'thisArgumentIsToByPassIdCheck')) {
                 return
             }
 
-            const { res } = await usePost('/api/admin/site-management/post/addCategory', {
+            const { res, error } = await usePost('/api/admin/site-management/post/addCategory', {
                 params: this.addCategory,
                 csrf: this.csrf,
                 api_token: this.api_token,
@@ -237,11 +290,79 @@ export default {
                 // await this.search()
                 // this.isSearching = false
             } else {
-                alert('Something went wrong, please try again')
+                alert(error.value?.data?.message || 'Something went wrong, please try again')
+            }
+        },
+        async saveUpdateCategory() {
+
+            if (!this.checkCanSaveAddOrUpdateCategory(this.changeCategory.name, this.changeCategory.logo_url, this.changeCategory.id)) {
+                return
+            }
+
+            const { res, error } = await usePost('/api/admin/site-management/post/updateCategory', {
+                params: {
+                    name: this.changeCategory.name,
+                    category_id: this.changeCategory.id,
+                    logo_url: this.changeCategory.logo_url
+                },
+                csrf: this.csrf,
+                api_token: this.api_token,
+            })
+
+            if (res.value?.data?.status === 'success') {
+                alert('Update category successfully')
+
+                // reset changeCategory data to empty
+                this.changeCategory.id = ''
+                this.changeCategory.name = ''
+                this.changeCategory.logo_url = ''
+                this.changeCategory.inputName = ''
+
+                // reset select option
+                const select = document.getElementById('change-category-select')
+                select.selectedIndex = 0
+            } else {
+                alert(error.value?.data?.message || 'Something went wrong, please try again')
+            }
+        },
+        async removeOneCategory() {
+            if (!this.changeCategory.id) {
+                alert('ID is required to remove a category')
+                return
+            }
+
+            const { res, error } = await usePost('/api/admin/site-management/post/removeCategory', {
+                params: {
+                    category_id: this.changeCategory.id
+                },
+                csrf: this.csrf,
+                api_token: this.api_token,
+            })
+
+            if (res.value?.data?.status === 'success') {
+                alert('Category has been removed')
+
+                // reset changeCategory data to empty
+                this.changeCategory.id = ''
+                this.changeCategory.name = ''
+                this.changeCategory.logo_url = ''
+                this.changeCategory.inputName = ''
+
+                // reset select option
+                const select = document.getElementById('change-category-select')
+                select.selectedIndex = 0
+            } else {
+                alert(error.value?.data?.message || 'Something went wrong, please try again')
             }
         }
     },
     watch: {
+        // changeCategory: {
+        //     handler: debounce(function (val) {
+        //         console.log(this.changeCategory)
+        //     }, 500),
+        //     deep: true,
+        // },
     }
 }
 </script>

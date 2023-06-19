@@ -43,6 +43,10 @@ Route::middleware(['userAuth:adminUser'])->group(function () {
         Route::get('/admin/site-management/category', 'getCategory')->name('api.admin.site-management.category');
 
         Route::post('/admin/site-management/post/addCategory', 'addCategory')->name('api.admin.site-management.post.addCategory');
+
+        Route::post('/admin/site-management/post/updateCategory', 'updateCategory')->name('api.admin.site-management.post.updateCategory');
+
+        Route::post('/admin/site-management/post/removeCategory', 'removeCategory')->name('api.admin.site-management.post.removeCategory');
     });
 
 });

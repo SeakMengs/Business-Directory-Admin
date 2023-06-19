@@ -169,6 +169,21 @@
   gap: 1rem;
   width: 100%;
 }
+.cate-input-wrapper .sort-select {
+  height: 2rem;
+  border: none;
+  outline: none;
+  border-radius: 4rem;
+  -webkit-border-radius: 4rem;
+  -moz-border-radius: 4rem;
+  -ms-border-radius: 4rem;
+  -o-border-radius: 4rem;
+  background-color: var(--bg-color-1);
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
+  padding: 0 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
 
 .cate-tick-wrapper {
   display: flex;

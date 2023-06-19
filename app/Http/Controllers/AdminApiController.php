@@ -9,6 +9,7 @@ use App\Models\NormalUser;
 use App\Models\CompanyUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class AdminApiController extends Controller
 {
@@ -148,10 +149,12 @@ class AdminApiController extends Controller
                 'unban_by_admin_id' => null,
             ]);
 
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Company has been banned'
-            ], 200);
+            if ($banCompany && $banCompanyUser) {
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'Company has been banned'
+                ], 200);
+            }
         }
     }
 
@@ -176,10 +179,13 @@ class AdminApiController extends Controller
                 'unban_by_admin_id' => null,
             ]);
 
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Company user has been banned'
-            ], 200);
+            // there is a chance that the company user has no company
+            if ($banCompanyUser || $banCompany) {
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'Company user has been banned'
+                ], 200);
+            }
         }
     }
 
@@ -196,10 +202,12 @@ class AdminApiController extends Controller
                 'unban_by_admin_id' => null,
             ]);
 
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Normal user has been banned'
-            ], 200);
+            if ($banNormalUser) {
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'Normal user has been banned'
+                ], 200);
+            }
         }
     }
 
@@ -222,10 +230,13 @@ class AdminApiController extends Controller
                 'unban_by_admin_id' => $this->userData->admin_id,
             ]);
 
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Company user has been unbanned'
-            ], 200);
+            // there is a chance that the company user has no company
+            if ($unBanCompanyUser || $unBanAllRelatedCompanies) {
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'Company user has been unbanned'
+                ], 200);
+            }
         }
     }
 
@@ -241,10 +252,12 @@ class AdminApiController extends Controller
                 'unban_by_admin_id' => $this->userData->admin_id,
             ]);
 
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Normal user has been unbanned'
-            ], 200);
+            if ($unBanNormalUser) {
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'Normal user has been unbanned'
+                ], 200);
+            }
         }
     }
 
@@ -261,22 +274,88 @@ class AdminApiController extends Controller
         }
     }
 
-    public function addCategory(Request $request) {
+    public function addCategory(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => ['unique:category,name'],
+            'logo_url' => 'required',
+        ]);
 
-        $newCategoryName = $request->input('name');
-        $newCategoryIcon = $request->input('logo_url');
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Category name already exist or logo url is empty'
+            ], 400);
+        }
 
         if ($this->userData) {
+            $newCategoryName = $request->input('name');
+            $newCategoryIcon = $request->input('logo_url');
             $saveNewCategory = Category::create([
                 'name' => $newCategoryName,
                 'logo_url' => $newCategoryIcon,
                 'add_by_admin_id' => $this->userData->admin_id,
             ]);
 
+            if ($saveNewCategory) {
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'New category has been added'
+                ], 200);
+            }
+        }
+    }
+
+    public function updateCategory(Request $request)
+    {
+        $category_id = $request->input('category_id');
+        $category_name = $request->input('name');
+        $category_icon = $request->input('logo_url');
+
+        $validator = Validator::make($request->all(), [
+            // make sure the name is unique except for the current category name
+            'name' => ['unique:category,name,' . $category_id . ',category_id'],
+            'logo_url' => 'required',
+        ]);
+
+        if ($validator->fails()) {
             return response()->json([
-                'status' => 'success',
-                'message' => 'New category has been added'
-            ], 200);
+                'status' => 'error',
+                'message' => 'Category name already exist or logo url is empty'
+            ], 400);
+        }
+
+        if ($this->userData) {
+            $updateCategory = Category::where('category_id', $category_id)->update([
+                'name' => $category_name,
+                'logo_url' => $category_icon,
+                'edit_by_admin_id' => $this->userData->admin_id,
+            ]);
+
+            if ($updateCategory) {
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'Category has been updated'
+                ], 200);
+            }
+        }
+    }
+
+    public function removeCategory(Request $request)
+    {
+        $category_id = $request->input('category_id');
+
+        if ($category_id) {
+            if ($this->userData) {
+                $removeCategory = Category::where('category_id', $category_id)->delete();
+
+                if ($removeCategory) {
+                    return response()->json([
+                        'status' => 'success',
+                        'message' => 'Category has been updated'
+                    ], 200);
+                }
+            }
         }
     }
 }

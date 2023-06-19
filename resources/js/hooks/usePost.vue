@@ -15,7 +15,7 @@ export default async function usePost(url, { csrf, api_token, params }) {
             },
         })
     } catch (err) {
-        error.value = err.message
+        error.value = err.response
     } finally {
         return { res, error }
     }

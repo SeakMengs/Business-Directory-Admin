@@ -18,7 +18,7 @@
 
             data.value = res.data;
         } catch (err) {
-            error.value = err.message;
+            error.value = err.response;
         } finally {
             loading.value = false;
         }
