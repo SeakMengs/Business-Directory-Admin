@@ -7,14 +7,14 @@
                     <input type="hidden" name="_token" :value="this.csrf">
                     <div class="flex flex-col m-1">
                         <label for="Email">Email</label>
-                        <input v-model="email" class="p-1 input" type="text" name="email" id="Email" placeholder="Email">
+                        <input class="p-1 input" type="text" name="email" id="Email" placeholder="Email">
                     </div>
                     <div class="flex flex-col m-1">
                         <label for="password">Password</label>
-                        <input v-model="password" class="p-1 input" type="password" name="password" id="password" placeholder="Password">
+                        <input class="p-1 input" type="password" name="password" id="password" placeholder="Password">
                     </div>
-                    <div class="flex flex-col m-1">
-                        <label class="wrong-input">The username or password is incorrect</label>
+                    <div v-if="this.test2" class="flex flex-col m-1">
+                        <label class="wrong-input">Credentials doesn't match</label>
                     </div>
                     <div class="flex flex-col m-1">
                         <input class="p-1 submit" type="submit" value="Login">
@@ -29,7 +29,8 @@
 export default {
     // get props
     props: [
-        'csrf'
-    ]
+        'csrf',
+        'test2'
+    ],
 }
 </script>

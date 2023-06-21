@@ -9,7 +9,7 @@
                 <input class="hidden arrowCheck" type="checkbox" id="arrowCheck1">
                 <i class="arrow mask-image-arrow"></i>
             </div>
-            <div class="head-child-wrapper">
+            <div class="head-child-wrapper head-child-row-1">
                 <div @click="setPage(11)" class="head-child" :class="{ 'isCurrentPage': this.currentPage === 11 }">
                     <i class="i-overview"></i>
                     <span class="head-child-title">Overview</span>
@@ -17,7 +17,7 @@
             </div>
         </div>
         <!-- second menu content -->
-        <div class="main-content">
+        <div v-if="this.user?.ban_access || this.user.access_everything" class="main-content">
             <div @click="toggleContent(2)" class="head-title-wrapper"
                 :class="{ 'isCurrentPage': this.dashboardPage === '2' }">
                 <span class="head-title">Account Management</span>
@@ -25,7 +25,7 @@
                 <input class="hidden arrowCheck" type="checkbox" id="arrowCheck2">
                 <i class="arrow mask-image-arrow"></i>
             </div>
-            <div class="head-child-wrapper">
+            <div class="head-child-wrapper head-child-row-2">
                 <div @click="setPage(21)" class="head-child" :class="{ 'isCurrentPage': this.currentPage === 21 }">
                     <i class="i-find-user"></i>
                     <span class="head-child-title">Find User</span>
@@ -41,7 +41,7 @@
             </div>
         </div>
         <!-- Third menu content -->
-        <div class="main-content">
+        <div v-if="this.user?.add_category || this.user.access_everything" class="main-content">
             <div @click="toggleContent(3)" class="head-title-wrapper"
                 :class="{ 'isCurrentPage': this.dashboardPage === '3' }">
                 <span class="head-title">Site Management</span>
@@ -49,7 +49,7 @@
                 <input class="hidden arrowCheck" type="checkbox" id="arrowCheck3">
                 <i class="arrow mask-image-arrow"></i>
             </div>
-            <div class="head-child-wrapper">
+            <div class="head-child-wrapper head-child-row-3">
                 <div @click="setPage(31)" class="head-child" :class="{ 'isCurrentPage': this.currentPage === 31 }">
                     <i class="i-menu-category"></i>
                     <span class="head-child-title">Category</span>
@@ -65,12 +65,12 @@
                 <input class="hidden arrowCheck" type="checkbox" id="arrowCheck4">
                 <i class="arrow mask-image-arrow"></i>
             </div>
-            <div class="head-child-wrapper">
+            <div class="head-child-wrapper head-child-row-4">
                 <div @click="setPage(41)" class="head-child" :class="{ 'isCurrentPage': this.currentPage === 41 }">
                     <i class="i-menu-category"></i>
                     <span class="head-child-title">My Admin Profile</span>
                 </div>
-                <div @click="setPage(42)" class="head-child" :class="{ 'isCurrentPage': this.currentPage === 42 }">
+                <div v-if="this.user?.access_everything" @click="setPage(42)" class="head-child" :class="{ 'isCurrentPage': this.currentPage === 42 }">
                     <i class="i-find-company"></i>
                     <span class="head-child-title">Admin Management</span>
                 </div>
@@ -105,6 +105,7 @@ export default {
         const setPage = inject('setPage')
         const toggleContent = inject('toggleContent')
         const isOpenMenu = inject('isOpenMenu')
+        const user = inject('user')
 
         return {
             currentPage,
@@ -113,7 +114,16 @@ export default {
             toggleContent,
             dashboardPage,
             isOpenMenu,
+            user,
         }
-    }
+    },
+    // watch: {
+    //     user: {
+    //         handler() {
+    //             console.log(this.user)
+    //         },
+    //         deep: true
+    //     }
+    // }
 }
 </script>

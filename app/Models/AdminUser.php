@@ -20,8 +20,6 @@ class AdminUser extends Model implements Authenticatable
         'email',
         'password',
         'profile_url',
-        'access_level',
-        'find_user',
         'add_category',
         'ban_access',
         'access_everything',
@@ -29,6 +27,7 @@ class AdminUser extends Model implements Authenticatable
 
     protected $hidden = [
         'password',
+        'api_token',
     ];
 
     // The function below are mutators and accessors that will be called automatically

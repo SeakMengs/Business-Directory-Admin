@@ -74,9 +74,16 @@ class AdminApiController extends Controller
         if ($this->userData) {
             $normalUsers = NormalUser::where($searchBy, 'like', '%' . $query . '%')->orderBy('created_at', $sortOrderBy)->get();
 
-            return response()->json([
-                'users' => $normalUsers
-            ], 200);
+            if ($normalUsers) {
+                return response()->json([
+                    'users' => $normalUsers
+                ], 200);
+            } else {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'No users found'
+                ], 400);
+            }
         }
     }
     public function getCompanyUsers(Request $request)
@@ -89,11 +96,18 @@ class AdminApiController extends Controller
         $query = $request->query('query');
 
         if ($this->userData) {
-            $normalUsers = CompanyUser::where($searchBy, 'like', '%' . $query . '%')->orderBy('created_at', $sortOrderBy)->get();
+            $companyUser = CompanyUser::where($searchBy, 'like', '%' . $query . '%')->orderBy('created_at', $sortOrderBy)->get();
 
-            return response()->json([
-                'users' => $normalUsers
-            ], 200);
+            if ($companyUser) {
+                return response()->json([
+                    'users' => $companyUser
+                ], 200);
+            } else {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'No users found'
+                ], 400);
+            }
         }
     }
 
@@ -108,13 +122,20 @@ class AdminApiController extends Controller
         $query = $request->query('query');
 
         if ($this->userData) {
-            $normalUsers = Company::with('reports.reportBy', 'companyUser')
+            $companies = Company::with('reports.reportBy', 'companyUser')
                 ->withCount('reports as report_count')
                 ->where($searchBy, 'like', '%' . $query . '%')->orderBy($sortBy, $sortOrderBy)->get();
 
-            return response()->json([
-                'companies' => $normalUsers
-            ], 200);
+            if ($companies) {
+                return response()->json([
+                    'companies' => $companies
+                ], 200);
+            } else {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'No companies found'
+                ], 400);
+            }
         }
     }
 
@@ -124,16 +145,6 @@ class AdminApiController extends Controller
         $banReason = $request->input('ban_reason');
         $company_user_id = $request->input('company_user_id');
 
-
-        // return response()->json(
-        //     [
-        //         'status' => 'success',
-        //         'company_id' => $company_id,
-        //         'ban_reason' => $banReason,
-        //         'company_user_id' => $company_user_id,
-        //     ],
-        //     200
-        // );
         if ($this->userData) {
             $banCompany = Company::where('company_id', $company_id)->update([
                 'is_banned' => true,
@@ -154,6 +165,11 @@ class AdminApiController extends Controller
                     'status' => 'success',
                     'message' => 'Company has been banned'
                 ], 200);
+            } else {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Failed to ban company'
+                ], 400);
             }
         }
     }
@@ -185,6 +201,11 @@ class AdminApiController extends Controller
                     'status' => 'success',
                     'message' => 'Company user has been banned'
                 ], 200);
+            } else {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Failed to ban company user'
+                ], 400);
             }
         }
     }
@@ -207,6 +228,11 @@ class AdminApiController extends Controller
                     'status' => 'success',
                     'message' => 'Normal user has been banned'
                 ], 200);
+            } else {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Failed to ban normal user'
+                ], 400);
             }
         }
     }
@@ -236,6 +262,11 @@ class AdminApiController extends Controller
                     'status' => 'success',
                     'message' => 'Company user has been unbanned'
                 ], 200);
+            } else {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Failed to unban company user'
+                ], 400);
             }
         }
     }
@@ -270,7 +301,14 @@ class AdminApiController extends Controller
         if ($this->userData) {
             $categories = Category::where($searchBy, 'like', '%' . $query . '%')->orderBy('created_at', $sortOrderBy)->get();
 
-            return response()->json($categories, 200);
+            if ($categories) {
+                return response()->json($categories, 200);
+            } else {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Failed to get categories'
+                ], 400);
+            }
         }
     }
 
@@ -302,6 +340,11 @@ class AdminApiController extends Controller
                     'status' => 'success',
                     'message' => 'New category has been added'
                 ], 200);
+            } else {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Failed to add new category'
+                ], 400);
             }
         }
     }
@@ -337,6 +380,11 @@ class AdminApiController extends Controller
                     'status' => 'success',
                     'message' => 'Category has been updated'
                 ], 200);
+            } else {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Failed to update category'
+                ], 400);
             }
         }
     }
@@ -347,14 +395,87 @@ class AdminApiController extends Controller
 
         if ($category_id) {
             if ($this->userData) {
+                // get one company in this category if it exist we don't allow to remove the category
+                $checkCompanyInCategory = Company::where('category_id', $category_id)->get();
+
+                if ($checkCompanyInCategory && count($checkCompanyInCategory) > 0) {
+                    return response()->json([
+                        'status' => 'error',
+                        'message' => 'There are companies in this category, we cannot remove it'
+                    ], 400);
+                }
+
                 $removeCategory = Category::where('category_id', $category_id)->delete();
 
                 if ($removeCategory) {
                     return response()->json([
                         'status' => 'success',
-                        'message' => 'Category has been updated'
+                        'message' => 'Category has been removed'
                     ], 200);
+                } else {
+                    return response()->json([
+                        'status' => 'error',
+                        'message' => 'Failed to remove category'
+                    ], 400);
                 }
+            }
+        }
+    }
+
+    public function createAdmin(Request $request)
+    {
+        if ($this->userData) {
+            $validator = Validator::make($request->all(), [
+                'email' => ['unique:admin_user,email'],
+                'password' => 'required',
+                'name' => ['required', 'unique:admin_user,name'],
+                'ban_access' => 'required',
+                'add_category' => 'required',
+                'access_everything' => 'required',
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Credentials already exist or required fields are empty'
+                ], 400);
+            }
+
+            $newAdmin = AdminUser::create([
+                'email' => $request->input('email'),
+                'name' => $request->input('name'),
+                'password' => $request->input('password'),
+                'ban_access' => $request->input('ban_access'),
+                'add_category' => $request->input('add_category'),
+                'access_everything' => $request->input('access_everything'),
+            ]);
+
+            if ($newAdmin) {
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'New admin has been added'
+                ], 200);
+            } else {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Failed to add new admin'
+                ], 400);
+            }
+        }
+    }
+
+    public function getAdmins()
+    {
+        if ($this->userData) {
+            $admins = AdminUser::get();
+
+            if ($admins) {
+                return response()->json($admins, 200);
+            } else {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'No admins found'
+                ], 400);
             }
         }
     }

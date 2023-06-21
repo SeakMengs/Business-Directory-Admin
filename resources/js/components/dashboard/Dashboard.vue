@@ -163,12 +163,12 @@ export default {
         },
         toggleContent(row) {
             let contentRow = document.getElementById('arrowCheck' + row)
-            let ArrayIndex = row - 1
 
             // example: true -> false, false -> true
             contentRow.checked = !contentRow.checked
 
-            let headChildWrapper = document.querySelectorAll('.head-child-wrapper')[ArrayIndex]
+            const headChildWrapper = document.querySelector(`.head-child-row-${row}`)
+
             headChildWrapper.classList.toggle('hide-content-animation')
             headChildWrapper.classList.toggle('hide-content')
         },

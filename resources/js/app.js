@@ -19,6 +19,10 @@ import banList from './components/dashboard/Ban-list'
 import banListCompany from './components/dashboard/ban-list/Ban-list-company'
 import banListUser from './components/dashboard/ban-list/Ban-list-user'
 import loading from './components/Loading'
+import addEditCategory from './components/dashboard/category/Add-edit-category'
+import searchCategory from './components/dashboard/category/Search-category'
+import createAdmin from './components/dashboard/admin-management/Create-admin'
+import adminList from './components/dashboard/admin-management/Admin-list'
 
 const app = createApp({})
 
@@ -41,5 +45,9 @@ app.component('ban-list', banList)
 app.component('ban-list-company', banListCompany)
 app.component('ban-list-user', banListUser)
 app.component('loading', loading)
+app.component('add-edit-category', addEditCategory)
+app.component('search-category', searchCategory)
+app.component('create-admin', createAdmin)
+app.component('admin-list', adminList)
 
 app.mount('#app')

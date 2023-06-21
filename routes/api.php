@@ -19,7 +19,6 @@ use App\Http\Controllers\AdminApiController;
 Route::middleware(['userAuth:adminUser'])->group(function () {
 
     Route::controller(AdminApiController::class)->group(function () {
-
         Route::get('/admin/user', 'getUser')->name('api.admin.getUser');
 
         Route::get('/admin/website-overview', 'getWebsiteOverview')->name('api.admin.web-overview');
@@ -47,6 +46,10 @@ Route::middleware(['userAuth:adminUser'])->group(function () {
         Route::post('/admin/site-management/post/updateCategory', 'updateCategory')->name('api.admin.site-management.post.updateCategory');
 
         Route::post('/admin/site-management/post/removeCategory', 'removeCategory')->name('api.admin.site-management.post.removeCategory');
+
+        Route::post('/admin/admin-management/post/createAdmin', 'createAdmin')->name('api.admin.admin-management.post.createAdmin');
+
+        Route::get('/admin/admin-management/admins', 'getAdmins')->name('api.admin.admin-management.admins');
     });
 
 });

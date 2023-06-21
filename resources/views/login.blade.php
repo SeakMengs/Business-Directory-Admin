@@ -19,11 +19,9 @@
             window.location.href = "/admin/dashboard";
         </script>
     @else
-        {{-- use it temporary to navigate --}}
-        <a href="/admin/dashboard">Dashboard</a>
         <div id="app">
             {{-- login component can be found in \resources\js\components\Login.vue --}}
-            <login csrf={{ csrf_token() }}></login>
+            <login csrf="{{ csrf_token() }}" test2="{{ $errors->any() ? true : false }}"></login>
         </div>
     @endif
 </body>
