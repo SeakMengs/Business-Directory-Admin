@@ -16,7 +16,6 @@
                 <img src="https://i.redd.it/v0caqchbtn741.jpg" alt="profile">
                 <div class="flex flex-col m-half">
                     <span class="profile-name">{{ this.user.name }}</span>
-                    <span class="access-lv">Access level 2</span>
                 </div>
             </a>
             <div class="left-border-line"></div>

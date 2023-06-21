@@ -3,7 +3,8 @@
         <div class="total-header all-cate-wrapper">
             <h1>Admin List</h1>
             <div class="search-wrapper search-cate">
-                <input class="search" type="text" name="search" id="search" placeholder="Search" autocomplete="off">
+                <input v-on:input="changeQuery($event)" class="search" type="text" name="search" id="search"
+                    placeholder="Search" autocomplete="off">
                 <div class="center search-bg">
                     <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
                         <path
@@ -11,21 +12,22 @@
                     </svg>
                 </div>
             </div>
+            <label class="searching" v-if="this.isSearching">Loading...</label>
         </div>
         <div class="total-result">
             <div class="sort-wrapper">
                 <label for="sort-comp">Show By:</label>
-                <select name="sortSelect" id="sort-comp" class="sort-select">
-                    <option value="Most Report">Recent</option>
-                    <option value="Least Report">Old</option>
+                <select v-model="this.searchQuery.sortOrderBy" name="sortSelect" id="sort-comp" class="sort-select">
+                    <option value="desc">Newest</option>
+                    <option value="asc">Oldest</option>
                 </select>
             </div>
         </div>
         <div class="total-result">
-            <span>Total result: 305</span>
+            <span>Total result: {{ this.admins.length }}</span>
         </div>
         <div class="table-wrapper">
-            <table class="table">
+            <table v-if="this.admins.length > 0" class="table">
                 <tr>
                     <th>ID</th>
                     <th>Profile</th>
@@ -37,9 +39,9 @@
                     <th>Reset Default Password</th>
                 </tr>
                 <!-- data start here -->
-                <tr v-for="admin, index in this.admins" :key="admin.admin_id">
+                <tr v-for="admin in this.admins" :key="admin.admin_id">
                     <td>
-                        <input type="text" :value="index + 1" readonly>
+                        <input type="text" :value="admin.admin_id" readonly>
                     </td>
                     <td>
                         <div class="i-admin-user-bg center">
@@ -48,44 +50,46 @@
                         </div>
                     </td>
                     <td>
-                        <input type="text" :value="admin.name" name="name">
+                        <input type="text" :value="admin.name" name="name" :id="'admin-name-id-' + admin.admin_id">
                     </td>
                     <td>
-                        <select name="add_category">
-                            <option value="true" :selected="admin.add_category">Yes</option>
-                            <option value="false" :selected="!admin.add_category">No</option>
+                        <select name="add_category" :id="'admin-add_category-id-' + admin.admin_id">
+                            <option value="1" :selected="admin.add_category">Yes</option>
+                            <option value="0" :selected="!admin.add_category">No</option>
                         </select>
                     </td>
                     <td>
-                        <select name="ban_access">
-                            <option value="true" :selected="admin.ban_access">Yes</option>
-                            <option value="false" :selected="!admin.ban_access">No</option>
+                        <select name="ban_access" :id="'admin-ban_access-id-' + admin.admin_id">
+                            <option value="1" :selected="admin.ban_access">Yes</option>
+                            <option value="0" :selected="!admin.ban_access">No</option>
                         </select>
                     </td>
                     <td>
-                        <select name="access_everything">
-                            <option value="true" :selected="admin.access_everything">Yes</option>
-                            <option value="false" :selected="!admin.access_everything">No</option>
+                        <select name="access_everything" :id="'admin-access_everything-id-' + admin.admin_id">
+                            <option value="1" :selected="admin.access_everything">Yes</option>
+                            <option value="0" :selected="!admin.access_everything">No</option>
                         </select>
                     </td>
                     <td>
                         <div class="cate-add-remove-wrapper">
-                            <button class="add-cate-btn">Update</button>
-                            <button class="remove-cate-btn">Remove</button>
+                            <button class="add-cate-btn" @click="updateAdmin(admin.admin_id)">Update</button>
+                            <button class="remove-cate-btn" @click="removeAdmin(admin.admin_id)">Remove</button>
                         </div>
                     </td>
                     <td>
-                        <button class="reset-cate-btn">Reset</button>
+                        <button class="reset-cate-btn" @click="resetDefaultAdminPassword(admin.admin_id)">Reset</button>
                     </td>
                 </tr>
                 <!-- data end here -->
             </table>
+            <h1 v-else>No user found</h1>
         </div>
     </div>
 </template>
 
 <script>
 import { ref, inject } from 'vue'
+import debounce from "lodash.debounce";
 import usePost from '../../../hooks/usePost';
 import useFetch from '../../../hooks/useFetch';
 
@@ -94,7 +98,15 @@ export default {
         const csrf = inject('csrf')
         const api_token = inject('api_token')
 
-        const { data: admins, error } = await useFetch('/api/admin/admin-management/admins', {
+        const isSearching = ref(false)
+
+        const searchQuery = ref({
+            searchValue: '',
+            sortOrderBy: 'desc',
+            searchBy: 'name',
+        })
+
+        const { data: admins, error } = await useFetch(`/api/admin/admin-management/admins?sortOrderBy=${searchQuery.value.sortOrderBy}&query=${searchQuery.value.searchValue}&searchBy=${searchQuery.value.searchBy}`, {
             csrf: csrf.value,
             api_token: api_token.value,
         })
@@ -105,10 +117,97 @@ export default {
             csrf,
             api_token,
             admins,
+            searchQuery,
+            isSearching,
         }
     },
     methods: {
+        async getAdmins() {
+            const { data: result, error } = await useFetch(`/api/admin/admin-management/admins?sortOrderBy=${this.searchQuery.sortOrderBy}&query=${this.searchQuery.searchValue}&searchBy=${this.searchQuery.searchBy}`, {
+                csrf: this.csrf,
+                api_token: this.api_token,
+            })
 
+            this.admins = result.value
+        },
+        changeQuery(event) {
+            if (event.target.value[0] === '#') {
+                this.searchQuery.searchBy = 'admin_id'
+                // remove the # from the search value
+                this.searchQuery.searchValue = event.target.value.slice(1)
+            } else {
+                this.searchQuery.searchBy = 'name'
+                this.searchQuery.searchValue = event.target.value
+            }
+        },
+        async updateAdmin(admin_id) {
+            const name = document.getElementById(`admin-name-id-${admin_id}`).value
+            const add_category = document.getElementById(`admin-add_category-id-${admin_id}`).value
+            const ban_access = document.getElementById(`admin-ban_access-id-${admin_id}`).value
+            const access_everything = document.getElementById(`admin-access_everything-id-${admin_id}`).value
+
+            const { res, error } = await usePost('/api/admin/admin-management/post/updateAdmin', {
+                params: {
+                    name: name,
+                    add_category: add_category,
+                    ban_access: ban_access,
+                    access_everything: access_everything,
+                    admin_id: admin_id,
+                },
+                csrf: this.csrf,
+                api_token: this.api_token,
+            })
+
+            if (res.value?.data?.status === 'success') {
+                alert('Admin updated successfully')
+
+                this.getAdmins()
+            } else {
+                alert(error.value?.data?.message || 'Something went wrong, please try again')
+            }
+        },
+        async removeAdmin(admin_id) {
+            const { res, error } = await usePost('/api/admin/admin-management/post/removeAdmin', {
+                params: {
+                    admin_id: admin_id,
+                },
+                csrf: this.csrf,
+                api_token: this.api_token,
+            })
+
+            if (res.value?.data?.status === 'success') {
+                alert('Admin removed successfully')
+
+                this.getAdmins()
+            } else {
+                alert(error.value?.data?.message || 'Something went wrong, please try again')
+            }
+        },
+        async resetDefaultAdminPassword(admin_id) {
+            const { res, error } = await usePost('/api/admin-management/post/admin/reset-default-password', {
+                params: {
+                    admin_id: admin_id,
+                },
+                csrf: this.csrf,
+                api_token: this.api_token,
+            })
+
+            if (res.value?.data?.status === 'success') {
+                alert('Admin password has been reset')
+            } else {
+                alert(error.value?.data?.message || 'Something went wrong, please try again')
+            }
+        },
+    },
+    watch: {
+        searchQuery: {
+            handler: debounce(async function () {
+                this.isSearching = true
+                await this.getAdmins()
+                this.isSearching = false
+            }, 300),
+            deep: true
+        }
     }
 }
 </script>

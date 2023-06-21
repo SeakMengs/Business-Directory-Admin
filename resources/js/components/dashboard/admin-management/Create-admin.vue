@@ -25,22 +25,20 @@
                         </div>
                         <div class="privilege-wrapper">
                             <div class="cate-tick-wrapper">
-                                <input v-on:input="privilegeWatcher('addCategory')" class="tick-input" type="checkbox"
-                                    :checked="newAdmin.addCategory" id="addCategory">
+                                <input class="tick-input" type="checkbox" :checked="newAdmin.addCategory" id="addCategory">
                                 <label for="addCategory">
                                     <h3>Add Category</h3>
                                 </label>
                             </div>
                             <div class="cate-tick-wrapper">
-                                <input v-on:input="privilegeWatcher('banAccess')" :checked="newAdmin.banAccess"
-                                    class="tick-input" type="checkbox" id="banUserAndCompany">
+                                <input :checked="newAdmin.banAccess" class="tick-input" type="checkbox"
+                                    id="banUserAndCompany">
                                 <label for="banUserAndCompany">
                                     <h3>Ban User&Company</h3>
                                 </label>
                             </div>
                             <div class="cate-tick-wrapper">
-                                <input v-on:input="privilegeWatcher('accessEverything')"
-                                    :checked="newAdmin.accessEverything" class="tick-input" type="checkbox"
+                                <input :checked="newAdmin.accessEverything" class="tick-input" type="checkbox"
                                     id="accessEverything">
                                 <label for="accessEverything">
                                     <h3>Access Everything</h3>
@@ -136,38 +134,40 @@ export default {
                 alert(error.value?.data?.message || 'Something went wrong, please try again')
             }
         },
-        privilegeWatcher(privilege) {
-            switch (privilege) {
-                case 'addCategory':
-                    this.newAdmin.addCategory = !this.newAdmin.addCategory
+        //* NOTE: I decide to remove this function because I want admin with access everything role can change other admin privilege
 
-                    // check access everything
-                    this.newAdmin.accessEverything = this.newAdmin.banAccess && this.newAdmin.addCategory
+        // privilegeWatcher(privilege) {
+        //     switch (privilege) {
+        //         case 'addCategory':
+        //             this.newAdmin.addCategory = !this.newAdmin.addCategory
 
-                    break
-                case 'banAccess':
-                    this.newAdmin.banAccess = !this.newAdmin.banAccess
+        //             // check access everything
+        //             this.newAdmin.accessEverything = this.newAdmin.banAccess && this.newAdmin.addCategory
 
-                    // check access everything
-                    this.newAdmin.accessEverything = this.newAdmin.banAccess && this.newAdmin.addCategory
+        //             break
+        //         case 'banAccess':
+        //             this.newAdmin.banAccess = !this.newAdmin.banAccess
 
-                    break
-                case 'accessEverything':
-                    this.newAdmin.accessEverything = !this.newAdmin.accessEverything
+        //             // check access everything
+        //             this.newAdmin.accessEverything = this.newAdmin.banAccess && this.newAdmin.addCategory
 
-                    if (this.newAdmin.accessEverything) {
-                        this.newAdmin.banAccess = true
-                        this.newAdmin.addCategory = true
-                    } else {
-                        this.newAdmin.banAccess = false
-                        this.newAdmin.addCategory = false
-                    }
+        //             break
+        //         case 'accessEverything':
+        //             this.newAdmin.accessEverything = !this.newAdmin.accessEverything
 
-                    break
-            }
+        //             if (this.newAdmin.accessEverything) {
+        //                 this.newAdmin.banAccess = true
+        //                 this.newAdmin.addCategory = true
+        //             } else {
+        //                 this.newAdmin.banAccess = false
+        //                 this.newAdmin.addCategory = false
+        //             }
 
-            // console.log('accessEverything', this.newAdmin.accessEverything, 'banAccess', this.newAdmin.banAccess, 'addCategory', this.newAdmin.addCategory)
-        }
+        //             break
+        //     }
+
+        //     // console.log('accessEverything', this.newAdmin.accessEverything, 'banAccess', this.newAdmin.banAccess, 'addCategory', this.newAdmin.addCategory)
+        // }
     },
 }
 </script>

@@ -10,7 +10,6 @@
                         <img src="https://i.redd.it/v0caqchbtn741.jpg" alt="profile">
                         <div class="flex flex-col m-half">
                             <span class="profile-name">{{ this.user.name }}</span>
-                            <span class="access-lv">Access level 2</span>
                         </div>
                     </a>
                     <div class="left-border-line"></div>
@@ -37,7 +36,7 @@
                         <category v-else-if="this.currentPage === 31"></category>
                         <admin-profile v-else-if="this.currentPage === 41"></admin-profile>
                         <admin v-else-if="this.currentPage === 42"></admin>
-                        <ban-list v-else-if="this.currentPage === 43"></ban-list>
+                        <!-- <ban-list v-else-if="this.currentPage === 43"></ban-list> -->
                     </div>
                     <!--* End of right side content *-->
                 </template>

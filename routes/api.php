@@ -50,6 +50,12 @@ Route::middleware(['userAuth:adminUser'])->group(function () {
         Route::post('/admin/admin-management/post/createAdmin', 'createAdmin')->name('api.admin.admin-management.post.createAdmin');
 
         Route::get('/admin/admin-management/admins', 'getAdmins')->name('api.admin.admin-management.admins');
+
+        Route::post('/admin/admin-management/post/updateAdmin', 'updateAdmin')->name('api.admin.admin-management.post.updateAdmin');
+
+        Route::post('/admin/admin-management/post/removeAdmin', 'removeAdmin')->name('api.admin.admin-management.post.removeAdmin');
+
+        Route::post('/admin-management/post/admin/reset-default-password', 'resetDefaultAdminPassword')->name('api.admin.admin-management.post.resetDefaultAdminPassword');
     });
 
 });

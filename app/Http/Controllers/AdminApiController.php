@@ -464,10 +464,14 @@ class AdminApiController extends Controller
         }
     }
 
-    public function getAdmins()
+    public function getAdmins(Request $request)
     {
+        $sortOrderBy = $request->query('sortOrderBy');
+        $searchBy = $request->query('searchBy');
+        $query = $request->query('query');
+
         if ($this->userData) {
-            $admins = AdminUser::get();
+            $admins = AdminUser::where($searchBy, 'like', '%' . $query . '%')->orderBy('created_at', $sortOrderBy)->get();
 
             if ($admins) {
                 return response()->json($admins, 200);
@@ -476,6 +480,97 @@ class AdminApiController extends Controller
                     'status' => 'error',
                     'message' => 'No admins found'
                 ], 400);
+            }
+        }
+    }
+
+    public function updateAdmin(Request $request)
+    {
+        $admin_id = $request->input('admin_id');
+
+        $validator = Validator::make($request->all(), [
+            'name' => ['unique:admin_user,name,' . $admin_id . ',admin_id'],
+            'add_category' => 'required',
+            'ban_access' => 'required',
+            'access_everything' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Name already exist or required fields are missing'
+            ], 400);
+        }
+
+        if ($this->userData) {
+            // check if the admin id exist so that we can update the admin data
+            // and check if the current user has the privilege update admin account data
+            if ($admin_id && $this->userData->access_everything) {
+                $updateAdmin = AdminUser::where('admin_id', $admin_id)->update([
+                    'name' => $request->input('name'),
+                    'add_category' => $request->input('add_category'),
+                    'ban_access' => $request->input('ban_access'),
+                    'access_everything' => $request->input('access_everything'),
+                ]);
+
+                if ($updateAdmin) {
+                    return response()->json([
+                        'status' => 'success',
+                        'message' => 'Admin has been updated'
+                    ], 200);
+                } else {
+                    return response()->json([
+                        'status' => 'error',
+                        'message' => 'Failed to update admin'
+                    ], 400);
+                }
+            }
+        }
+    }
+
+    public function removeAdmin(Request $request)
+    {
+        $admin_id = $request->input('admin_id');
+
+        if ($this->userData) {
+            if ($admin_id && $this->userData->access_everything) {
+                $removeAdmin = AdminUser::where('admin_id', $admin_id)->delete();
+
+                if ($removeAdmin) {
+                    return response()->json([
+                        'status' => 'success',
+                        'message' => 'Admin has been removed'
+                    ], 200);
+                } else {
+                    return response()->json([
+                        'status' => 'error',
+                        'message' => 'Failed to remove admin'
+                    ], 400);
+                }
+            }
+        }
+    }
+
+    public function resetDefaultAdminPassword(Request $request) {
+        $admin_id = $request->input('admin_id');
+
+        if ($this->userData) {
+            if ($admin_id && $this->userData->access_everything) {
+                $resetPassword = AdminUser::where('admin_id', $admin_id)->update([
+                    'password' => bcrypt('admin123')
+                ]);
+
+                if ($resetPassword) {
+                    return response()->json([
+                        'status' => 'success',
+                        'message' => 'Admin password has been reset'
+                    ], 200);
+                } else {
+                    return response()->json([
+                        'status' => 'error',
+                        'message' => 'Failed to reset admin password'
+                    ], 400);
+                }
             }
         }
     }
