@@ -145,7 +145,7 @@ class AdminApiController extends Controller
         $banReason = $request->input('ban_reason');
         $company_user_id = $request->input('company_user_id');
 
-        if ($this->userData) {
+        if ($this->userData->ban_access || $this->userData->access_everything) {
             $banCompany = Company::where('company_id', $company_id)->update([
                 'is_banned' => true,
                 'ban_reason' => $banReason,
@@ -179,7 +179,7 @@ class AdminApiController extends Controller
         $banReason = $request->input('ban_reason');
         $company_user_id = $request->input('company_user_id');
 
-        if ($this->userData) {
+        if ($this->userData->ban_access || $this->userData->access_everything) {
             $banCompanyUser = CompanyUser::where('company_user_id', $company_user_id)->update([
                 'is_banned' => true,
                 'ban_reason' => $banReason,
@@ -215,7 +215,7 @@ class AdminApiController extends Controller
         $banReason = $request->input('ban_reason');
         $normal_user_id = $request->input('normal_user_id');
 
-        if ($this->userData) {
+        if ($this->userData->ban_access || $this->userData->access_everything) {
             $banNormalUser = NormalUser::where('normal_user_id', $normal_user_id)->update([
                 'is_banned' => true,
                 'ban_reason' => $banReason,
@@ -241,7 +241,7 @@ class AdminApiController extends Controller
     {
         $company_user_id = $request->input('company_user_id');
 
-        if ($this->userData) {
+        if ($this->userData->ban_access || $this->userData->access_everything) {
             $unBanCompanyUser = CompanyUser::where('company_user_id', $company_user_id)->update([
                 'is_banned' => false,
                 'ban_reason' => null,
@@ -275,7 +275,7 @@ class AdminApiController extends Controller
     {
         $normal_user_id = $request->input('normal_user_id');
 
-        if ($this->userData) {
+        if ($this->userData->ban_access || $this->userData->access_everything) {
             $unBanNormalUser = NormalUser::where('normal_user_id', $normal_user_id)->update([
                 'is_banned' => false,
                 'ban_reason' => null,
@@ -326,7 +326,7 @@ class AdminApiController extends Controller
             ], 400);
         }
 
-        if ($this->userData) {
+        if ($this->userData->access_everything || $this->userData->access_category) {
             $newCategoryName = $request->input('name');
             $newCategoryIcon = $request->input('logo_url');
             $saveNewCategory = Category::create([
@@ -368,7 +368,7 @@ class AdminApiController extends Controller
             ], 400);
         }
 
-        if ($this->userData) {
+        if ($this->userData->access_everything || $this->userData->access_category) {
             $updateCategory = Category::where('category_id', $category_id)->update([
                 'name' => $category_name,
                 'logo_url' => $category_icon,
@@ -394,7 +394,7 @@ class AdminApiController extends Controller
         $category_id = $request->input('category_id');
 
         if ($category_id) {
-            if ($this->userData) {
+            if ($this->userData->access_everything || $this->userData->access_category) {
                 // get one company in this category if it exist we don't allow to remove the category
                 $checkCompanyInCategory = Company::where('category_id', $category_id)->get();
 
@@ -441,25 +441,27 @@ class AdminApiController extends Controller
                 ], 400);
             }
 
-            $newAdmin = AdminUser::create([
-                'email' => $request->input('email'),
-                'name' => $request->input('name'),
-                'password' => $request->input('password'),
-                'ban_access' => $request->input('ban_access'),
-                'add_category' => $request->input('add_category'),
-                'access_everything' => $request->input('access_everything'),
-            ]);
+            if ($this->userData->access_everything) {
+                $newAdmin = AdminUser::create([
+                    'email' => $request->input('email'),
+                    'name' => $request->input('name'),
+                    'password' => $request->input('password'),
+                    'ban_access' => $request->input('ban_access'),
+                    'add_category' => $request->input('add_category'),
+                    'access_everything' => $request->input('access_everything'),
+                ]);
 
-            if ($newAdmin) {
-                return response()->json([
-                    'status' => 'success',
-                    'message' => 'New admin has been added'
-                ], 200);
-            } else {
-                return response()->json([
-                    'status' => 'error',
-                    'message' => 'Failed to add new admin'
-                ], 400);
+                if ($newAdmin) {
+                    return response()->json([
+                        'status' => 'success',
+                        'message' => 'New admin has been added'
+                    ], 200);
+                } else {
+                    return response()->json([
+                        'status' => 'error',
+                        'message' => 'Failed to add new admin'
+                    ], 400);
+                }
             }
         }
     }

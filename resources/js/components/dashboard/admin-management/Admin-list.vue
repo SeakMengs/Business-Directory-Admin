@@ -85,6 +85,7 @@
             <h1 v-else>No user found</h1>
         </div>
     </div>
+    <!-- <button @click="reFetchAdminsFunc(true)">test</button> -->
 </template>
 
 <script>
@@ -97,6 +98,8 @@ export default {
     async setup() {
         const csrf = inject('csrf')
         const api_token = inject('api_token')
+        const reFetchAdmins = inject('reFetchAdmins')
+        const reFetchAdminsFunc = inject('reFetchAdminsFunc')
 
         const isSearching = ref(false)
 
@@ -119,6 +122,8 @@ export default {
             admins,
             searchQuery,
             isSearching,
+            reFetchAdmins,
+            reFetchAdminsFunc,
         }
     },
     methods: {
@@ -207,6 +212,17 @@ export default {
                 this.isSearching = false
             }, 300),
             deep: true
+        },
+        reFetchAdmins: {
+            handler: async function () {
+                if (this.reFetchAdmins) {
+                    this.isSearching = true
+                    await this.getAdmins()
+                    this.isSearching = false
+                }
+
+                this.reFetchAdminsFunc(false)
+            },
         }
     }
 }

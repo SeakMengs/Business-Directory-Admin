@@ -86,6 +86,8 @@ export default {
     setup() {
         const csrf = inject('csrf')
         const api_token = inject('api_token')
+        const reFetchAdmins = inject('reFetchAdmins')
+        const reFetchAdminsFunc = inject('reFetchAdminsFunc')
 
         const newAdmin = ref({
             name: '',
@@ -100,10 +102,13 @@ export default {
             csrf,
             api_token,
             newAdmin,
+            reFetchAdmins,
+            reFetchAdminsFunc,
         }
     },
     methods: {
         async createNewAdmin() {
+
             const { res, error } = await usePost('/api/admin/admin-management/post/createAdmin', {
                 params: {
                     name: this.newAdmin.name,
@@ -130,6 +135,7 @@ export default {
                     accessEverything: false,
                 }
 
+                this.reFetchAdminsFunc(true)
             } else {
                 alert(error.value?.data?.message || 'Something went wrong, please try again')
             }

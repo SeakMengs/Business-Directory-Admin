@@ -56,7 +56,9 @@ export default {
     async setup() {
         const csrf = inject('csrf')
         const api_token = inject('api_token')
+
         const isSearching = ref(false)
+
         const searchQuery = ref({
             searchValue: '',
             sortOrderBy: 'desc',
@@ -162,7 +164,7 @@ export default {
             }, 300),
             // deep watch is needed to watch for changes in object
             deep: true
-        }
+        },
     }
 }
 </script>
