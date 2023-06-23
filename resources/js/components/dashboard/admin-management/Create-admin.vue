@@ -25,20 +25,20 @@
                         </div>
                         <div class="privilege-wrapper">
                             <div class="cate-tick-wrapper">
-                                <input class="tick-input" type="checkbox" :checked="newAdmin.addCategory" id="addCategory">
+                                <input class="tick-input" type="checkbox" v-model="this.newAdmin.addCategory" id="addCategory">
                                 <label for="addCategory">
                                     <h3>Add Category</h3>
                                 </label>
                             </div>
                             <div class="cate-tick-wrapper">
-                                <input :checked="newAdmin.banAccess" class="tick-input" type="checkbox"
+                                <input v-model="this.newAdmin.banAccess" class="tick-input" type="checkbox"
                                     id="banUserAndCompany">
                                 <label for="banUserAndCompany">
                                     <h3>Ban User&Company</h3>
                                 </label>
                             </div>
                             <div class="cate-tick-wrapper">
-                                <input :checked="newAdmin.accessEverything" class="tick-input" type="checkbox"
+                                <input v-model="this.newAdmin.accessEverything" class="tick-input" type="checkbox"
                                     id="accessEverything">
                                 <label for="accessEverything">
                                     <h3>Access Everything</h3>
