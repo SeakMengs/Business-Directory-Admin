@@ -71,9 +71,15 @@ class AdminApiController extends Controller
         $sortOrderBy = $request->query('sortOrderBy');
         $searchBy = $request->query('searchBy');
         $query = $request->query('query');
+        $banByAdminId = $request->query('banByAdminId') ?? null;
 
         if ($this->userData) {
-            $normalUsers = NormalUser::where($searchBy, 'like', '%' . $query . '%')->orderBy('created_at', $sortOrderBy)->get();
+
+            if ($banByAdminId == null) {
+                $normalUsers = NormalUser::where([[$searchBy, 'like', '%' . $query . '%']])->orderBy('created_at', $sortOrderBy)->get();
+            } else {
+                $normalUsers = NormalUser::where([[$searchBy, 'like', '%' . $query . '%'], ['ban_by_admin_id', $banByAdminId]])->orderBy('created_at', $sortOrderBy)->get();
+            }
 
             if ($normalUsers) {
                 return response()->json([
@@ -95,9 +101,15 @@ class AdminApiController extends Controller
         $sortOrderBy = $request->query('sortOrderBy');
         $searchBy = $request->query('searchBy');
         $query = $request->query('query');
+        $banByAdminId = $request->query('banByAdminId') ?? null;
 
         if ($this->userData) {
-            $companyUser = CompanyUser::where($searchBy, 'like', '%' . $query . '%')->orderBy('created_at', $sortOrderBy)->get();
+
+            if ($banByAdminId == null) {
+                $companyUser = CompanyUser::where($searchBy, 'like', '%' . $query . '%')->orderBy('created_at', $sortOrderBy)->get();
+            } else {
+                $companyUser = CompanyUser::where([[$searchBy, 'like', '%' . $query . '%'], ['ban_by_admin_id', $banByAdminId]])->orderBy('created_at', $sortOrderBy)->get();
+            }
 
             if ($companyUser) {
                 return response()->json([
@@ -121,11 +133,22 @@ class AdminApiController extends Controller
         $sortBy = $request->query('sortBy');
         $searchBy = $request->query('searchBy');
         $query = $request->query('query');
+        $banByAdminId = $request->query('banByAdminId') ?? null;
 
         if ($this->userData) {
-            $companies = Company::with('reports.reportBy', 'companyUser')
-                ->withCount('reports as report_count')
-                ->where($searchBy, 'like', '%' . $query . '%')->orderBy($sortBy, $sortOrderBy)->get();
+
+            if ($banByAdminId == null) {
+                $companies = Company::with('reports.reportBy', 'companyUser')
+                    ->withCount('reports as report_count')
+                    ->where($searchBy, 'like', '%' . $query . '%')->orderBy($sortBy, $sortOrderBy)->get();
+            } else {
+                $companies = Company::with('reports.reportBy', 'companyUser')
+                    ->withCount('reports as report_count')
+                    ->where([[$searchBy, 'like', '%' . $query . '%'], ['ban_by_admin_id', $banByAdminId]])->orderBy($sortBy, $sortOrderBy)->get();
+            }
+            // $companies = Company::with('reports.reportBy', 'companyUser')
+            //     ->withCount('reports as report_count')
+            //     ->where($searchBy, 'like', '%' . $query . '%')->orderBy($sortBy, $sortOrderBy)->get();
 
             if ($companies) {
                 return response()->json([
@@ -147,7 +170,8 @@ class AdminApiController extends Controller
         $company_user_id = $request->input('company_user_id');
 
         if ($this->userData->ban_access || $this->userData->access_everything) {
-            $banCompany = Company::where('company_id', $company_id)->update([
+            // ban entire companies owned by this user
+            $banCompany = Company::where('company_user_id', $company_user_id)->update([
                 'is_banned' => true,
                 'ban_reason' => $banReason,
                 'ban_by_admin_id' => $this->userData->admin_id,
@@ -298,9 +322,14 @@ class AdminApiController extends Controller
         $sortOrderBy = $request->query('sortOrderBy');
         $searchBy = $request->query('searchBy');
         $query = $request->query('query');
+        $add_by_admin_id = $request->query('add_by_admin_id') ?? null;
 
         if ($this->userData) {
-            $categories = Category::where($searchBy, 'like', '%' . $query . '%')->orderBy('created_at', $sortOrderBy)->get();
+            if ($add_by_admin_id == null) {
+                $categories = Category::where($searchBy, 'like', '%' . $query . '%')->orderBy('created_at', $sortOrderBy)->get();
+            } else {
+                $categories = Category::where([[$searchBy, 'like', '%' . $query . '%'], ['add_by_admin_id', $add_by_admin_id]])->orderBy('created_at', $sortOrderBy)->get();
+            }
 
             if ($categories) {
                 return response()->json($categories, 200);

@@ -24,6 +24,16 @@
             </div>
         </div>
         <div class="total-result">
+            <div class="sort-wrapper">
+                <label for="sort-comp">Added By:</label>
+                <select v-model="this.searchQuery.add_by_admin_id" name="sortSelect" id="sort-user" class="sort-select">
+                    <option value="" selected>None</option>
+                    <option v-for="admin in this.admins" :value="admin?.admin_id" :key="admin.admin_id">{{ admin?.name }}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="total-result">
             <span>Total result: {{ this.cateForSearch?.length }}</span>
         </div>
         <div class="cate-list">
@@ -59,9 +69,15 @@ export default {
             searchValue: '',
             sortOrderBy: 'desc',
             searchBy: 'name',
+            add_by_admin_id: '',
         })
 
-        const { data: cateForSearch } = await useFetch(`/api/admin/site-management/category?sortOrderBy=${searchQuery.value.sortOrderBy}&query=${searchQuery.value.searchValue}&searchBy=${searchQuery.value.searchBy}`, {
+        const { data: admins } = await useFetch(`/api/admin/admin-management/admins?sortOrderBy=desc&query=&searchBy=name`, {
+            csrf: csrf.value,
+            api_token: api_token.value,
+        })
+
+        const { data: cateForSearch } = await useFetch(`/api/admin/site-management/category?sortOrderBy=${searchQuery.value.sortOrderBy}&query=${searchQuery.value.searchValue}&searchBy=${searchQuery.value.searchBy}&add_by_admin_id=${searchQuery.value.add_by_admin_id}`, {
             csrf: csrf.value,
             api_token: api_token.value,
         })
@@ -74,11 +90,12 @@ export default {
             isSearching,
             reFetchCategorySearch,
             reFetchCategorySearchFunc,
+            admins,
         }
     },
     methods: {
         async searchCategories() {
-            const { data: result } = await useFetch(`/api/admin/site-management/category?sortOrderBy=${this.searchQuery.sortOrderBy}&query=${this.searchQuery.searchValue}&searchBy=${this.searchQuery.searchBy}`, {
+            const { data: result } = await useFetch(`/api/admin/site-management/category?sortOrderBy=${this.searchQuery.sortOrderBy}&query=${this.searchQuery.searchValue}&searchBy=${this.searchQuery.searchBy}&add_by_admin_id=${this.searchQuery.add_by_admin_id}`, {
                 csrf: this.csrf,
                 api_token: this.api_token,
             })

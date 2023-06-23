@@ -13,7 +13,7 @@
                     style="color: #495057;"></i> {{ inPage }}</h5>
         </div>
         <div class="header-child center">
-            <a class="center link-profile" href="/profile">
+            <a  @click="setPage(41)" class="center link-profile">
                 <img v-if="this.user?.profile_url" :src="this.user?.profile_url" alt="profile">
                 <div v-else-if="!this.user?.profile_url" class="center">
                     <!-- default profile if user has never uploaded profile before -->
@@ -48,6 +48,7 @@ export default {
         const toggleLeftMenu = inject('toggleLeftMenu')
         const toggleProfilePopUp = inject('toggleProfilePopUp')
         const currentDashboardStr = inject('currentDashboardStr')
+        const setPage = inject('setPage')
         const csrf = inject('csrf')
         const user = inject('user')
 
@@ -58,6 +59,7 @@ export default {
             currentDashboardStr,
             csrf,
             user,
+            setPage
         }
     },
 }

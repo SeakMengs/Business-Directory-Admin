@@ -21,6 +21,17 @@
                     <option value="leastReport">Least Report</option>
                 </select>
             </div>
+            <div class="sort-wrapper">
+                <label for="sort-comp">Banned By:</label>
+                <select v-model="this.searchQuery.banByAdminId" name="sortSelect" id="sort-user" class="sort-select">
+                    <option value="" selected>None</option>
+                    <option v-for="admin in this.admins" :value="admin?.admin_id" :key="admin.admin_id">{{ admin?.name }}
+                    </option>
+                </select>
+            </div>
+            <div class="sort-wrapper">
+                <label for="sort-comp">Total result: {{ this.data?.companies?.length }}</label>
+            </div>
             <div class="total-wrapper">
                 <div class="acc-card show-content" v-for="company, i in this.data?.companies" :key="i">
                     <div class="i-company-user-bg center">
@@ -47,9 +58,10 @@
                     <details v-if="company?.reports.length > 0">
                         <summary>Report by user</summary>
                         <div style="align-items: flex-start;" class="flex flex-col">
-                            <div style="align-items: flex-start; gap: 2px;" class="flex" v-for="report, i in company?.reports"
-                                :key="i">
-                                <strong style="word-break: initial;white-space: nowrap;">{{ report?.report_by?.name }}:&#160;</strong>
+                            <div style="align-items: flex-start; gap: 2px;" class="flex"
+                                v-for="report, i in company?.reports" :key="i">
+                                <strong style="word-break: initial;white-space: nowrap;">{{ report?.report_by?.name
+                                }}:&#160;</strong>
                                 <span style="text-align: initial;">{{ report?.reason
                                 }}</span>
                             </div>
@@ -78,9 +90,15 @@ export default {
             sortOrderBy: 'desc',
             sortBy: 'created_at',
             searchBy: 'name',
+            banByAdminId: '',
         })
 
-        const { data, error } = await useFetch(`/api/admin/acc-management/companies?sortOrderBy=${searchQuery.value.sortOrderBy}&sortBy=${searchQuery.value.sortBy}&query=${searchQuery.value.searchValue}&searchBy=${searchQuery.value.searchBy}`, {
+        const { data: admins } = await useFetch(`/api/admin/admin-management/admins?sortOrderBy=desc&query=&searchBy=name`, {
+            csrf: csrf.value,
+            api_token: api_token.value,
+        })
+
+        const { data, error } = await useFetch(`/api/admin/acc-management/companies?sortOrderBy=${searchQuery.value.sortOrderBy}&sortBy=${searchQuery.value.sortBy}&query=${searchQuery.value.searchValue}&searchBy=${searchQuery.value.searchBy}&banByAdminId=${searchQuery.value.banByAdminId}`, {
             csrf: csrf.value,
             api_token: api_token.value,
         })
@@ -93,13 +111,14 @@ export default {
             searchQuery,
             data,
             error,
-            isSearching
+            isSearching,
+            admins,
         }
     },
     methods: {
         isoToStringDate,
         async search() {
-            const { data: result, error } = await useFetch(`/api/admin/acc-management/companies?sortOrderBy=${this.searchQuery.sortOrderBy}&sortBy=${this.searchQuery.sortBy}&query=${this.searchQuery.searchValue}&searchBy=${this.searchQuery.searchBy}`, {
+            const { data: result, error } = await useFetch(`/api/admin/acc-management/companies?sortOrderBy=${this.searchQuery.sortOrderBy}&sortBy=${this.searchQuery.sortBy}&query=${this.searchQuery.searchValue}&searchBy=${this.searchQuery.searchBy}&banByAdminId=${this.searchQuery.banByAdminId}`, {
                 csrf: this.csrf,
                 api_token: this.api_token,
             })

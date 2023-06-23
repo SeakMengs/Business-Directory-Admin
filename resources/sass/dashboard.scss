@@ -68,6 +68,10 @@ body {
 .link-profile {
     text-decoration: none;
     color: var(--text-color);
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .logout-btn {

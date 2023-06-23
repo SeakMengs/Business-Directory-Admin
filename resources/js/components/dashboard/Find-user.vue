@@ -19,6 +19,17 @@
                     <option value="asc">Oldest</option>
                 </select>
             </div>
+            <div class="sort-wrapper">
+                <label for="sort-comp">Banned By:</label>
+                <select v-model="this.searchQuery.banByAdminId" name="sortSelect" id="sort-user" class="sort-select">
+                    <option value="" selected>None</option>
+                    <option v-for="admin in this.admins" :value="admin?.admin_id" :key="admin.admin_id">{{ admin?.name }}
+                    </option>
+                </select>
+            </div>
+            <div class="sort-wrapper">
+                <label for="sort-comp">Total result: {{ this.data?.users?.length }}</label>
+            </div>
             <div class="total-wrapper">
                 <div class="acc-card show-content" v-for="user, i in this.data?.users" :key="i">
                     <div class="i-normal-user-bg center">
@@ -64,9 +75,15 @@ export default {
             searchValue: '',
             sortOrderBy: 'desc',
             searchBy: 'name',
+            banByAdminId: '',
         })
 
-        const { data, error } = await useFetch(`/api/admin/acc-management/normalUsers?sortOrderBy=${searchQuery.value.sortOrderBy}&query=${searchQuery.value.searchValue}&searchBy=${searchQuery.value.searchBy}`, {
+        const { data: admins } = await useFetch(`/api/admin/admin-management/admins?sortOrderBy=desc&query=&searchBy=name`, {
+            csrf: csrf.value,
+            api_token: api_token.value,
+        })
+
+        const { data, error } = await useFetch(`/api/admin/acc-management/normalUsers?sortOrderBy=${searchQuery.value.sortOrderBy}&query=${searchQuery.value.searchValue}&searchBy=${searchQuery.value.searchBy}&banByAdminId=${searchQuery.value.banByAdminId}`, {
             csrf: csrf.value,
             api_token: api_token.value,
         })
@@ -77,13 +94,14 @@ export default {
             searchQuery,
             data,
             error,
-            isSearching
+            isSearching,
+            admins,
         }
     },
     methods: {
         isoToStringDate,
         async search() {
-            const { data: result, error } = await useFetch(`/api/admin/acc-management/normalUsers?sortOrderBy=${this.searchQuery.sortOrderBy}&query=${this.searchQuery.searchValue}&searchBy=${this.searchQuery.searchBy}`, {
+            const { data: result, error } = await useFetch(`/api/admin/acc-management/normalUsers?sortOrderBy=${this.searchQuery.sortOrderBy}&query=${this.searchQuery.searchValue}&searchBy=${this.searchQuery.searchBy}&banByAdminId=${this.searchQuery.banByAdminId}`, {
                 csrf: this.csrf,
                 api_token: this.api_token,
             })

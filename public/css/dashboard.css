@@ -68,6 +68,9 @@ body {
   text-decoration: none;
   color: var(--text-color);
 }
+.link-profile:hover {
+  cursor: pointer;
+}
 
 .logout-btn {
   background-color: red;

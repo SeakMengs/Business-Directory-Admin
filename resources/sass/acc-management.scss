@@ -75,6 +75,8 @@
     textarea {
         padding: 5px;
         max-width: 25rem;
+        resize: vertical;
+        max-height: 25rem;
     }
 
     details {

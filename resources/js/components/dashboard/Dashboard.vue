@@ -6,7 +6,7 @@
             <!-- there is a function that toggle hide content to the div below -->
             <div class="pop-up-pf">
                 <div class="pop-up-content">
-                    <a class="center link-profile" href="/profile">
+                    <a @click="setPage(41)" class="center link-profile">
                         <img v-if="this.user?.profile_url" :src="this.user?.profile_url" alt="profile">
                         <div v-else-if="!this.user?.profile_url" class="center">
                             <!-- default profile if user has never uploaded profile before -->
