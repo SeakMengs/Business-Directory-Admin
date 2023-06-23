@@ -23,6 +23,8 @@ class AdminUser extends Model implements Authenticatable
         'add_category',
         'ban_access',
         'access_everything',
+        'password',
+        'api_token',
     ];
 
     protected $hidden = [

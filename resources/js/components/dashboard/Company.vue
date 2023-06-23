@@ -31,7 +31,7 @@
                         <!-- <i v-else class="i-company-user"></i> -->
                         <i class="i-company-user"></i>
                     </div>
-                    <h6>Join since: {{ isoToStringDate(company?.created_at) }}</h6>
+                    <h6>Join since: {{ this.isoToStringDate(company?.created_at) }}</h6>
                     <h6>ID: {{ company?.company_id }}</h6>
                     <h6 class="sus-color">Suspicious Level: {{ company?.report_count }}</h6>
                     <h6>Listed by: @{{ company?.company_user?.name }}</h6>
@@ -66,6 +66,7 @@ import { ref, inject } from 'vue';
 import debounce from "lodash.debounce";
 import useFetch from '../../hooks/useFetch'
 import usePost from '../../hooks/usePost'
+import isoToStringDate from '../../utils/isoToStringDate.vue';
 
 export default {
     async setup() {
@@ -96,6 +97,7 @@ export default {
         }
     },
     methods: {
+        isoToStringDate,
         async search() {
             const { data: result, error } = await useFetch(`/api/admin/acc-management/companies?sortOrderBy=${this.searchQuery.sortOrderBy}&sortBy=${this.searchQuery.sortBy}&query=${this.searchQuery.searchValue}&searchBy=${this.searchQuery.searchBy}`, {
                 csrf: this.csrf,
@@ -138,11 +140,6 @@ export default {
             }
 
             // console.log(this.searchQuery.sortOrderBy, this.searchQuery.sortBy)
-        },
-        isoToStringDate(isoDate) {
-            // https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_tolocalestring
-            const date = new Date(isoDate)
-            return date.toLocaleDateString()
         },
         async banCompany(company_id, company_user_id) {
             const ban_reason = document.getElementById(`ban_reason_${company_id}`).value

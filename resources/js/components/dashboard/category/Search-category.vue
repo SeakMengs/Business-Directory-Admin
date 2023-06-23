@@ -50,6 +50,8 @@ export default {
     async setup() {
         const csrf = inject('csrf')
         const api_token = inject('api_token')
+        const reFetchCategorySearch = inject('reFetchCategorySearch')
+        const reFetchCategorySearchFunc = inject('reFetchCategorySearchFunc')
 
         const isSearching = ref(false)
 
@@ -70,6 +72,8 @@ export default {
             cateForSearch,
             searchQuery,
             isSearching,
+            reFetchCategorySearch,
+            reFetchCategorySearchFunc,
         }
     },
     methods: {
@@ -101,6 +105,20 @@ export default {
                 await this.searchCategories()
                 this.isSearching = false
             }, 300),
+            deep: true
+        },
+        reFetchCategorySearch: {
+            handler: async function () {
+                // console.log('reFetchCategorySearch', this.reFetchCategorySearch)
+
+                if (this.reFetchCategorySearch) {
+                    this.isSearching = true
+                    await this.searchCategories()
+                    this.isSearching = false
+                }
+
+                this.reFetchCategorySearchFunc(false)
+            },
             deep: true
         }
     }

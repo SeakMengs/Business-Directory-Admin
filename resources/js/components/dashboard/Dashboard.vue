@@ -7,7 +7,11 @@
             <div class="pop-up-pf">
                 <div class="pop-up-content">
                     <a class="center link-profile" href="/profile">
-                        <img src="https://i.redd.it/v0caqchbtn741.jpg" alt="profile">
+                        <img v-if="this.user?.profile_url" :src="this.user?.profile_url" alt="profile">
+                        <div v-else-if="!this.user?.profile_url" class="center">
+                            <!-- default profile if user has never uploaded profile before -->
+                            <i style="-webkit-mask-size: auto 2rem; width: 2rem; height: 2rem;" class="i-admin-user"></i>
+                        </div>
                         <div class="flex flex-col m-half">
                             <span class="profile-name">{{ this.user.name }}</span>
                         </div>
@@ -85,17 +89,20 @@ export default {
     },
     async mounted() {
         // after component is mounted, get user info
-        this.user = await useFetch('/api/admin/user',
-            {
-                csrf: this.csrf,
-                api_token: this.api_token
-            })
-        // because my custom useFetch hook return three objects, so I need to get the data object
-        this.user = this.user.data
+        await this.getUserInfo()
 
-        // console.log(this.user)
+        console.log(this.user)
     },
     methods: {
+        async getUserInfo() {
+            this.user = await useFetch('/api/admin/user',
+                {
+                    csrf: this.csrf,
+                    api_token: this.api_token
+                })
+            // because my custom useFetch hook return three objects, so I need to get the data object
+            this.user = this.user.data
+        },
         toggleLeftMenu() {
             let leftMenuSlider = document.getElementById('left-menu-slider')
             let hamburger = document.getElementById('hamburger')
@@ -203,6 +210,7 @@ export default {
             csrf: computed(() => this.csrf),
             api_token: computed(() => this.api_token),
             user: computed(() => this.user),
+            getUserInfo: this.getUserInfo,
         }
     }
 }

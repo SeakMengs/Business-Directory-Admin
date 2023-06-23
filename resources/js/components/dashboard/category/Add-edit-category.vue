@@ -110,6 +110,8 @@ export default {
     async setup() {
         const csrf = inject('csrf')
         const api_token = inject('api_token')
+        const reFetchCategorySearch = inject('reFetchCategorySearch')
+        const reFetchCategorySearchFunc = inject('reFetchCategorySearchFunc')
 
         const addCategory = ref({
             name: '',
@@ -136,6 +138,8 @@ export default {
             categories,
             addCategory,
             changeCategory,
+            reFetchCategorySearch,
+            reFetchCategorySearchFunc,
         }
     },
     methods: {
@@ -197,12 +201,8 @@ export default {
                 }
             }
 
-            this.changeCategory.id = ''
-            this.changeCategory.name = ''
-            this.changeCategory.logo_url = ''
-
-            // reset preview icon
-            this.previewAddCategoryIcon(event, 'change-icon-preview', this.changeCategory.name, this.changeCategory.logo_url)
+            // if it doesn't find any category, then reset changeCategory
+            this.resetAfterUpdateCategory()
         },
         checkCanSaveAddOrUpdateCategory(name, logo, id) {
             if (!name) {
@@ -238,8 +238,10 @@ export default {
             })
 
             if (res.value?.data?.status === 'success') {
-                this.addCategory.name = ''
-                this.addCategory.logo_url = ''
+                this.addCategory = {
+                    name: '',
+                    logo_url: '',
+                }
 
                 alert('Add category successfully')
 
@@ -316,9 +318,12 @@ export default {
         categories: {
             handler: function () {
                 this.resetAfterUpdateCategory()
+
+                // send signal to re-fetch category search in other component
+                this.reFetchCategorySearchFunc(true)
             },
             deep: true
-        }
+        },
     }
 }
 </script>

@@ -9,11 +9,16 @@
             </div>
         </div>
         <div class="header-child">
-            <h5 class="cur-page-title"> {{ currentDashboardStr }} <i class="fa-light fa-greater-than fa-xl" style="color: #495057;"></i> {{ inPage }}</h5>
+            <h5 class="cur-page-title"> {{ currentDashboardStr }} <i class="fa-light fa-greater-than fa-xl"
+                    style="color: #495057;"></i> {{ inPage }}</h5>
         </div>
         <div class="header-child center">
             <a class="center link-profile" href="/profile">
-                <img src="https://i.redd.it/v0caqchbtn741.jpg" alt="profile">
+                <img v-if="this.user?.profile_url" :src="this.user?.profile_url" alt="profile">
+                <div v-else-if="!this.user?.profile_url" class="center">
+                    <!-- default profile if user has never uploaded profile before -->
+                    <i style="-webkit-mask-size: auto 2rem; width: 2rem; height: 2rem;" class="i-admin-user"></i>
+                </div>
                 <div class="flex flex-col m-half">
                     <span class="profile-name">{{ this.user.name }}</span>
                 </div>

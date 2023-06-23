@@ -56,6 +56,8 @@ Route::middleware(['userAuth:adminUser'])->group(function () {
         Route::post('/admin/admin-management/post/removeAdmin', 'removeAdmin')->name('api.admin.admin-management.post.removeAdmin');
 
         Route::post('/admin-management/post/admin/reset-default-password', 'resetDefaultAdminPassword')->name('api.admin.admin-management.post.resetDefaultAdminPassword');
+
+        Route::post('/admin-management/post/profile/updateAdminProfile', 'updateAdminProfile')->name('api.admin.admin-management.post.updateAdminProfile');
     });
 
 });

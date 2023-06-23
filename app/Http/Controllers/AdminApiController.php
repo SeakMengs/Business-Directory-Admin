@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
-use App\Models\AdminUser;
 use App\Models\Category;
+use App\Models\AdminUser;
 use App\Models\NormalUser;
 use App\Models\CompanyUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class AdminApiController extends Controller
@@ -427,7 +428,7 @@ class AdminApiController extends Controller
         if ($this->userData) {
             $validator = Validator::make($request->all(), [
                 'email' => ['unique:admin_user,email'],
-                'password' => 'required',
+                'password' => ['required', 'min:8'],
                 'name' => ['required', 'unique:admin_user,name'],
                 'ban_access' => 'required',
                 'add_category' => 'required',
@@ -553,11 +554,23 @@ class AdminApiController extends Controller
         }
     }
 
-    public function resetDefaultAdminPassword(Request $request) {
+    public function resetDefaultAdminPassword(Request $request)
+    {
         $admin_id = $request->input('admin_id');
 
         if ($this->userData) {
             if ($admin_id && $this->userData->access_everything) {
+                $validator = Validator::make($request->all(), [
+                    'password' => ['required', 'min:8'],
+                ]);
+
+                if ($validator->fails()) {
+                    return response()->json([
+                        'status' => 'error',
+                        'message' => 'Password must be at least 8 characters long'
+                    ], 400);
+                }
+
                 $resetPassword = AdminUser::where('admin_id', $admin_id)->update([
                     'password' => bcrypt('admin123')
                 ]);
@@ -573,6 +586,85 @@ class AdminApiController extends Controller
                         'message' => 'Failed to reset admin password'
                     ], 400);
                 }
+            }
+        }
+    }
+
+    public function updateAdminProfile(Request $request)
+    {
+        $admin_id = $request->input('admin_id');
+
+        // make sure the current user that request to update profile is the owner of the account
+        if ($this->userData->admin_id == $admin_id) {
+            $validator = Validator::make(
+                $request->all(),
+                [
+                    'name' => ['unique:admin_user,name,' . $admin_id . ',admin_id'],
+                    'email' => ['unique:admin_user,email,' . $admin_id . ',admin_id'],
+                    // make sure it match the password in the database
+                    'password' => [
+                        'required',
+                        'min:8',
+                    ],
+                ],
+                [
+                    'password.min' => 'Password must be at least 8 characters long',
+                    'password.required' => 'Password is required',
+                    'name.unique' => 'Name already exist',
+                    'email.unique' => 'Email already exist',
+                ]
+            );
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => $validator->errors()->first()
+                ], 400);
+            }
+
+            // check password match the current user or not
+            // https://laracasts.com/discuss/channels/laravel/how-to-decrypt-bcrypt-password
+            if (!Hash::check($request->input('password'), $this->userData->password)) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Password is incorrect'
+                ], 400);
+            }
+
+            $updateData = [
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'profile_url' => $request->input('profile_url'),
+            ];
+
+            // if the new password is not empty then update the password
+            if ($request->input('new_password')) {
+                $validator = Validator::make($request->all(), [
+                    'new_password' => ['required', 'min:8'],
+                ]);
+
+                if ($validator->fails()) {
+                    return response()->json([
+                        'status' => 'error',
+                        'message' => 'New password must be at least 8 characters long'
+                    ], 400);
+                }
+
+                $updateData['password'] = bcrypt($request->input('new_password'));
+            }
+
+            $updateProfile = AdminUser::where('admin_id', $admin_id)->update($updateData);
+
+            if ($updateProfile) {
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'Profile has been updated'
+                ], 200);
+            } else {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Failed to update profile'
+                ], 400);
             }
         }
     }
