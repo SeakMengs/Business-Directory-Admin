@@ -52,8 +52,8 @@
                 </div>
             </div>
         </div>
-        <!-- edit category section -->
-        <div class="cate-section-1-child">
+        <!-- Set website status -->
+        <!-- <div class="cate-section-1-child">
             <div class="total-header">
                 <h1>Main Website Status</h1>
             </div>
@@ -74,7 +74,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 

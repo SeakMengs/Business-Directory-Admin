@@ -13,7 +13,7 @@
                             <i style="-webkit-mask-size: auto 2rem; width: 2rem; height: 2rem;" class="i-admin-user"></i>
                         </div>
                         <div class="flex flex-col m-half">
-                            <span class="profile-name">{{ this.user.name }}</span>
+                            <span class="profile-name">{{ this.user?.name }}</span>
                         </div>
                     </a>
                     <div class="left-border-line"></div>

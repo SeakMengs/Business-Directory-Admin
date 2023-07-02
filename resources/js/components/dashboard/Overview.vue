@@ -10,21 +10,21 @@
                     <div class="i-normal-user-bg center">
                         <i class="i-normal-user"></i>
                     </div>
-                    <h1>{{ numFormatter.format(this.website.total?.normalUsers) }}</h1>
+                    <h1>{{ numFormatter.format(this.website?.total?.normalUsers) }}</h1>
                     <h3 class="h3-normal">User Accounts</h3>
                 </div>
                 <div class="total-card">
                     <div class="i-company-user-bg center">
                         <i class="i-company-user"></i>
                     </div>
-                    <h1>{{ numFormatter.format(this.website.total?.companyUsers) }}</h1>
+                    <h1>{{ numFormatter.format(this.website?.total?.companyUsers) }}</h1>
                     <h3 class="h3-company">Company Accounts</h3>
                 </div>
                 <div class="total-card">
                     <div class="i-admin-user-bg center">
                         <i class="i-admin-user"></i>
                     </div>
-                    <h1>{{ numFormatter.format(this.website.total?.admins) }}</h1>
+                    <h1>{{ numFormatter.format(this.website?.total?.admins) }}</h1>
                     <h3 class="h3-admin">Admin Accounts</h3>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                         <div class="i-company-user-bg center">
                             <i class="i-company"></i>
                         </div>
-                        <h1>{{ numFormatter.format(this.website.total?.companies) }}</h1>
+                        <h1>{{ numFormatter.format(this.website?.total?.companies) }}</h1>
                         <h3 class="h3-company">Companies listed</h3>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                         <div class="i-admin-user-bg center">
                             <i class="i-category"></i>
                         </div>
-                        <h1>{{ numFormatter.format(this.website.total?.categories) }}</h1>
+                        <h1>{{ numFormatter.format(this.website?.total?.categories) }}</h1>
                         <h3 class="h3-admin">Categories</h3>
                     </div>
                 </div>

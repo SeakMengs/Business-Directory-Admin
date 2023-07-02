@@ -17,7 +17,7 @@
             </div>
         </div>
         <!-- second menu content -->
-        <div v-if="this.user?.ban_access || this.user.access_everything" class="main-content">
+        <div v-if="this.user?.ban_access || this.user?.access_everything" class="main-content">
             <div @click="toggleContent(2)" class="head-title-wrapper"
                 :class="{ 'isCurrentPage': this.dashboardPage === '2' }">
                 <span class="head-title">Account Management</span>
@@ -41,7 +41,7 @@
             </div>
         </div>
         <!-- Third menu content -->
-        <div v-if="this.user?.add_category || this.user.access_everything" class="main-content">
+        <div v-if="this.user?.add_category || this.user?.access_everything" class="main-content">
             <div @click="toggleContent(3)" class="head-title-wrapper"
                 :class="{ 'isCurrentPage': this.dashboardPage === '3' }">
                 <span class="head-title">Site Management</span>

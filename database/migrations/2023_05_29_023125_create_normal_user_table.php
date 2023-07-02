@@ -30,7 +30,7 @@ class CreateNormalUserTable extends Migration
             $table->text('profile_url')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
-
+            $table->text('api_token')->nullable();
             // $table->foreign('ban_by_admin_id')->references('admin_id')->on('admin_user');
         });
     }
