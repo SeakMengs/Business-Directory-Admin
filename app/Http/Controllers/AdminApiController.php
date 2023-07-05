@@ -356,7 +356,7 @@ class AdminApiController extends Controller
             ], 400);
         }
 
-        if ($this->userData->access_everything || $this->userData->access_category) {
+        if ($this->userData->access_everything || $this->userData->add_category) {
             $newCategoryName = $request->input('name');
             $newCategoryIcon = $request->input('logo_url');
             $saveNewCategory = Category::create([
@@ -398,7 +398,7 @@ class AdminApiController extends Controller
             ], 400);
         }
 
-        if ($this->userData->access_everything || $this->userData->access_category) {
+        if ($this->userData->access_everything || $this->userData->add_category) {
             $updateCategory = Category::where('category_id', $category_id)->update([
                 'name' => $category_name,
                 'logo_url' => $category_icon,
@@ -424,7 +424,7 @@ class AdminApiController extends Controller
         $category_id = $request->input('category_id');
 
         if ($category_id) {
-            if ($this->userData->access_everything || $this->userData->access_category) {
+            if ($this->userData->access_everything || $this->userData->add_category) {
                 // get one company in this category if it exist we don't allow to remove the category
                 $checkCompanyInCategory = Company::where('category_id', $category_id)->get();
 
@@ -564,6 +564,13 @@ class AdminApiController extends Controller
     {
         $admin_id = $request->input('admin_id');
 
+        if ($this->userData->admin_id == $admin_id) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'You cannot remove your own account'
+            ], 400);
+        }
+
         if ($this->userData) {
             if ($admin_id && $this->userData->access_everything) {
                 $removeAdmin = AdminUser::where('admin_id', $admin_id)->delete();
@@ -589,16 +596,16 @@ class AdminApiController extends Controller
 
         if ($this->userData) {
             if ($admin_id && $this->userData->access_everything) {
-                $validator = Validator::make($request->all(), [
-                    'password' => ['required', 'min:8'],
-                ]);
+                // $validator = Validator::make($request->all(), [
+                //     'password' => ['required', 'min:8'],
+                // ]);
 
-                if ($validator->fails()) {
-                    return response()->json([
-                        'status' => 'error',
-                        'message' => 'Password must be at least 8 characters long'
-                    ], 400);
-                }
+                // if ($validator->fails()) {
+                //     return response()->json([
+                //         'status' => 'error',
+                //         'message' => 'Password must be at least 8 characters long'
+                //     ], 400);
+                // }
 
                 $resetPassword = AdminUser::where('admin_id', $admin_id)->update([
                     'password' => bcrypt('admin123')
