@@ -55,6 +55,9 @@
                     <button v-if="!company?.is_banned" class="ban-user"
                         @click="banCompany(company?.company_id, company?.company_user_id)">Ban
                         Company</button>
+                    <button v-if="company?.is_banned" class="reset-cate-btn"
+                        @click="unBanCompany(company?.company_id, company?.company_user_id)">Unban
+                        Company</button>
                     <details v-if="company?.reports.length > 0">
                         <summary>Report by user</summary>
                         <div style="align-items: flex-start;" class="flex flex-col">
@@ -173,6 +176,26 @@ export default {
                         company_id: company_id,
                         company_user_id: company_user_id,
                         ban_reason: ban_reason,
+                    },
+                    csrf: this.csrf,
+                    api_token: this.api_token,
+                })
+
+            if (res.value?.data?.status === 'success') {
+                // get data again
+                this.isSearching = true
+                await this.search()
+                this.isSearching = false
+            } else {
+                alert('Something went wrong, please try again')
+            }
+        },
+        async unBanCompany(company_id, company_user_id) {
+            const { res, error } = await usePost(`/api/admin/acc-management/post/unBanCompany`,
+                {
+                    params: {
+                        company_id: company_id,
+                        company_user_id: company_user_id,
                     },
                     csrf: this.csrf,
                     api_token: this.api_token,
