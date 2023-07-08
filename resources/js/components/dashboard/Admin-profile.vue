@@ -3,7 +3,7 @@
         <div v-if="this.user" class="admin-profile-parent">
             <div class="admin-profile-wrapper">
                 <div class="profile-and-name">
-                    <img v-if="this.user?.profile_url" :src="this.user?.profile_url" alt="profile">
+                    <img style="object-fit: cover;" v-if="this.user?.profile_url" :src="this.user?.profile_url" alt="profile">
                     <div v-else-if="!this.user?.profile_url" class="center">
                         <!-- default profile if user has never uploaded profile before -->
                         <i class="i-admin-user"></i>

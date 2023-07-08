@@ -3,7 +3,7 @@
         <div class="add-cate-wrapper">
             <form action="" class="add-cate-form">
                 <img v-if="this.editProfile?.profile_url" :src="this.editProfile?.profile_url" alt="profile"
-                    style="width: 128px; height: 128px; border-radius: 100%;">
+                    style="width: 128px; height: 128px; border-radius: 100%; object-fit: cover;">
                 <div v-else-if="!this.editProfile?.profile_url" class="center">
                     <!-- default profile if user has never uploaded profile before -->
                     <i class="i-admin-user"></i>
