@@ -14,9 +14,20 @@
     <script src="{{ mix('js/app.js') }}" defer></script>
     <link rel="stylesheet" href="{{ asset('css/global.css') }}">
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <style>
+        * {
+            color: green;
+        }
+    </style>
 </head>
 
 <body>
+    <?php
+    echo '<h1>ServerName: ' . gethostname() . '<br></h1>';
+    if (isset($_SERVER['SERVER_ADDR'])) {
+        echo '<h1>ServerIP: ' . $_SERVER['SERVER_ADDR'] . '</h1>';
+    }
+    ?>
     @if (Auth::guard('adminUser')->check())
         <script>
             window.location.href = "/admin/dashboard";
