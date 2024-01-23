@@ -1,0 +1,9 @@
+# Use a specific version of the MySQL image, specifying the platform
+FROM --platform=linux/amd64 mysql:5.7
+
+ENV MYSQL_DATABASE=db_business_directory \
+    MYSQL_ROOT_PASSWORD=business_directory \
+    MYSQL_USER=business_directory \
+    MYSQL_PASSWORD=business_directory
+
+COPY ./business_directory.sql /docker-entrypoint-initdb.d/business_directory.sql

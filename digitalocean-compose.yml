@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  app:
+    image: your_username/your_repo:latest
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: db_business_directory
+      DB_USERNAME: business_directory
+      DB_PASSWORD: business_directory
+
+  db:
+    image: your_username/your_db_repo:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: business_directory
+      MYSQL_DATABASE: db_business_directory
+      MYSQL_USER: business_directory
+      MYSQL_PASSWORD: business_directory
