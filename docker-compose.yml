@@ -7,7 +7,7 @@ services:
         # image is the name of the image we want to build
         image: "business_directory_app"
         ports:
-            - 8080:80
+            - 80:80
         volumes:
             - ./:/var/www/html
         # depends_on will make sure that the db_mysql container is running before the app_laravel container starts
