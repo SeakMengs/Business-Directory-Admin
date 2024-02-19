@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   app:
-    image: your_username/your_repo:latest
+    image: lifegoal/bdadmin_app:latest
     ports:
       - "8080:80"
     depends_on:
@@ -15,7 +15,7 @@ services:
       DB_PASSWORD: business_directory
 
   db:
-    image: your_username/your_db_repo:latest
+    image: lifegoal/bdadmin_mysql:latest
     environment:
       MYSQL_ROOT_PASSWORD: business_directory
       MYSQL_DATABASE: db_business_directory

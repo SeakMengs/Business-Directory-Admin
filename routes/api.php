@@ -60,7 +60,10 @@ Route::middleware(['userAuth:adminUser'])->group(function () {
         Route::post('/admin-management/post/admin/reset-default-password', 'resetDefaultAdminPassword')->name('api.admin.admin-management.post.resetDefaultAdminPassword');
 
         Route::post('/admin-management/post/profile/updateAdminProfile', 'updateAdminProfile')->name('api.admin.admin-management.post.updateAdminProfile');
+
     });
 
 });
+
+Route::post('/upload-to-space-object', [AdminApiController::class, 'uploadToSpaceObject'])->name('api.admin.upload-to-space-object');
 //----------End of Group Admin Controller with middleware adminUser---------- */

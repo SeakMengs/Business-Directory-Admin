@@ -27,7 +27,8 @@
                         v-model="this.editProfile.password">
                 </div>
                 <div @click="uploadFile" class="upload-box">
-                    <input @change="uploadImageToImgur($event)" class="hidden" type="file" name="" id="uploadIcon">
+                    <!-- <input @change="uploadImageToImgur($event)" class="hidden" type="file" name="" id="uploadIcon"> -->
+                    <input @change="uploadImageToSpaceObject($event)" class="hidden" type="file" name="" id="uploadIcon">
                     <span>Click in this area to upload the a new profile</span>
                 </div>
                 <button v-if="this.editProfile.isNewProfile" type="button" class="reset-cate-btn"
@@ -107,6 +108,32 @@ export default {
                 }
             } catch (error) {
                 console.log(error);
+                alert('Upload image failed');
+            }
+        },
+        async uploadImageToSpaceObject(event) {
+            try {
+                const formData = new FormData();
+                formData.append('image', event.target.files[0]);
+
+                const res = await fetch('/api/upload-to-space-object', {
+                    headers: {
+                        'X-CSRF-TOKEN': this.csrf,
+                    },
+                    method: 'POST',
+                    body: formData
+                })
+
+                const data = await res.json()
+                console.log(data);
+                if (data.success) {
+                    this.editProfile.profile_url = data.data.link;
+                    this.editProfile.isNewProfile = true;
+                } else {
+                    alert('Upload image failed');
+                }
+            } catch (error) {
+                console.log(error.message);
                 alert('Upload image failed');
             }
         },

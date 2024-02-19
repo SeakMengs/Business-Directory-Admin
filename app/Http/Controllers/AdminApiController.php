@@ -35,6 +35,30 @@ class AdminApiController extends Controller
         }
     }
 
+    public function uploadToSpaceObject(Request $request)
+    {
+        $image = $request->file('image');
+        $fileName = $image->getClientOriginalName();
+        $folderName = env('BLOCKS_FOLDER_NAME', 'images');
+        $path = $image->storeAs($folderName, $fileName, 'spaces');
+        $url = env('DO_SPACES_FULL_ENDPOINT') . '/' . $path;
+
+        if ($url) {
+            return response()->json([
+                'success' => true,
+                'data' => [
+                    'link' => $url
+                ],
+                'message' => 'Image uploaded successfully'
+            ], 200);
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Failed to upload image'
+        ], 400);
+    }
+
     public function getUser()
     {
         if ($this->userData) {
